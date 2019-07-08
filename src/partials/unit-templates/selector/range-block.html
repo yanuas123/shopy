@@ -1,0 +1,23 @@
+@@if ( vars == 'price_range_prop' && ( vars = price_range_prop ) ) {}
+@@for ( var i = 0; i < vars.length; i++ ) {
+<div class="price-range-block">
+	<div class="range range-filter" id="selector_price_range">
+		<div class="range_space">
+			<div class="range_inner-space">
+				<div class="range-point range_start-point">
+					<div class="range-point_data range_start-point_data"><span class="range_start-number">`+vars[i].bottom_point+`</span>$</div>
+				</div>
+				<div class="range-point range_end-point">
+					<div class="range-point_data range_end-point_data"><span class="range_end-number">`+vars[i].top_point+`</span>$</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="price-range_inputs">
+		<label for="price_range_bottom_field" class="label">From</label>
+		<input type="number" name="price_range_bottom_field" id="price_range_bottom_field" class="input" data-range-min-val="`+vars[i].bottom_val+`" data-range-bottom-val="`+vars[i].bottom_point+`" />
+		<label for="price_range_top_field" class="label">To</label>
+		<input type="number" name="price_range_top_field" id="price_range_top_field" class="input" data-range-max-val="`+vars[i].top_val+`" data-range-top-val="`+vars[i].top_point+`" />
+	</div>
+</div>
+}

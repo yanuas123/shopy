@@ -1,0 +1,12 @@
+{
+    "files": [
+        "src/js/index.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "newLine": "lf",
+        "target": "es5"
+    }
+}

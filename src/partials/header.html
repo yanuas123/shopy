@@ -1,0 +1,48 @@
+<!-- HEADER top part -->
+<div class="header_top row align-items-center">
+	<div class="col-12">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="d-flex">
+						@@include('./unit-templates/msg-tel-info.html')
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="d-flex justify-content-end">
+						@@include('./unit-templates/social-buttons.html')
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- HEADER bottom part -->
+<div class="header_bottom row align-items-center">
+	<div class="col-12">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<img src="../images/images/logo.png" class="logo" alt="" />
+				</div>
+				<div class="col-md-8">
+					@@include('./unit-templates/main-menu.html', {"menu": [{"title": "Home", "url": "index.html", "class": " class='active'"},
+					{"title": "Products", "url": "products.html"},
+					{"title": "Hot Deals", "url": "#"},
+					{"title": "About", "url": "#"},
+					{"title": "Contact", "url": "contact.html"}]})
+				</div>
+				<div class="col-md-2 d-flex justify-content-end">
+					<div class="header_bottom_right">
+						<button type="button" class="btn-icon icon-color-custom ico_search"></button>
+						<button type="button" class="btn-icon icon-color-custom ico_user"></button>
+						<div class="cart-button active">
+							<div class="cart-qty">1</div>
+							<button type="button" class="btn-icon icon-color-custom ico_cart"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

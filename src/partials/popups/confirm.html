@@ -1,0 +1,167 @@
+<!-- Confirmation registered popup -->
+<div class="popup-window popup-confirm" data-popup-targ="confirm_registered">
+	<div class="h5">Confirmation</div>
+	<form name="confirmation" class="d-flex flex-column align-items-center">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 pb-3 pt-2">
+					<span class="bold">Total price:</span> <span id="popup_confirm_price">250</span><span>$</span>
+				</div>
+			</div>
+			<div class="row hidden" id="popup_confirm_phone_block">
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="tel" name="empty_phone" placeholder="Phone*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">Phone number is invalid!</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 py-4">
+					<label class="select-label label">Choose a shipping method:</label> 
+					<select name="shipping_method" class="select inline-select">
+						@@for ( var i = 0; i < post.length; i++ ) {
+						<option value="`+post[i]+`">`+post[i]+`</option>
+						}
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid" id="popup_confirm_newpost_block">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="h6">New Post - shipping information</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="text" name="newpost_city" placeholder="City*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">Invalid city name!</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="number" name="newpost_department" placeholder="Department № *" />
+						<div class="text-empty">This field is required!</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="text" name="newpost_first_name" placeholder="First name*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">This field contains incorrect symbols!</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="text" name="newpost_last_name" placeholder="Last name*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">This field contains incorrect symbols!</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid hidden" id="popup_confirm_ukrpost_address">
+			<div class="row">
+				<div class="col-md-12 pb-4 pt-lg-5">
+					<label class="select-label label">Choose shipping address:</label> 
+					<select name="ukrpost_address" class="select inline-select">
+						@@for ( var i = 0; i < address.length; i++ ) {
+						<option value="`+address[i]+`">`+address[i]+`</option>
+						}
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid hidden" id="popup_confirm_ukrpost_newaddress">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="h6">Ukrpost - shipping information</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input-parent">
+						<select name="country" class="select placeholder">
+							<option value="" selected disabled>Country*</option>
+							@@for ( var i = 0; i < country.length; i++ ) {
+							<option value="`+country[i]+`">`+country[i]+`</option>
+							}
+						</select>
+						<div class="text-empty">Select country!</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="text" name="city" placeholder="City*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">Invalid city name!</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="number" name="post_code" placeholder="Zip/Postal Code*" />
+						<div class="text-empty">This field is required!</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="text" name="street" placeholder="Street*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">Invalid street name!</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="text" name="house_number" placeholder="House number*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">Invalid house number!</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="text" name="first_name" placeholder="First name*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">This field contains incorrect symbols!</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-parent">
+						<input class="input" type="text" name="last_name" placeholder="Last name*" />
+						<div class="text-empty">This field is required!</div>
+						<div class="text-invalid">This field contains incorrect symbols!</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 pb-4 pt-lg-5">
+					<label class="select-label label">Payment method:</label> 
+					<select name="payment_method" class="select inline-select">
+						@@for ( var i = 0; i < payment.length; i++ ) {
+						<option value="`+payment[i]+`">`+payment[i]+`</option>
+						}
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="d-flex justify-content-center pt-4 pb-2" id="popup_confirm_paymentbtn">
+			<input class="btn" type="button" value="Payment" />
+		</div>
+		<div class="d-flex justify-content-center pt-4 pb-2 hidden" id="popup_confirm_submit">
+			<input class="btn" type="submit" value="Confirm" />
+		</div>
+	</form>
+</div>

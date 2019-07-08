@@ -1,0 +1,8 @@
+@@if ( vars == 'brands' && (vars = brands) ) {
+}
+@@if ( vars == 'sizes' && (vars = sizes) ) {
+}
+@@for ( var i = 0; i < vars.length; i++ ) {
+<input class="checkbox" type="checkbox" name="`+vars[i].name+`" id="`+vars[i].name+`" value="`+vars[i].name+`" data-input-prop="`+vars[i].data_input_prop+`" />
+<label class="label selector_checkbox-item" for="`+vars[i].name+`">`+vars[i].title+`</label>
+}

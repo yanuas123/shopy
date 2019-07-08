@@ -1,0 +1,28 @@
+<!-- POPUP's block -->
+<div class="popup-wrap animate-popup" id="popups">
+	<div class="back-wall"></div>
+	<div class="popups-block_wrap">
+		<div class="popups-frame_wrap">
+			<div class="popups-frame">
+			<div class="close-button-row">
+				<button class="btn-icon icon-color-custom ico_close close-btn" type="button" id="close_popup"></button>
+			</div>
+			<div class="popups-window">
+				@@include('./popups/cart.html')
+				@@include('./popups/confirm.html', { "post": [ "New Post", "Ukrpost" ],
+				"address": [ "my address 1", "add new address" ],
+				"payment": [ "Visa/MasterCard", "after receiving" ] })
+				@@include('./popups/forgotpass.html')
+				@@include('./popups/info.html')
+				@@include('./popups/login.html')
+				@@include('./popups/newpass.html')
+				@@include('./popups/payment.html')
+				@@include('./popups/question.html')
+				@@include('./popups/search.html')
+				@@include('./popups/share-product.html')
+				@@include('./popups/signin.html')
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

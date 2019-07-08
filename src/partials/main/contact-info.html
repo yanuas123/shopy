@@ -1,0 +1,46 @@
+<!-- CONTACT INFO section -->
+<section class="row contact-info">
+	<div class="col-md-12">
+		<div class="title-section_wrap">
+			<div class="title-block">
+				<h2>Our Contacts</h2>
+			</div>
+			<div class="contact-info-wrap">
+				<div class="address-row">
+					<b>Address: </b> <span>State, City, Street num</span>
+				</div>
+				<div class="d-flex">
+					@@include('../unit-templates/msg-tel-info.html')
+				</div>
+			</div>
+			<!-- feedback message -->
+			<div class="message-block">
+				<h4>Message</h4>
+				<form name="message" class="container-fluid">
+					<div class="row">
+						<div class="col-md-6 input-parent">
+							<input class="input" type="email" name="email" placeholder="Your email" required />
+							<div class="text-empty">This field is required!</div>
+							<div class="text-invalid">Email is invalid!</div>
+						</div>
+						<div class="col-md-6 align-items-md-end input-parent">
+							<input class="input" type="text" name="name" placeholder="Your name" />
+							<div class="text-empty">This field is required!</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 input-parent">
+							<textarea class="textarea" name="message_text" placeholder="Message" required></textarea>
+							<div class="text-empty">This field is required!</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 d-flex justify-content-md-end p-0 pt-2">
+							<input class="btn" type="submit" value="Send" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,30 @@
+<!-- Login popup -->
+<div class="popup-window popup-login" data-popup-targ="login">
+	<div class="h5">Log in</div>
+	<form name="log_in" class="d-flex flex-column align-items-center">
+		<div class="input-parent align-items-center">
+			<input class="input" type="email" name="email" placeholder="Email*" required />
+			<div class="text-empty">Type your email address!</div>
+			<div class="text-invalid">Email adress is invalid!</div>
+		</div>
+		<div class="input-parent align-items-center">
+			<input class="input" type="password" name="password" placeholder="Password*" required />
+			<div class="text-empty">This field is required!</div>
+			<div class="text-invalid">Password is invalid!</div>
+			<div class="server-text-invalid">Email address or password is incorrect!</div>
+		</div>
+		<div class="py-2">
+			<input class="checkbox" type="checkbox" name="remember" value="remember" id="log_in_remember" />
+			<label for="log_in_remember" class="label">Remember me</label>
+		</div>
+		<div class="d-flex justify-content-center pt-4 pb-2">
+			<input class="btn" type="submit" value="Log in" />
+		</div>
+		<div class="pt-4 align-self-start">
+			<button type="button" class="text-btn_black underline" data-popup-init="forgot_password">Forgot password</button>
+		</div>
+		<div class="py-2 align-self-start">
+			<button type="button" class="text-btn_black underline" data-popup-init="signin">Create accaunt</button>
+		</div>
+	</form>
+</div>

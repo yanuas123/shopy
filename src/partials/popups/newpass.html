@@ -1,0 +1,19 @@
+<!-- New password popup -->
+<div class="popup-window popup-new_password" data-popup-targ="new_password">
+	<div class="h5">Change password</div>
+	<form name="new_password" class="d-flex flex-column align-items-center">
+		<div class="input-parent align-items-center">
+			<input class="input" type="password" name="password" placeholder="New password*" required />
+			<div class="text-empty">Type new password!</div>
+			<div class="text-invalid">Password must to contain only latin alphabet letters and integer numbers. Also it must to contain at least 6 sumbols.</div>
+		</div>
+		<div class="input-parent align-items-center">
+			<input class="input" type="password" name="rep_password" placeholder="Repeat new password*" required />
+			<div class="text-empty">Repeat new password!</div>
+			<div class="text-invalid">This field must to repeat previous field!</div>
+		</div>
+		<div class="d-flex justify-content-center pt-4 pb-2">
+			<input class="btn" type="submit" value="Send" />
+		</div>
+	</form>
+</div>

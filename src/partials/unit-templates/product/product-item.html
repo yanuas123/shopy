@@ -1,0 +1,19 @@
+@@for ( var i=0; i<list_qty; i++ ) {
+	<div class="col-md-@@block_size">
+	<div class="product-item_big">
+		<a href="`+product_list[i].product_url+`" class="product-item_big_image">
+			<img src="`+product_list[i].image_src+`" alt="" />
+		</a>
+		<div class="product-item_big_description">
+			<a href="`+product_list[i].product_url+`" class="product-item_name">`+product_list[i].product_name+`</a>
+			<div class="product-item_price plain-price"><span>`+product_list[i].price+`</span>$</div>
+			<div class="product-item_choose-block">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span>@@include('./sizing.html')</div>
+				<div class="product-item_color-choose_wrap">@@include('./color-choose.html')</div>
+				<div class="hr"></div>
+				<div class="product-item_buttons_wrap">@@include('./product-btn.html')</div>
+			</div>
+		</div>
+	</div>
+</div>
+}
