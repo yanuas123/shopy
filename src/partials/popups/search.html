@@ -11,7 +11,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end pb-md-0 pb-3">
 				<label class="select-label label">Category:</label> 
 				<select name="category" class="select inline-select">
 					<option value="all_categories">all categories</option>
@@ -20,7 +20,7 @@
 					}
 				</select>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end">
 				<label class="select-label label">Brand:</label> 
 				<select name="brand" class="select inline-select">
 					<option value="all_brands">all brands</option>
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12 d-flex align-items-center pt-3 pb-5">
+			<div class="col-md-12 d-flex flex-sm-row flex-column align-items-center pt-3 pb-sm-5">
 				<span class="bold">Search in:</span>
 				<input class="checkbox" type="checkbox" name="check_description" value="check_description" id="popup_search_check_description" />
 				<label for="popup_search_check_description" class="label">product description</label>
@@ -49,7 +49,7 @@
 		<div class="container-fluid search-resultlist" id="popup_search_resultlist">
 			@@for ( var i = 0; i < 4; i++ ) {
 			<a href="`+product_list[i].product_url+`" class="row my-5">
-				<div class="col-md-3 product-item_big_image">
+				<div class="col-md-3 product-item_big_image pb-md-0 pb-3">
 					<img src="`+product_list[i].image_src+`" alt="" />
 				</div>
 				<div class="col-md-9 search-description">

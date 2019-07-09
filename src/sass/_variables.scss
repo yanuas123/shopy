@@ -50,6 +50,8 @@ $icon_instagram: url(../images/ico/instagram.svg);
 $icon_instagram_active: url(../images/ico/instagram_active.png);
 $loader: url(../images/ico/loader.svg);
 $icon_close: url(../images/ico/close.svg);
+$menu_mob: url(../images/ico/menu_mob.svg);
+$open: url(../images/ico/open.svg);
 
 
 
@@ -166,6 +168,7 @@ $icon_close: url(../images/ico/close.svg);
 		width: 1em;
 		height: 1em;
 		margin-right: 0.81em;
+		flex-shrink: 0;
 		background-color: $grey_form;
 		@include transition();
 		@if($type == "radio") {

@@ -309,6 +309,7 @@ a:hover {
 				background-color: $black;
 				position: absolute;
 				top: 50%;
+				cursor: pointer;
 
 				&.range_start-point {
 					left: 0;
@@ -513,6 +514,12 @@ $svg_icon_disabled: brightness(320%) saturate(20%);
 .ico_close {
 	background-image: $icon_close;
 }
+.ico_sandwich {
+	background-image: $menu_mob;
+}
+.ico_plus {
+	background-image: $open;
+}
 
 /* end Icon buttons ========================================================= */
 
@@ -604,6 +611,9 @@ body.noscroll {
 	display: none;
 	max-width: 100%;
 	padding: 0 7% 6px;
+	@media screen and (max-width: 479px) {
+		padding: 0 1% 6px;
+	}
 
 	.h4, .h5, .h6 {
 		width: auto;
@@ -620,6 +630,15 @@ body.noscroll {
 	}
 	.popup-description {
 		@include fonts(HarmoniaSansReg, 0.88rem, 400, 0.88rem);
+	}
+	.checkbox+.label, .radio+.label {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.label {
+		@media screen and (max-width: 768px) {
+			padding-bottom: 6px;
+		}
 	}
 }
 

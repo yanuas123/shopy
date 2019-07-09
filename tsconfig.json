@@ -1,7 +1,4 @@
 {
-    "files": [
-        "src/js/index.ts"
-    ],
     "compilerOptions": {
         "noImplicitAny": true,
         "removeComments": true,

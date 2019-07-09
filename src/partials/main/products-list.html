@@ -1,6 +1,6 @@
 <div class="row product-list_double-block product-list_wrap">
 	<!-- PRODUCT SELECTOR FORM -->
-	<form name="product_selector" class="col-md-3 selector">
+	<form name="product_selector" class="col-lg-3 col-md-4 selector">
 		@@include('../unit-templates/selector/uni-block.html', { "title": "Categories", "file_url": "./category-item.html", "vars": "categories" })
 
 		@@include('../unit-templates/selector/uni-block.html', { "title": "Price Filtter", "file_url": "./range-block.html", "vars": "price_range_prop" })
@@ -10,10 +10,10 @@
 		@@include('../unit-templates/selector/uni-block.html', { "title": "Brands", "file_url": "./check-item.html", "vars": "brands" })
 	</form>
 	<!-- PRODUCT LIST -->
-	<div class="col-md-9 product-list">
+	<div class="col-lg-9 col-md-8 product-list">
 		<div class="container-fluid">
 			<div class="row">
-				@@include('../unit-templates/product/product-item.html', { "block_size": 4, "list_qty": 9 })
+				@@include('../unit-templates/product/product-item.html', { "block_size": "lg-4 col-sm-6", "list_qty": 9 })
 			</div>
 		</div>
 		@@include('../unit-templates/load-more.html')
