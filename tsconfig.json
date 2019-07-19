@@ -1,9 +1,20 @@
 {
+    "files": [
+        "src/ts/global.d.ts",
+        "src/ts/@types/slick/index.d.ts",
+        "src/ts/index.tslink.ts",
+        "src/ts/range-filter.ts",
+        "src/ts/DOM_services.ts",
+        "src/ts/event-tasker.ts",
+        "src/ts/tooltip.ts",
+        "src/ts/tobuffer-copy.ts",
+        "src/ts/load-more.ts",
+        "src/ts/popup.ts",
+        "src/ts/validation.ts",
+        "src/ts/state-tasker.ts"
+    ],
     "compilerOptions": {
         "noImplicitAny": true,
-        "removeComments": true,
-        "experimentalDecorators": true,
-        "newLine": "lf",
-        "target": "es5"
+        "target": "ES5"
     }
 }

@@ -1,24 +1,24 @@
 <!-- Login popup -->
-<div class="popup-window popup-login" data-popup-targ="login">
+<div class="popup-window popup-retreat popup-login" data-popup-targ="login">
 	<div class="h5">Log in</div>
-	<form name="log_in" class="d-flex flex-column align-items-center">
+	<form name="log_in" class="d-flex flex-column align-items-center" autocomplete="on" novalidate>
 		<div class="input-parent align-items-center">
 			<input class="input" type="email" name="email" placeholder="Email*" required />
 			<div class="text-empty">Type your email address!</div>
 			<div class="text-invalid">Email adress is invalid!</div>
 		</div>
 		<div class="input-parent align-items-center">
-			<input class="input" type="password" name="password" placeholder="Password*" required />
+			<input class="input" type="password" name="password" placeholder="Password*" required autocomplete="on" />
 			<div class="text-empty">This field is required!</div>
 			<div class="text-invalid">Password is invalid!</div>
 			<div class="server-text-invalid">Email address or password is incorrect!</div>
 		</div>
 		<div class="py-2">
-			<input class="checkbox" type="checkbox" name="remember" value="remember" id="log_in_remember" />
+			<input class="checkbox" type="checkbox" name="remember" id="log_in_remember" />
 			<label for="log_in_remember" class="label">Remember me</label>
 		</div>
 		<div class="d-flex justify-content-center pt-4 pb-2">
-			<input class="btn" type="submit" value="Log in" />
+			<input class="btn" name="submit" type="submit" value="Log in" />
 		</div>
 		<div class="pt-4 align-self-start">
 			<button type="button" class="text-btn_black underline" data-popup-init="forgot_password">Forgot password</button>

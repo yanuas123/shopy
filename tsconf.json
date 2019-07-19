@@ -1,0 +1,9 @@
+{
+    "files": [
+        "dest/ts/index.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "ES5"
+    }
+}

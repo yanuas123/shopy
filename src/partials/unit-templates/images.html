@@ -1,12 +1,14 @@
 <div class="description-gallery">
 	<div class="desc-gallery_images-wrap">
-		<div class="desc-gallery_images">
-			<div class="desc-gallery_image">
-				<img src="@@main_image" alt="" />
+		<div class="desc-gallery_images" id="product_gallery">
+			@@for ( var i = 0; i < 6; i++ ) {
+			<div class="desc-gallery_image" data-product-gallery-item>
+				<img src="`+product_list[i].image_src+`" alt="" />
 			</div>
+			}
 		</div>
 	</div>
-	<div class="desc-gallery_images-nav">
+	<div class="desc-gallery_images-nav" id="product_gallery_nav">
 		@@for ( var i = 0; i < nav_images.length; i++ ) {
 		<div class="desc-gallery_image-nav">
 			<img src="`+nav_images[i]+`" alt="" />

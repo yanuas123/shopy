@@ -1,7 +1,7 @@
 <!-- New password popup -->
-<div class="popup-window popup-new_password" data-popup-targ="new_password">
+<div class="popup-window popup-retreat popup-new_password" data-popup-targ="new_password">
 	<div class="h5">Change password</div>
-	<form name="new_password" class="d-flex flex-column align-items-center">
+	<form name="new_password" class="d-flex flex-column align-items-center" autocomplete="off" novalidate>
 		<div class="input-parent align-items-center">
 			<input class="input" type="password" name="password" placeholder="New password*" required />
 			<div class="text-empty">Type new password!</div>
@@ -13,7 +13,7 @@
 			<div class="text-invalid">This field must to repeat previous field!</div>
 		</div>
 		<div class="d-flex justify-content-center pt-4 pb-2">
-			<input class="btn" type="submit" value="Send" />
+			<input class="btn" name="submit" type="submit" value="Send" />
 		</div>
 	</form>
 </div>

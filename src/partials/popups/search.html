@@ -1,13 +1,13 @@
 <!-- Search popup -->
-<div class="popup-window popup-search" data-popup-targ="search">
-	<form name="search_form" class="container-fluid pb-4">
+<div class="popup-window popup-retreat popup-search" data-popup-targ="search">
+	<form name="search_form" class="container-fluid pb-4" novalidate>
 		<div class="row">
 			<div class="col-md-12 search-field-row pt-4 pb-5 d-flex align-items-start justify-content-center">
 				<div class="input-parent">
-					<input class="input" type="text" name="search" placeholder="Search" />
+					<input class="input" type="text" name="search" placeholder="Search" required />
 					<div class="text-empty">Enter a search phrase!</div>
 				</div>
-				<button class="btn" type="submit" id="popup_search_submit"><span class="icon ico_search"></span></button>
+				<button class="btn" type="submit" name="submit" id="popup_search_submit"><span class="icon ico_search"></span></button>
 			</div>
 		</div>
 		<div class="row">
@@ -32,8 +32,8 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 d-flex flex-sm-row flex-column align-items-center pt-3 pb-sm-5">
-				<span class="bold">Search in:</span>
-				<input class="checkbox" type="checkbox" name="check_description" value="check_description" id="popup_search_check_description" />
+				<span class="bold pr-2">Search in:</span>
+				<input class="checkbox" type="checkbox" name="check_description" id="popup_search_check_description" />
 				<label for="popup_search_check_description" class="label">product description</label>
 			</div>
 		</div>

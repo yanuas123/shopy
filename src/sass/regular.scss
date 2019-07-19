@@ -33,7 +33,7 @@
 	width: 100%;
 	height: 100vh;
 	position: fixed;
-	z-index: 999999999;
+	z-index: $z_loader;
 	top: 0;
 	right: 0;
 	background-color: rgba(130, 112, 81, 0.5);
@@ -55,9 +55,6 @@
 body {
 	@include fonts(HarmoniaSansReg, 16px, 400);
 	color: $tx_black;
-}
-.hidden {
-	display: none !important;
 }
 
 /* text properties ---------------------------------------------------------- */
@@ -187,7 +184,7 @@ a:hover {
 	}
 	&.invalid, &.empty, &.invalid-server {
 		input[type='text'], input[type='password'], input[type='date'], input[type='email'], input[type='number'], input[type='search'], input[type='tel'], input[type='url'], textarea, select {
-			border: 1px solid $red;
+			border: 1px solid $red !important;
 		}
 	}
 }
@@ -261,8 +258,8 @@ a:hover {
 	}
 }
 .inline-select {
-		display: inline-block;
-		max-width: 250px;
+	display: inline-block;
+	max-width: 250px;
 }
 .select-label {
 	padding-right: 0.75rem;
@@ -289,8 +286,13 @@ a:hover {
 	@include radio_check_structure("radio");
 }
 
+/* range filter --------------------------- */
 .range-filter {
 	padding-top: 1.86rem;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 
 	.range_space {
 		width: 100%;
@@ -301,38 +303,40 @@ a:hover {
 			height: 100%;
 			background-color: $black;
 			position: relative;
+		}
+	}
+	.range-point {
+		width: 1.03rem;
+		height: 1.03rem;
+		border-radius: 50%;
+		background-color: $black;
+		position: absolute;
+		z-index: $z_range_point;
+		top: 50%;
+		cursor: pointer;
+		padding: 0.13rem;
+		background-clip: content-box;
 
-			.range-point {
-				width: 0.69rem;
-				height: 0.69rem;
-				border-radius: 50%;
-				background-color: $black;
-				position: absolute;
-				top: 50%;
-				cursor: pointer;
+		&.range_start-point {
+			left: 0;
+			transform: translate(-50%, -50%);
+		}
+		&.range_end-point {
+			right: 0;
+			transform: translate(50%, -50%);
+		}
+		.range-point_data {
+			@include fonts(HarmoniaSansSemiBd, 0.88rem, 500, 0.88rem);
+			position: absolute;
+			top: -246%;
 
-				&.range_start-point {
-					left: 0;
-					transform: translate(-50%, -50%);
-				}
-				&.range_end-point {
-					right: 0;
-					transform: translate(50%, -50%);
-				}
-				.range-point_data {
-					@include fonts(HarmoniaSansSemiBd, 0.88rem, 500, 0.88rem);
-					position: absolute;
-					top: -246%;
-
-					&.range_start-point_data {
-						left: 50%;
-						transform: translateX(-50%);
-					}
-					&.range_end-point_data {
-						right: 50%;
-						transform: translateX(50%);
-					}
-				}
+			&.range_start-point_data {
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			&.range_end-point_data {
+				right: 50%;
+				transform: translateX(50%);
 			}
 		}
 	}
@@ -536,8 +540,7 @@ $svg_icon_disabled: brightness(320%) saturate(20%);
 /* end Structure blocks ===================================================== */
 
 /* POP-UP structure ========================================================= */
-/* An initial trigger element must to contain 'data-popup-init' attribute with string that contain a target popup block in the attribute 'data-popup-targ'
-*/
+
 body.noscroll {
 	overflow: hidden;
 }
@@ -546,20 +549,23 @@ body.noscroll {
 	opacity: 0;
 	pointer-events: none;
 	@include transition(opacity, 0.4s);
-	@include absolute(0, 0, 1000);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $z_popup;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 
 	.back-wall {
-		@include absolute(0, 0, 1001);
+		@include absolute(0, 0, $z_popup_back);
 		opacity: 0.4;
 		width: 100%;
 		height: 100%;
 		background-color: $black;
 	}
 	.popups-block_wrap {
-		@include absolute(0, 0, 1002);
+		@include absolute(0, 0, $z_popup_wrap);
 		width: 100%;
 		height: 100%;
 		overflow-x: hidden;
@@ -610,11 +616,13 @@ body.noscroll {
 .popup-window {
 	display: none;
 	max-width: 100%;
-	padding: 0 7% 6px;
-	@media screen and (max-width: 479px) {
-		padding: 0 1% 6px;
-	}
 
+	&.popup-retreat {
+		padding: 0 7% 6px;
+		@media screen and (max-width: 479px) {
+			padding: 0 1% 6px;
+		}
+	}
 	.h4, .h5, .h6 {
 		width: auto;
 		padding: 20px 0;
@@ -643,5 +651,27 @@ body.noscroll {
 }
 
 /* end POP-UP structure ===================================================== */
+
+/* tooltip ------------------------------------------------------------------ */
+
+.tooltip {
+	@include absolute(0, 0, $z_tooltip);
+	min-width: 100px;
+	max-width: 90vw;
+	background-color: #000;
+	color: #fff;
+	padding: 8px 6px;
+	text-align: center;
+	opacity: 1;
+	@include transition(opacity, 0s);
+
+	&.hidden-tooltip {
+		opacity: 0;
+		pointer-events: none;
+		@include transition(opacity, 1.6s);
+	}
+}
+
+/* end Tooltip -------------------------------------------------------------- */
 
 /* end STANDARD ELEMENTS ==================================================== */

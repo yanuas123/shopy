@@ -1,5 +1,5 @@
 <!-- Cart popup -->
-<div class="popup-window popup-cart" data-popup-targ="cart">
+<div class="popup-window popup-retreat popup-cart" data-popup-targ="cart">
 	<div class="d-flex flex-column align-items-center pb-4">
 		<div class="container-fluid">
 			@@for ( var i = 0; i < 4; i++ ) {
@@ -52,6 +52,6 @@
 		</div>
 	</div>
 	<div class="d-flex justify-content-center pt-4 pb-2" id="popup_cart_confirm">
-		<button class="btn" type="button">Confirm</button>
+		<button class="btn" type="button" data-popup-init="confirm_registered">Confirm</button>
 	</div>
 </div>

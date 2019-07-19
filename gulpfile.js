@@ -6,9 +6,15 @@ const routes = {
 		watch: "src/img/**/*.+(jpg|jpeg|JPG|JPEG|png|PNG|svg)"
 	},
 	js: {
+		src_ts: "src/ts/index.tslink.ts",
+		src_js: "src/js/*.js",
+		temporary: "dest/ts/",
+		temp_file_name: "index.ts",
 		dest: "dest/js/",
 		build: "build/js/",
-		watch: "src/js/**/*.ts"
+		watch: "src/ts/**/*.ts",
+		types_src: "src/ts/@types/**/*.ts",
+		types_dest: "dest/ts/@types/"
 	},
 	sass: {
 		src: "src/sass/style.scss",
@@ -26,6 +32,11 @@ const routes = {
 		dest: "dest/",
 		build: "build/",
 		watch: ["src/*.html", "src/partials/**/*.html"]
+	},
+	plugins: {
+		src: "src/plugins/**/*",
+		dest: "dest/plugins/",
+		build: "build/plugins/"
 	}
 };
 
@@ -77,7 +88,7 @@ const del = require('del');
 const cache = require("gulp-cached");
 const browser = require("browser-sync").create();
 const ts = require("gulp-typescript");
-let tsProject = ts.createProject("tsconfig.json");
+let tsProject = ts.createProject("tsconf.json");
 const {
 	src,
 	dest,
@@ -94,10 +105,11 @@ const uglify = require("gulp-uglify");
 const imageoptim = require("gulp-kraken");
 const rigger = require("gulp-rigger");
 const include = require("gulp-file-include");
+const tslink = require('gulp-ts-link');
 
 
 
-
+/* assist functions */
 let clean_dest = null;
 function clean() {
 	return del(clean_dest + "**/*");
@@ -116,16 +128,31 @@ function reload(cb) {
 }
 
 
-
+/* working mode functions */
 function put_images() {
 	return src(routes.images.src)
 		.pipe(dest(routes.images.dest));
 }
 
+function put_types() {
+	return src(routes.js.types_src)
+		.pipe(dest(routes.js.types_dest));
+}
 function concat_js() {
+	return src(routes.js.src_ts, {
+		buffer: false
+	})
+		.pipe(tslink(routes.js.temp_file_name))
+		.pipe(dest(routes.js.temporary));
+}
+function compileJS() {
 	return tsProject.src()
 		.pipe(tsProject())
 		.js.pipe(dest(routes.js.dest));
+}
+function put_js() {
+	return src(routes.js.src_js)
+		.pipe(dest(routes.js.dest));
 }
 
 function compile_sass() {
@@ -147,6 +174,12 @@ function compile_html() {
 		.pipe(dest(routes.html.dest));
 }
 
+function move_plugins() {
+	return src(routes.plugins.src)
+		.pipe(dest(routes.plugins.dest));
+}
+
+/* build mode functions */
 function build_images() {
 	return src(routes.images.src)
 		.pipe(imageoptim(prm.kraken))
@@ -173,15 +206,22 @@ function build_html() {
 		.pipe(dest(routes.html.build));
 }
 
-const build = parallel(build_images, build_js, build_css, build_html);
+function build_plugins() {
+	return src(routes.plugins.src)
+		.pipe(dest(routes.plugins.build));
+}
+
+const build = parallel(build_images, build_js, build_css, build_html, build_plugins);
 
 
 
 exports.build = series(cleanAll, build, initBrowser);
 exports.default = function() {
 	browser.init(prm.browser);
+	parallel(move_plugins)();
 	watch(routes.images.watch, prm.watch.param, series(put_images, reload));
-	watch(routes.js.watch, prm.watch.param, series(concat_js, reload));
+	watch(routes.js.watch, prm.watch.param, series(put_types, concat_js, compileJS, reload));
+	watch(routes.js.src_js, prm.watch.param, series(put_js, reload));
 	watch(routes.style.watch, prm.watch.param, series(put_css, reload));
 	watch(routes.sass.watch, prm.watch.param, series(compile_sass, reload));
 	watch(routes.html.watch, prm.watch.param, series(compile_html, reload));

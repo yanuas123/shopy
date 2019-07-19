@@ -4,28 +4,34 @@
   "description": "shop",
   "main": "server.js",
   "scripts": {
-    "test": "gulp"
+    "test": "gulp",
+    "start": "node server.js"
   },
   "author": "my",
   "license": "ISC",
   "dependencies": {
-    "npm": "^6.9.0"
+    "body-parser": "1.19.0",
+    "express": "4.17.1",
+    "npm": "6.9.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.5",
-    "del": "^4.1.1",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^6.1.0",
-    "gulp-cached": "^1.1.1",
-    "gulp-file-include": "^2.0.1",
-    "gulp-group-css-media-queries": "^1.2.2",
-    "gulp-kraken": "^0.2.0",
-    "gulp-remove-logging": "^1.2.0",
-    "gulp-rigger": "^0.5.8",
-    "gulp-sass": "^4.0.2",
-    "gulp-typescript": "^5.0.1",
-    "gulp-uglify": "^3.0.2",
-    "node-sass": "^4.12.0",
-    "typescript": "^3.5.1"
+    "@types/jquery": "3.3.30",
+    "browser-sync": "2.26.5",
+    "del": "4.1.1",
+    "gulp": "4.0.2",
+    "gulp-autoprefixer": "6.1.0",
+    "gulp-cached": "1.1.1",
+    "gulp-file-include": "2.0.1",
+    "gulp-group-css-media-queries": "1.2.2",
+    "gulp-kraken": "0.2.0",
+    "gulp-remove-logging": "1.2.0",
+    "gulp-rigger": "0.5.8",
+    "gulp-sass": "4.0.2",
+    "gulp-ts-link": "1.1.1",
+    "gulp-typescript": "5.0.1",
+    "gulp-uglify": "3.0.2",
+    "jquery": "3.4.1",
+    "node-sass": "4.12.0",
+    "typescript": "3.5.3"
   }
 }

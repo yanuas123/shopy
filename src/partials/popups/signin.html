@@ -1,7 +1,7 @@
 <!-- Sign-in popup -->
-<div class="popup-window popup-signin" data-popup-targ="signin">
+<div class="popup-window popup-retreat popup-signin" data-popup-targ="signin">
 	<div class="h5">Create accaunt</div>
-	<form name="sign_in" class="d-flex flex-column align-items-center">
+	<form name="sign_in" class="d-flex flex-column align-items-center" novalidate>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6">
@@ -13,7 +13,7 @@
 				</div>
 				<div class="col-md-6">
 					<div class="input-parent">
-						<input class="input" type="tel" name="phone" placeholder="Phone" />
+						<input class="input" type="tel" name="tel" placeholder="Phone" disabled />
 						<div class="text-invalid">Phone number is invalid!</div>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="input-parent">
-							<select name="country" class="select placeholder">
+							<select name="country" class="select placeholder" required>
 								<option value="" selected disabled>Country*</option>
 								@@for ( var i = 0; i < country.length; i++ ) {
 								<option value="`+country[i]+`">`+country[i]+`</option>
@@ -58,29 +58,30 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="input-parent">
-							<input class="input" type="text" name="city" placeholder="City*" />
+							<input class="input" type="text" name="city" placeholder="City*" autocomplete="on" required data-valid-template="/^[\w\s\'\-\.\,\u0022]+$/" />
 							<div class="text-empty">This field is required!</div>
 							<div class="text-invalid">Invalid city name!</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="input-parent">
-							<input class="input" type="number" name="post_code" placeholder="Zip/Postal Code*" />
+							<input class="input" type="number" name="post_code" placeholder="Zip/Postal Code*" autocomplete="on" required data-valid-template="/^[0-9\/\\]{3,9}$/" data-blocked-template="/^[0-9\/\\]+$/" />
 							<div class="text-empty">This field is required!</div>
+							<div class="text-invalid">This field must to contains 3-9 symbols!</div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="input-parent">
-							<input class="input" type="text" name="street" placeholder="Street*" />
+							<input class="input" type="text" name="street" placeholder="Street*" autocomplete="on" required data-valid-template="/^[\w\s\'\-\.\,\u0022]+$/" />
 							<div class="text-empty">This field is required!</div>
 							<div class="text-invalid">Invalid street name!</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="input-parent">
-							<input class="input" type="text" name="house_number" placeholder="House number*" />
+							<input class="input" type="text" name="house_number" placeholder="House number*" autocomplete="on" required />
 							<div class="text-empty">This field is required!</div>
 							<div class="text-invalid">Invalid house number!</div>
 						</div>
@@ -89,14 +90,14 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="input-parent">
-							<input class="input" type="text" name="first_name" placeholder="First name*" />
+							<input class="input" type="text" name="given-name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 							<div class="text-empty">This field is required!</div>
 							<div class="text-invalid">This field contains incorrect symbols!</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="input-parent">
-							<input class="input" type="text" name="last_name" placeholder="Last name*" />
+							<input class="input" type="text" name="family-name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 							<div class="text-empty">This field is required!</div>
 							<div class="text-invalid">This field contains incorrect symbols!</div>
 						</div>
@@ -105,11 +106,14 @@
 			</div>
 		</div>
 		<div class="py-2">
-			<input class="checkbox" type="checkbox" name="privacy_policy" value="privacy_policy" id="check_privacy_policy" />
-			<label for="check_privacy_policy" class="label">By registering, you agree  to our  Privacy Policy *</label>
+			<div class="input-parent">
+				<input class="checkbox" type="checkbox" name="privacy_policy" id="check_privacy_policy" required />
+				<label for="check_privacy_policy" class="label"><a href="#" target="_blank">By registering, you agree to our Privacy Policy *</a></label>
+				<div class="text-empty">Please agree Privacy Policy!</div>
+			</div>
 		</div>
 		<div class="d-flex justify-content-center pt-4 pb-2">
-			<input class="btn" type="submit" value="Register" />
+			<input class="btn" type="submit" name="submit" value="Register" />
 		</div>
 	</form>
 </div>

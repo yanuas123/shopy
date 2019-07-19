@@ -1,7 +1,7 @@
 @@if ( vars == 'price_range_prop' && ( vars = price_range_prop ) ) {}
 @@for ( var i = 0; i < vars.length; i++ ) {
-<div class="price-range-block">
-	<div class="range range-filter" id="selector_price_range">
+<div class="price-range-block" id="selector_price_range">
+	<div class="range range-filter">
 		<div class="range_space">
 			<div class="range_inner-space">
 				<div class="range-point range_start-point">
@@ -13,11 +13,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="price-range_inputs">
-		<label for="price_range_bottom_field" class="label">From</label>
-		<input type="number" name="price_range_bottom_field" id="price_range_bottom_field" class="input" data-range-min-val="`+vars[i].bottom_val+`" data-range-bottom-val="`+vars[i].bottom_point+`" />
-		<label for="price_range_top_field" class="label">To</label>
-		<input type="number" name="price_range_top_field" id="price_range_top_field" class="input" data-range-max-val="`+vars[i].top_val+`" data-range-top-val="`+vars[i].top_point+`" />
+	<div class="input-parent">
+		<div class="price-range_inputs">
+			<label for="price_range_bottom_field" class="label">From</label>
+			<input type="number" name="price_range_bottom_field" id="price_range_bottom_field" class="input" data-range-min-val="`+vars[i].bottom_val+`" data-range-bottom-val="`+vars[i].bottom_point+`" autocomplete="off" />
+			<label for="price_range_top_field" class="label">To</label>
+			<input type="number" name="price_range_top_field" id="price_range_top_field" class="input" data-range-max-val="`+vars[i].top_val+`" data-range-top-val="`+vars[i].top_point+`" autocomplete="off" />
+		</div>
+		<div class="range-invalid-msg hidden"></div>
 	</div>
 </div>
 }
