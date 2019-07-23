@@ -20,7 +20,7 @@ import {RangeProp, RangeValues, RangeErrMsg, rangeDQS, RangeFilter} from "./rang
 // @tslink:inject validation.ts
 import {TemplateTypes, SubmitEl, InpArg, FormArg, formData, validationServerCall, formCallFunc, validationCallFunc, ValidationProp, Validation} from "./validation";
 // tslink:inject state-tasker.ts
-import {st_class_type, st_state_type, st_functions_type, st_el_types, st_dom_El_type, st_dom_inp_type, st_dom_inp2_type, st_dom_types /* types */, st_state_class_obj, st_state_class_type, st_state_functions_obj, st_state_functions_type, st_F_event_El, st_F_event_inp, st_F_event_inp2, st_Fst_event_El, st_Fst_event_inp, st_Fst_event_inp2 /* objects */, st_prop, st_single_element, st_elInstanceProp /* arguments */, StateTasker} from "./state-tasker";
+import {st_class_type, st_state_type, st_functions_type, st_el_types, st_dom_El_type, st_dom_inp_type, st_dom_inp2_type, st_dom_types /* types */, st_state_class_obj, st_state_class_type, st_state_functions_obj, st_state_functions_type, st_Func_event, st_Func_st_event /* objects */, st_prop, st_single_element, st_elInstanceProp /* arguments */, StateTasker} from "./state-tasker";
 // tslink:inject ajax.ts
 import {ajax_methods, ajax_content_type, postReqObj, getReqObj, putReqObj, delReqObj, ajax_prop, Request} from "./ajax";
 

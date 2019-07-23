@@ -34,32 +34,16 @@ export interface st_state_functions_obj {
 }
 export type st_state_functions_type = st_state_functions_obj[];
 // objects of event handlers
-export interface st_F_event_El {
-	click?: st_functions_type;
-	hover?: st_functions_type;
-}
-export interface st_F_event_inp {
+export interface st_Func_event {
 	click?: st_functions_type;
 	hover?: st_functions_type;
 	focus?: st_functions_type;
 	change?: st_functions_type;
 }
-export interface st_F_event_inp2 {
-	click?: st_functions_type;
-	change?: st_functions_type;
-}
-export interface st_Fst_event_El {
-	click?: st_state_functions_type;
-	hover?: st_state_functions_type;
-}
-export interface st_Fst_event_inp {
+export interface st_Func_st_event {
 	click?: st_state_functions_type;
 	hover?: st_state_functions_type;
 	focus?: st_state_functions_type;
-	change?: st_state_functions_type;
-}
-export interface st_Fst_event_inp2 {
-	click?: st_state_functions_type;
 	change?: st_state_functions_type;
 }
 
@@ -89,9 +73,9 @@ export interface st_single_element {
 
 	// there uses three functions templates for events depends on the type of element
 	// use template that relative to the type of element
-	f_events_active?: st_F_event_El | st_F_event_inp | st_F_event_inp2;
-	f_events_noactive?: st_F_event_El | st_F_event_inp | st_F_event_inp2;
-	f_events_state?: st_Fst_event_El | st_Fst_event_inp | st_Fst_event_inp2;
+	f_events_active?: st_Func_event;
+	f_events_noactive?: st_Func_event;
+	f_events_state?: st_Func_st_event;
 }
 // additional properties for leading element or group of elements
 export interface st_elInstanceProp extends st_single_element { // leading element extends properties of single element
@@ -345,14 +329,14 @@ abstract class create_elStatic extends secondaryMethods implements elStaticProps
 }
 
 // element instances
-interface elProps<T, N> {
+interface elProps {
 	readonly type: st_el_types;
-	f_events_active: T;
-	f_events_noactive: T;
+	f_events_active: st_Func_event;
+	f_events_noactive: st_Func_event;
 
-	f_events_state: N;
+	f_events_state: st_Func_st_event;
 
-	f_events_current: T;
+	f_events_current: st_Func_event;
 
 	setFEventsActive(): void;
 	setFEventsNoactive(): void;
@@ -361,145 +345,40 @@ interface elProps<T, N> {
 	setEvents(): void;
 }
 
-class instanceEl extends create_elStatic implements elProps<st_F_event_El, st_Fst_event_El> {
+class instance_el extends create_elStatic implements elProps {
 	type: st_el_types;
-	f_events_active: st_F_event_El;
-	f_events_noactive: st_F_event_El;
+	f_events_active: st_Func_event;
+	f_events_noactive: st_Func_event;
 
-	f_events_state: st_Fst_event_El;
+	f_events_state: st_Func_st_event;
 
-	f_events_current: st_F_event_El;
+	f_events_current: st_Func_event;
 
 	constructor(prop: st_elInstanceProp) {
 		super(prop);
 
 		this.type = prop.type;
 		if(prop.f_events_active) this.f_events_active = {
-			click: prop.f_events_active.click || null,
-			hover: (<st_F_event_El> prop.f_events_active).hover || null
+			click: prop.f_events_active.click || null
 		};
+		if(this.type == "el" || this.type == "inp") this.f_events_active.hover = (<st_Func_event> prop.f_events_active).hover || null;
+		if(this.type == "inp" || this.type == "inp2") this.f_events_active.change = (<st_Func_event> prop.f_events_active).change || null;
+		if(this.type == "inp") this.f_events_active.focus = (<st_Func_event> prop.f_events_active).focus || null;
+
 		if(prop.f_events_noactive) this.f_events_noactive = {
-			click: prop.f_events_noactive.click || null,
-			hover: (<st_F_event_El> prop.f_events_noactive).hover || null
+			click: prop.f_events_noactive.click || null
 		};
+		if(this.type == "el" || this.type == "inp") this.f_events_noactive.hover = (<st_Func_event> prop.f_events_noactive).hover || null;
+		if(this.type == "inp" || this.type == "inp2") this.f_events_noactive.change = (<st_Func_event> prop.f_events_noactive).change || null;
+		if(this.type == "inp") this.f_events_noactive.focus = (<st_Func_event> prop.f_events_noactive).focus || null;
+
 		if(prop.f_events_state) this.f_events_state = {
-			click: prop.f_events_state.click || null,
-			hover: (<st_Fst_event_El> prop.f_events_state).hover || null
+			click: prop.f_events_state.click || null
 		};
-		this.f_events_current = {};
-		if(!this.f_events_active.click || !this.f_events_noactive.click || !this.f_events_state.click) this.f_events_current.click = null;
-		if(!this.f_events_active.hover || !this.f_events_noactive.hover || !this.f_events_state.hover) this.f_events_current.hover = null;
-	}
+		if(this.type == "el" || this.type == "inp") this.f_events_state.hover = (<st_Func_st_event> prop.f_events_state).hover || null;
+		if(this.type == "inp" || this.type == "inp2") this.f_events_state.change = (<st_Func_st_event> prop.f_events_state).change || null;
+		if(this.type == "inp") this.f_events_state.focus = (<st_Func_st_event> prop.f_events_state).focus || null;
 
-	setFEventsActive(): void {
-		if(this.f_events_active.click) this.connectFuncAr(this.f_events_current.click, this.f_events_active.click);
-		if(this.f_events_active.hover) this.connectFuncAr(this.f_events_current.hover, this.f_events_active.hover);
-	}
-	setFEventsNoactive(): void {
-		if(this.f_events_noactive.click) this.connectFuncAr(this.f_events_current.click, this.f_events_noactive.click);
-		if(this.f_events_noactive.hover) this.connectFuncAr(this.f_events_current.hover, this.f_events_noactive.hover);
-	}
-	setFEventsState(state: st_state_type): void {
-		for(let i = 0; i < this.f_events_state.click.length; i++) {
-			if(typeof state == "string" && state == this.f_events_state.click[i].state) this.connectFuncAr(this.f_events_current.click, this.f_events_state.click[i].func);
-			else if(state instanceof Array) {
-				for(let j = 0; j < state.length; j++) {
-					if(state[j] == this.f_events_state.click[i].state) this.connectFuncAr(this.f_events_current.click, this.f_events_state.click[i].func);
-				}
-			}
-		}
-		for(let i = 0; i < this.f_events_state.hover.length; i++) {
-			if(typeof state == "string" && state == this.f_events_state.hover[i].state) this.connectFuncAr(this.f_events_current.hover, this.f_events_state.hover[i].func);
-			else if(state instanceof Array) {
-				for(let j = 0; j < state.length; j++) {
-					if(state[j] == this.f_events_state.hover[i].state) this.connectFuncAr(this.f_events_current.hover, this.f_events_state.hover[i].func);
-				}
-			}
-		}
-	}
-	cleanUpEvents(): void {
-		if(this.f_events_current.click) this.f_events_current.click = undefined;
-		if(this.f_events_current.hover) this.f_events_current.hover = undefined;
-	}
-	setEvents(): void {
-		if(this.el instanceof Array) {
-			for(let j = 0; j < this.el.length; j++) {
-				if(this.f_events_current.click !== null) {
-					this.el[j].addEventListener("click", (e: Event) => {
-						if(this.f_events_current.click instanceof Function) this.f_events_current.click();
-						else if(this.f_events_current.click instanceof Array) {
-							for(let i = 0; i < this.f_events_current.click.length; i++) {
-								this.f_events_current.click[i]();
-							}
-						}
-					});
-				}
-				if(this.f_events_current.hover !== null) {
-					this.el[j].addEventListener("mouseenter", (e: Event) => {
-						if(this.f_events_current.hover instanceof Function) this.f_events_current.hover();
-						else if(this.f_events_current.hover instanceof Array) {
-							for(let i = 0; i < this.f_events_current.hover.length; i++) {
-								this.f_events_current.hover[i]();
-							}
-						}
-					});
-				}
-			}
-		} else {
-			if(this.f_events_current.click !== null) {
-				this.el.addEventListener("click", (e: Event) => {
-					if(this.f_events_current.click instanceof Function) this.f_events_current.click();
-					else if(this.f_events_current.click instanceof Array) {
-						for(let i = 0; i < this.f_events_current.click.length; i++) {
-							this.f_events_current.click[i]();
-						}
-					}
-				});
-			}
-			if(this.f_events_current.hover !== null) {
-				this.el.addEventListener("mouseenter", (e: Event) => {
-					if(this.f_events_current.hover instanceof Function) this.f_events_current.hover();
-					else if(this.f_events_current.hover instanceof Array) {
-						for(let i = 0; i < this.f_events_current.hover.length; i++) {
-							this.f_events_current.hover[i]();
-						}
-					}
-				});
-			}
-		}
-	}
-}
-class instanceInp extends create_elStatic implements elProps<st_F_event_inp, st_Fst_event_inp> {
-	type: st_el_types;
-	f_events_active: st_F_event_inp;
-	f_events_noactive: st_F_event_inp;
-
-	f_events_state: st_Fst_event_inp;
-
-	f_events_current: st_F_event_inp;
-
-	constructor(prop: st_elInstanceProp) {
-		super(prop);
-
-		this.type = prop.type;
-		if(prop.f_events_active) this.f_events_active = {
-			click: prop.f_events_active.click || null,
-			hover: (<st_F_event_inp> prop.f_events_active).hover || null,
-			change: (<st_F_event_inp> prop.f_events_active).change || null,
-			focus: (<st_F_event_inp> prop.f_events_active).focus || null
-		};
-		if(prop.f_events_noactive) this.f_events_noactive = {
-			click: prop.f_events_noactive.click || null,
-			hover: (<st_F_event_inp> prop.f_events_noactive).hover || null,
-			change: (<st_F_event_inp> prop.f_events_noactive).change || null,
-			focus: (<st_F_event_inp> prop.f_events_noactive).focus || null
-		};
-		if(prop.f_events_state) this.f_events_state = {
-			click: prop.f_events_state.click || null,
-			hover: (<st_Fst_event_inp> prop.f_events_state).hover || null,
-			change: (<st_Fst_event_inp> prop.f_events_state).change || null,
-			focus: (<st_Fst_event_inp> prop.f_events_state).focus || null
-		};
 		this.f_events_current = {};
 		if(!this.f_events_active.click || !this.f_events_noactive.click || !this.f_events_state.click) this.f_events_current.click = null;
 		if(!this.f_events_active.hover || !this.f_events_noactive.hover || !this.f_events_state.hover) this.f_events_current.hover = null;
@@ -520,35 +399,43 @@ class instanceInp extends create_elStatic implements elProps<st_F_event_inp, st_
 		if(this.f_events_noactive.focus) this.connectFuncAr(this.f_events_current.focus, this.f_events_noactive.focus);
 	}
 	setFEventsState(state: st_state_type): void {
-		for(let i = 0; i < this.f_events_state.click.length; i++) {
-			if(typeof state == "string" && state == this.f_events_state.click[i].state) this.connectFuncAr(this.f_events_current.click, this.f_events_state.click[i].func);
-			else if(state instanceof Array) {
-				for(let j = 0; j < state.length; j++) {
-					if(state[j] == this.f_events_state.click[i].state) this.connectFuncAr(this.f_events_current.click, this.f_events_state.click[i].func);
+		if(this.f_events_state.click) {
+			for(let i = 0; i < this.f_events_state.click.length; i++) {
+				if(typeof state == "string" && state == this.f_events_state.click[i].state) this.connectFuncAr(this.f_events_current.click, this.f_events_state.click[i].func);
+				else if(state instanceof Array) {
+					for(let j = 0; j < state.length; j++) {
+						if(state[j] == this.f_events_state.click[i].state) this.connectFuncAr(this.f_events_current.click, this.f_events_state.click[i].func);
+					}
 				}
 			}
 		}
-		for(let i = 0; i < this.f_events_state.hover.length; i++) {
-			if(typeof state == "string" && state == this.f_events_state.hover[i].state) this.connectFuncAr(this.f_events_current.hover, this.f_events_state.hover[i].func);
-			else if(state instanceof Array) {
-				for(let j = 0; j < state.length; j++) {
-					if(state[j] == this.f_events_state.hover[i].state) this.connectFuncAr(this.f_events_current.hover, this.f_events_state.hover[i].func);
+		if(this.f_events_state.hover) {
+			for(let i = 0; i < this.f_events_state.hover.length; i++) {
+				if(typeof state == "string" && state == this.f_events_state.hover[i].state) this.connectFuncAr(this.f_events_current.hover, this.f_events_state.hover[i].func);
+				else if(state instanceof Array) {
+					for(let j = 0; j < state.length; j++) {
+						if(state[j] == this.f_events_state.hover[i].state) this.connectFuncAr(this.f_events_current.hover, this.f_events_state.hover[i].func);
+					}
 				}
 			}
 		}
-		for(let i = 0; i < this.f_events_state.change.length; i++) {
-			if(typeof state == "string" && state == this.f_events_state.change[i].state) this.connectFuncAr(this.f_events_current.change, this.f_events_state.change[i].func);
-			else if(state instanceof Array) {
-				for(let j = 0; j < state.length; j++) {
-					if(state[j] == this.f_events_state.change[i].state) this.connectFuncAr(this.f_events_current.change, this.f_events_state.change[i].func);
+		if(this.f_events_state.change) {
+			for(let i = 0; i < this.f_events_state.change.length; i++) {
+				if(typeof state == "string" && state == this.f_events_state.change[i].state) this.connectFuncAr(this.f_events_current.change, this.f_events_state.change[i].func);
+				else if(state instanceof Array) {
+					for(let j = 0; j < state.length; j++) {
+						if(state[j] == this.f_events_state.change[i].state) this.connectFuncAr(this.f_events_current.change, this.f_events_state.change[i].func);
+					}
 				}
 			}
 		}
-		for(let i = 0; i < this.f_events_state.focus.length; i++) {
-			if(typeof state == "string" && state == this.f_events_state.focus[i].state) this.connectFuncAr(this.f_events_current.focus, this.f_events_state.focus[i].func);
-			else if(state instanceof Array) {
-				for(let j = 0; j < state.length; j++) {
-					if(state[j] == this.f_events_state.focus[i].state) this.connectFuncAr(this.f_events_current.focus, this.f_events_state.focus[i].func);
+		if(this.f_events_state.focus) {
+			for(let i = 0; i < this.f_events_state.focus.length; i++) {
+				if(typeof state == "string" && state == this.f_events_state.focus[i].state) this.connectFuncAr(this.f_events_current.focus, this.f_events_state.focus[i].func);
+				else if(state instanceof Array) {
+					for(let j = 0; j < state.length; j++) {
+						if(state[j] == this.f_events_state.focus[i].state) this.connectFuncAr(this.f_events_current.focus, this.f_events_state.focus[i].func);
+					}
 				}
 			}
 		}
@@ -647,115 +534,6 @@ class instanceInp extends create_elStatic implements elProps<st_F_event_inp, st_
 		}
 	}
 }
-class instanceInp2 extends create_elStatic implements elProps<st_F_event_inp2, st_Fst_event_inp2> {
-	type: st_el_types;
-	f_events_active: st_F_event_inp2;
-	f_events_noactive: st_F_event_inp2;
-
-	f_events_state: st_Fst_event_inp2;
-
-	f_events_current: st_F_event_inp2;
-
-	constructor(prop: st_elInstanceProp) {
-		super(prop);
-
-		this.type = prop.type;
-		if(prop.f_events_active) this.f_events_active = {
-			click: prop.f_events_active.click || null,
-			change: (<st_F_event_inp2> prop.f_events_active).change || null
-		};
-		if(prop.f_events_noactive) this.f_events_noactive = {
-			click: prop.f_events_noactive.click || null,
-			change: (<st_F_event_inp2> prop.f_events_noactive).change || null
-		};
-		if(prop.f_events_state) this.f_events_state = {
-			click: prop.f_events_state.click || null,
-			change: (<st_Fst_event_inp2> prop.f_events_state).change || null
-		};
-		this.f_events_current = {};
-		if(!this.f_events_active.click || !this.f_events_noactive.click || !this.f_events_state.click) this.f_events_current.click = null;
-		if(!this.f_events_active.change || !this.f_events_noactive.change || !this.f_events_state.change) this.f_events_current.change = null;
-	}
-
-	setFEventsActive(): void {
-		if(this.f_events_active.click) this.connectFuncAr(this.f_events_current.click, this.f_events_active.click);
-		if(this.f_events_active.change) this.connectFuncAr(this.f_events_current.change, this.f_events_active.change);
-	}
-	setFEventsNoactive(): void {
-		if(this.f_events_noactive.click) this.connectFuncAr(this.f_events_current.click, this.f_events_noactive.click);
-		if(this.f_events_noactive.change) this.connectFuncAr(this.f_events_current.change, this.f_events_noactive.change);
-	}
-	setFEventsState(state: st_state_type): void {
-		for(let i = 0; i < this.f_events_state.click.length; i++) {
-			if(typeof state == "string" && state == this.f_events_state.click[i].state) this.connectFuncAr(this.f_events_current.click, this.f_events_state.click[i].func);
-			else if(state instanceof Array) {
-				for(let j = 0; j < state.length; j++) {
-					if(state[j] == this.f_events_state.click[i].state) this.connectFuncAr(this.f_events_current.click, this.f_events_state.click[i].func);
-				}
-			}
-		}
-		for(let i = 0; i < this.f_events_state.change.length; i++) {
-			if(typeof state == "string" && state == this.f_events_state.change[i].state) this.connectFuncAr(this.f_events_current.change, this.f_events_state.change[i].func);
-			else if(state instanceof Array) {
-				for(let j = 0; j < state.length; j++) {
-					if(state[j] == this.f_events_state.change[i].state) this.connectFuncAr(this.f_events_current.change, this.f_events_state.change[i].func);
-				}
-			}
-		}
-	}
-	cleanUpEvents(): void {
-		if(this.f_events_current.click) this.f_events_current.click = undefined;
-		if(this.f_events_current.change) this.f_events_current.change = undefined;
-	}
-	setEvents(): void {
-		if(this.el instanceof Array) {
-			for(let j = 0; j < this.el.length; j++) {
-				if(this.f_events_current.click !== null) {
-					this.el[j].addEventListener("click", (e: Event) => {
-						if(this.f_events_current.click instanceof Function) this.f_events_current.click();
-						else if(this.f_events_current.click instanceof Array) {
-							for(let i = 0; i < this.f_events_current.click.length; i++) {
-								this.f_events_current.click[i]();
-							}
-						}
-					});
-				}
-				if(this.f_events_current.change !== null) {
-					this.el[j].addEventListener("mouseenter", (e: Event) => {
-						if(this.f_events_current.change instanceof Function) this.f_events_current.change();
-						else if(this.f_events_current.change instanceof Array) {
-							for(let i = 0; i < this.f_events_current.change.length; i++) {
-								this.f_events_current.change[i]();
-							}
-						}
-					});
-				}
-			}
-		} else {
-			if(this.f_events_current.click !== null) {
-				this.el.addEventListener("click", (e: Event) => {
-					if(this.f_events_current.click instanceof Function) this.f_events_current.click();
-					else if(this.f_events_current.click instanceof Array) {
-						for(let i = 0; i < this.f_events_current.click.length; i++) {
-							this.f_events_current.click[i]();
-						}
-					}
-				});
-			}
-			if(this.f_events_current.change !== null) {
-				this.el.addEventListener("mouseenter", (e: Event) => {
-					if(this.f_events_current.change instanceof Function) this.f_events_current.change();
-					else if(this.f_events_current.change instanceof Array) {
-						for(let i = 0; i < this.f_events_current.change.length; i++) {
-							this.f_events_current.change[i]();
-						}
-					}
-				});
-			}
-		}
-	}
-}
-type instances = instanceEl | instanceInp | instanceInp2;
 
 
 // lead elements instances
@@ -764,7 +542,7 @@ interface lead_elProp {
 	active?: boolean;
 	state?: st_state_type;
 
-	depends?: instances[];
+	depends?: instance_el[];
 
 	setActiveTrue(): void;
 	setActiveFalse(): void;
@@ -775,12 +553,12 @@ interface lead_elProp {
 	setDefault(): void;
 }
 
-class instanceLeadEl extends instanceEl implements lead_elProp {
+class instanceLeadEl extends instance_el implements lead_elProp {
 	id: string;
 	active?: boolean;
 	state?: st_state_type;
 
-	depends?: instances[];
+	depends?: instance_el[];
 
 	constructor(prop: st_elInstanceProp) {
 		super(prop);
@@ -800,34 +578,13 @@ class instanceLeadEl extends instanceEl implements lead_elProp {
 					}
 					else console.error("Not defined depend element and selector!");
 				}
-				if(!prop_depend_i.type || prop_depend_i.type == "el") {
-					prop.type = "el";
+				if(prop_depend_i.el) {
 					if(prop_depend_i.el instanceof Array) {
 						for(let j = 0; j < (<Array<HTMLElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceEl(prop_depend_i);
+							this.depends[j] = new instance_el(prop_depend_i);
 						}
 					} else {
-						this.depends[0] = new instanceEl(prop_depend_i);
-					}
-				}
-				if(!prop_depend_i.type || prop_depend_i.type == "inp") {
-					prop.type = "inp";
-					if(prop_depend_i.el instanceof Array) {
-						for(let j = 0; j < (<Array<HTMLInputElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceInp(prop_depend_i);
-						}
-					} else {
-						this.depends[0] = new instanceInp(prop_depend_i);
-					}
-				}
-				if(!prop_depend_i.type || prop_depend_i.type == "inp2") {
-					prop.type = "inp2";
-					if(prop_depend_i.el instanceof Array) {
-						for(let j = 0; j < (<Array<HTMLInputElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceInp2(prop_depend_i);
-						}
-					} else {
-						this.depends[0] = new instanceInp2(prop_depend_i);
+						this.depends[0] = new instance_el(prop_depend_i);
 					}
 				}
 			}
@@ -978,412 +735,6 @@ class instanceLeadEl extends instanceEl implements lead_elProp {
 	}
 }
 
-class instanceLeadInp extends instanceInp implements lead_elProp {
-	id: string;
-	active?: boolean;
-	state?: st_state_type;
-
-	depends?: instances[];
-
-	constructor(prop: st_elInstanceProp) {
-		super(prop);
-
-		this.id = prop.id;
-		if(prop.active_state) this.active = true;
-		else this.active = false;
-		if(prop.state) this.state = prop.state;
-
-		if(prop.depend_elements) {
-			this.depends = [];
-			for(let i = 0; i < prop.depend_elements.length; i++) {
-				let prop_depend_i = prop.depend_elements[i];
-				if(!prop_depend_i.el) {
-					if(prop_depend_i.selector) {
-						prop_depend_i.el = this.searchElements(prop_depend_i.selector, prop_depend_i.type);
-					}
-					else console.error("Not defined depend element and selector!");
-				}
-				if(!prop_depend_i.type || prop_depend_i.type == "el") {
-					prop.type = "el";
-					if(prop_depend_i.el instanceof Array) {
-						for(let j = 0; j < (<Array<HTMLElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceEl(prop_depend_i);
-						}
-					} else {
-						this.depends[0] = new instanceEl(prop_depend_i);
-					}
-				}
-				if(!prop_depend_i.type || prop_depend_i.type == "inp") {
-					prop.type = "inp";
-					if(prop_depend_i.el instanceof Array) {
-						for(let j = 0; j < (<Array<HTMLInputElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceInp(prop_depend_i);
-						}
-					} else {
-						this.depends[0] = new instanceInp(prop_depend_i);
-					}
-				}
-				if(!prop_depend_i.type || prop_depend_i.type == "inp2") {
-					prop.type = "inp2";
-					if(prop_depend_i.el instanceof Array) {
-						for(let j = 0; j < (<Array<HTMLInputElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceInp2(prop_depend_i);
-						}
-					} else {
-						this.depends[0] = new instanceInp2(prop_depend_i);
-					}
-				}
-			}
-		}
-	}
-
-	setActiveTrue(): void {
-		this.active = true;
-
-		this.setStyleActive();
-		this.execFuncActive();
-
-		this.cleanUpEvents();
-		this.setFEventsActive();
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].setStyleActive();
-				this.depends[i].execFuncActive();
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsActive();
-				this.depends[i].setEvents();
-			}
-		}
-	}
-	setActiveFalse(): void {
-		this.active = false;
-
-		this.setStyleNoactive();
-		this.execFuncNoactive();
-
-		this.cleanUpEvents();
-		this.setFEventsNoactive();
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].setStyleNoactive();
-				this.depends[i].execFuncNoactive();
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsNoactive();
-				this.depends[i].setEvents();
-			}
-		}
-	}
-	setState(state: st_state_type): void {
-		this.state = this.addStringToProp(this.state, state);
-
-		this.setStyleState(state);
-		this.execFuncState(state);
-
-		this.cleanUpEvents();
-		this.setFEventsState(this.state);
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].setStyleState(state);
-				this.depends[i].execFuncState(state);
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsState(this.state);
-				this.depends[i].setEvents();
-			}
-		}
-	}
-	delState(state: st_state_type): void {
-		this.state = this.delStringFromProp(this.state, state);
-
-		this.delStyleState(state);
-
-		this.cleanUpEvents();
-		this.setFEventsState(this.state);
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].delStyleState(state);
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsState(this.state);
-				this.depends[i].setEvents();
-			}
-		}
-	}
-	changeState(old_s: st_state_type, new_s: st_state_type): void {
-		this.state = this.delStringFromProp(this.state, old_s);
-		this.state = this.addStringToProp(this.state, new_s);
-
-		this.delStyleState(old_s);
-		this.setStyleState(new_s);
-
-		this.cleanUpEvents();
-		this.setFEventsState(this.state);
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].delStyleState(old_s);
-				this.depends[i].setStyleState(new_s);
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsState(this.state);
-				this.depends[i].setEvents();
-			}
-		}
-	}
-
-	setDefault(): void {
-		this.cleanUpEvents();
-		if(this.active) {
-			this.setStyleActive();
-			this.setFEventsActive();
-		}
-		if(!this.active) {
-			this.setStyleNoactive();
-			this.setFEventsNoactive();
-		}
-		if(this.state) {
-			this.setStyleState(this.state);
-			this.setFEventsState(this.state);
-		}
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].cleanUpEvents();
-
-				if(this.active) {
-					this.depends[i].setStyleActive();
-					this.depends[i].setFEventsActive();
-				}
-				if(!this.active) {
-					this.depends[i].setStyleNoactive();
-					this.depends[i].setFEventsNoactive();
-				}
-				if(this.state) {
-					this.depends[i].setStyleState(this.state);
-					this.depends[i].setFEventsState(this.state);
-				}
-
-				this.depends[i].setEvents();
-			}
-		}
-	}
-}
-
-class instanceLeadInp2 extends instanceInp2 implements lead_elProp {
-	id: string;
-	active?: boolean;
-	state?: st_state_type;
-
-	depends?: instances[];
-
-	constructor(prop: st_elInstanceProp) {
-		super(prop);
-
-		this.id = prop.id;
-		if(prop.active_state) this.active = true;
-		else this.active = false;
-		if(prop.state) this.state = prop.state;
-
-		if(prop.depend_elements) {
-			this.depends = [];
-			for(let i = 0; i < prop.depend_elements.length; i++) {
-				let prop_depend_i = prop.depend_elements[i];
-				if(!prop_depend_i.el) {
-					if(prop_depend_i.selector) {
-						prop_depend_i.el = this.searchElements(prop_depend_i.selector, prop_depend_i.type);
-					}
-					else console.error("Not defined depend element and selector!");
-				}
-				if(!prop_depend_i.type || prop_depend_i.type == "el") {
-					prop.type = "el";
-					if(prop_depend_i.el instanceof Array) {
-						for(let j = 0; j < (<Array<HTMLElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceEl(prop_depend_i);
-						}
-					} else {
-						this.depends[0] = new instanceEl(prop_depend_i);
-					}
-				}
-				if(!prop_depend_i.type || prop_depend_i.type == "inp") {
-					prop.type = "inp";
-					if(prop_depend_i.el instanceof Array) {
-						for(let j = 0; j < (<Array<HTMLInputElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceInp(prop_depend_i);
-						}
-					} else {
-						this.depends[0] = new instanceInp(prop_depend_i);
-					}
-				}
-				if(!prop_depend_i.type || prop_depend_i.type == "inp2") {
-					prop.type = "inp2";
-					if(prop_depend_i.el instanceof Array) {
-						for(let j = 0; j < (<Array<HTMLInputElement>> this.depends[i].el).length; j++) {
-							this.depends[j] = new instanceInp2(prop_depend_i);
-						}
-					} else {
-						this.depends[0] = new instanceInp2(prop_depend_i);
-					}
-				}
-			}
-		}
-	}
-
-	setActiveTrue(): void {
-		this.active = true;
-
-		this.setStyleActive();
-		this.execFuncActive();
-
-		this.cleanUpEvents();
-		this.setFEventsActive();
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].setStyleActive();
-				this.depends[i].execFuncActive();
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsActive();
-				this.depends[i].setEvents();
-			}
-		}
-	}
-	setActiveFalse(): void {
-		this.active = false;
-
-		this.setStyleNoactive();
-		this.execFuncNoactive();
-
-		this.cleanUpEvents();
-		this.setFEventsNoactive();
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].setStyleNoactive();
-				this.depends[i].execFuncNoactive();
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsNoactive();
-				this.depends[i].setEvents();
-			}
-		}
-	}
-	setState(state: st_state_type): void {
-		this.state = this.addStringToProp(this.state, state);
-
-		this.setStyleState(state);
-		this.execFuncState(state);
-
-		this.cleanUpEvents();
-		this.setFEventsState(this.state);
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].setStyleState(state);
-				this.depends[i].execFuncState(state);
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsState(this.state);
-				this.depends[i].setEvents();
-			}
-		}
-	}
-	delState(state: st_state_type): void {
-		this.state = this.delStringFromProp(this.state, state);
-
-		this.delStyleState(state);
-
-		this.cleanUpEvents();
-		this.setFEventsState(this.state);
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].delStyleState(state);
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsState(this.state);
-				this.depends[i].setEvents();
-			}
-		}
-	}
-	changeState(old_s: st_state_type, new_s: st_state_type): void {
-		this.state = this.delStringFromProp(this.state, old_s);
-		this.state = this.addStringToProp(this.state, new_s);
-
-		this.delStyleState(old_s);
-		this.setStyleState(new_s);
-
-		this.cleanUpEvents();
-		this.setFEventsState(this.state);
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].delStyleState(old_s);
-				this.depends[i].setStyleState(new_s);
-
-				this.depends[i].cleanUpEvents();
-				this.depends[i].setFEventsState(this.state);
-				this.depends[i].setEvents();
-			}
-		}
-	}
-
-	setDefault(): void {
-		this.cleanUpEvents();
-		if(this.active) {
-			this.setStyleActive();
-			this.setFEventsActive();
-		}
-		if(!this.active) {
-			this.setStyleNoactive();
-			this.setFEventsNoactive();
-		}
-		if(this.state) {
-			this.setStyleState(this.state);
-			this.setFEventsState(this.state);
-		}
-		this.setEvents();
-
-		if(this.depends) {
-			for(let i = 0; i < this.depends.length; i++) {
-				this.depends[i].cleanUpEvents();
-
-				if(this.active) {
-					this.depends[i].setStyleActive();
-					this.depends[i].setFEventsActive();
-				}
-				if(!this.active) {
-					this.depends[i].setStyleNoactive();
-					this.depends[i].setFEventsNoactive();
-				}
-				if(this.state) {
-					this.depends[i].setStyleState(this.state);
-					this.depends[i].setFEventsState(this.state);
-				}
-
-				this.depends[i].setEvents();
-			}
-		}
-	}
-}
-type leadInstances = instanceLeadEl | instanceLeadInp | instanceLeadInp2;
 
 
 
@@ -1391,7 +742,7 @@ type leadInstances = instanceLeadEl | instanceLeadInp | instanceLeadInp2;
 
 export class StateTasker extends secondaryMethods implements mainMethods {
 	private elements: {
-		[item: string]: leadInstances | leadInstances[];
+		[item: string]: instanceLeadEl | instanceLeadEl[];
 	};
 	readonly props: st_prop;
 
@@ -1445,24 +796,24 @@ export class StateTasker extends secondaryMethods implements mainMethods {
 			id = prop.id;
 			this.addId(elements, id);
 		}
-		if(!prop.type || prop.type == "el") {
-			prop.type = "el";
-			if(prop.el instanceof Array) {
-				this.elements[id] = [];
-				for(let i = 0; i < prop.el.length; i++) {
-					(<Array<instanceLeadEl>> this.elements[id])[i] = new instanceLeadEl(prop);
-					(<Array<instanceLeadEl>> this.elements[id])[i].setDefault();
-				}
-			} else {
-				this.elements[id] = new instanceLeadEl(prop);
-				(<instanceLeadEl> this.elements[id]).setDefault();
+		if(!prop.type || prop.type == "el") prop.type = "el";
+		else if(prop.type == "inp") prop.type = "inp";
+		else if(prop.type == "inp2") prop.type = "inp2";
+		if(prop.el instanceof Array) {
+			this.elements[id] = [];
+			for(let i = 0; i < prop.el.length; i++) {
+				(<Array<instanceLeadEl>> this.elements[id])[i] = new instanceLeadEl(prop);
+				(<Array<instanceLeadEl>> this.elements[id])[i].setDefault();
 			}
+		} else {
+			this.elements[id] = new instanceLeadEl(prop);
+			(<instanceLeadEl> this.elements[id]).setDefault();
 		}
 		return id;
 	}
 
 	activeState(el: string | st_dom_types, val: boolean): void {
-		let instance: leadInstances | leadInstances[];
+		let instance: instanceLeadEl | instanceLeadEl[];
 		if(typeof el == "string") instance = this.elements[el];
 		else {
 			let id = this.getElementId(el);
@@ -1479,7 +830,7 @@ export class StateTasker extends secondaryMethods implements mainMethods {
 		}
 	}
 	addState(el: string | st_dom_types, val: st_state_type): void {
-		let instance: leadInstances | leadInstances[];
+		let instance: instanceLeadEl | instanceLeadEl[];
 		if(typeof el == "string") instance = this.elements[el];
 		else {
 			let id = this.getElementId(el);
@@ -1494,7 +845,7 @@ export class StateTasker extends secondaryMethods implements mainMethods {
 		}
 	}
 	delState(el: string | st_dom_types, val: st_state_type): void {
-		let instance: leadInstances | leadInstances[];
+		let instance: instanceLeadEl | instanceLeadEl[];
 		if(typeof el == "string") instance = this.elements[el];
 		else {
 			let id = this.getElementId(el);
@@ -1509,7 +860,7 @@ export class StateTasker extends secondaryMethods implements mainMethods {
 		}
 	}
 	changeState(el: string | st_dom_types, old_s: st_state_type, new_s: st_state_type): void {
-		let instance: leadInstances | leadInstances[];
+		let instance: instanceLeadEl | instanceLeadEl[];
 		if(typeof el == "string") instance = this.elements[el];
 		else {
 			let id = this.getElementId(el);
