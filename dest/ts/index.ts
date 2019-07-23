@@ -8,10 +8,6 @@
 function getAttrVal(el: HTMLElement, attr_name: string): string {
 	return el.querySelector("["+attr_name+"]").getAttribute(attr_name);
 }
-/* module Event Tasker ------------ */
-
-
-
 /* module Tooltip perform ------------- */
 function performTooltip(el: HTMLElement, text: string): void {
 	const hidden_class = "hidden-tooltip";
@@ -689,6 +685,7 @@ class RangeFilter {
  * and add argument:
  * - form element/name string */
 
+
 // types for validation template
 type TemplateTypes = string | number | RegExp;
 // types for form submit element
@@ -710,7 +707,9 @@ interface FormArg {
 	};
 	start_validation?: "input" | "change"; // property for entire form
 }
+
 // types for submit callback
+
 interface formData { // data that you can get in callback - input elements value
 	[item: string]: string | number; // string - input name; value - input value
 	data?: any; // any data that you attached to particular form
@@ -721,7 +720,8 @@ interface formCallFunc { // You must to execute this function in your callback a
 }
 interface validationCallFunc { // callback function
 	(form: HTMLFormElement, data: formData, call: formCallFunc): void;
-}
+	}
+
 
 // module properties argument
 interface ValidationProp {
@@ -1514,7 +1514,6 @@ class FormInstance implements FormContainer {
 		this.items = items;
 
 		this.checkHidden();
-		console.log("form start " + this.name);
 	}
 
 	validateForm(): boolean {
@@ -1628,7 +1627,6 @@ class Validation {
 	constructor(prop: ValidationProp = VALID_PROP) {
 		this.forms = {};
 		this.prop = prop;
-		console.log("validation start");
 	}
 
 	public setForm(form: FormArg, call?: validationCallFunc): void {
@@ -1683,6 +1681,9 @@ class Validation {
 }
 
 /* end Module Validation ---------------------------------------------------- */
+// tslink:inject state-tasker.ts
+// tslink:inject ajax.ts
+
 
 /* end IMPORT MODULES ------------------------------------------------------- */
 /* ========================================================================== */
@@ -1865,6 +1866,7 @@ let label_form_confirmation: true | Function = function() {
 	return true;
 };
 
+
 // Forgot password form
 let label_form_forgot_password: true | Function = function() {
 	const form_forgot_password: HTMLFormElement = document.querySelector("form[name='forgot_password']");
@@ -1941,6 +1943,7 @@ if(form_sign_in) validation.setForm({
 	console.dir(data);
 	call(true);
 	});
+
 $("#check_shipping_info").change((e) => {
 	let el = $("#signin_shipping_info")[0];
 	if((<HTMLInputElement> e.currentTarget).checked) {
@@ -1951,5 +1954,6 @@ $("#check_shipping_info").change((e) => {
 		validation.changeHidden(form_sign_in, el, true);
 	}
 });
+
 
 /* end Validation Properties ------------------------------------------------ */

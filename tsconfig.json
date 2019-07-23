@@ -5,13 +5,13 @@
         "src/ts/index.tslink.ts",
         "src/ts/range-filter.ts",
         "src/ts/DOM_services.ts",
-        "src/ts/event-tasker.ts",
         "src/ts/tooltip.ts",
         "src/ts/tobuffer-copy.ts",
         "src/ts/load-more.ts",
         "src/ts/popup.ts",
         "src/ts/validation.ts",
-        "src/ts/state-tasker.ts"
+        "src/ts/state-tasker.ts",
+        "src/ts/ajax.ts"
     ],
     "compilerOptions": {
         "noImplicitAny": true,

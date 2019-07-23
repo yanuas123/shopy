@@ -39,6 +39,7 @@
  * and add argument:
  * - form element/name string */
 
+
 // types for validation template
 export type TemplateTypes = string | number | RegExp;
 // types for form submit element
@@ -60,7 +61,9 @@ export interface FormArg {
 	};
 	start_validation?: "input" | "change"; // property for entire form
 }
+
 // types for submit callback
+
 export interface formData { // data that you can get in callback - input elements value
 	[item: string]: string | number; // string - input name; value - input value
 	data?: any; // any data that you attached to particular form
@@ -71,7 +74,8 @@ export interface formCallFunc { // You must to execute this function in your cal
 }
 export interface validationCallFunc { // callback function
 	(form: HTMLFormElement, data: formData, call: formCallFunc): void;
-}
+	}
+
 
 // module properties argument
 export interface ValidationProp {
@@ -864,7 +868,6 @@ class FormInstance implements FormContainer {
 		this.items = items;
 
 		this.checkHidden();
-		console.log("form start " + this.name);
 	}
 
 	validateForm(): boolean {
@@ -978,7 +981,6 @@ export class Validation {
 	constructor(prop: ValidationProp = VALID_PROP) {
 		this.forms = {};
 		this.prop = prop;
-		console.log("validation start");
 	}
 
 	public setForm(form: FormArg, call?: validationCallFunc): void {

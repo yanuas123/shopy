@@ -19,7 +19,6 @@ var __extends = (this && this.__extends) || (function () {
 function getAttrVal(el, attr_name) {
     return el.querySelector("[" + attr_name + "]").getAttribute(attr_name);
 }
-/* module Event Tasker ------------ */
 /* module Tooltip perform ------------- */
 function performTooltip(el, text) {
     var hidden_class = "hidden-tooltip";
@@ -1225,7 +1224,6 @@ var FormInstance = /** @class */ (function () {
         }
         this.items = items;
         this.checkHidden();
-        console.log("form start " + this.name);
     }
     FormInstance.prototype.validateForm = function () {
         var valid = true;
@@ -1341,7 +1339,6 @@ var Validation = /** @class */ (function () {
         if (prop === void 0) { prop = VALID_PROP; }
         this.forms = {};
         this.prop = prop;
-        console.log("validation start");
     }
     Validation.prototype.setForm = function (form, call) {
         var form_name;
@@ -1403,6 +1400,8 @@ var Validation = /** @class */ (function () {
     return Validation;
 }());
 /* end Module Validation ---------------------------------------------------- */
+// tslink:inject state-tasker.ts
+// tslink:inject ajax.ts
 /* end IMPORT MODULES ------------------------------------------------------- */
 /* ========================================================================== */
 /* copy contacts to buffer ------------- */

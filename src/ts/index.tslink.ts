@@ -7,8 +7,6 @@ import * as $ from "jquery";
 
 // @tslink:inject DOM_services.ts
 import {getAttrVal} from "./DOM_services";
-// @tslink:inject event-tasker.ts
-
 // @tslink:inject tooltip.ts
 import {performTooltip} from "./tooltip";
 // @tslink:inject tobuffer-copy.ts
@@ -20,7 +18,12 @@ import {PopupProp, PopupTrigger} from "./popup";
 // @tslink:inject range-filter.ts
 import {RangeProp, RangeValues, RangeErrMsg, rangeDQS, RangeFilter} from "./range-filter";
 // @tslink:inject validation.ts
-import {TemplateTypes, SubmitEl, validationServerCall, formCallFunc, formData, validationCallFunc, InpArg, FormArg, ValidationProp, Validation} from "./validation";
+import {TemplateTypes, SubmitEl, InpArg, FormArg, formData, validationServerCall, formCallFunc, validationCallFunc, ValidationProp, Validation} from "./validation";
+// tslink:inject state-tasker.ts
+import {st_class_type, st_state_type, st_functions_type, st_el_types, st_dom_El_type, st_dom_inp_type, st_dom_inp2_type, st_dom_types /* types */, st_state_class_obj, st_state_class_type, st_state_functions_obj, st_state_functions_type, st_F_event_El, st_F_event_inp, st_F_event_inp2, st_Fst_event_El, st_Fst_event_inp, st_Fst_event_inp2 /* objects */, st_prop, st_single_element, st_elInstanceProp /* arguments */, StateTasker} from "./state-tasker";
+// tslink:inject ajax.ts
+import {ajax_methods, ajax_content_type, postReqObj, getReqObj, putReqObj, delReqObj, ajax_prop, Request} from "./ajax";
+
 
 /* end IMPORT MODULES ------------------------------------------------------- */
 /* ========================================================================== */
@@ -203,6 +206,7 @@ let label_form_confirmation: true | Function = function() {
 	return true;
 };
 
+
 // Forgot password form
 let label_form_forgot_password: true | Function = function() {
 	const form_forgot_password: HTMLFormElement = document.querySelector("form[name='forgot_password']");
@@ -279,6 +283,7 @@ if(form_sign_in) validation.setForm({
 	console.dir(data);
 	call(true);
 	});
+
 $("#check_shipping_info").change((e) => {
 	let el = $("#signin_shipping_info")[0];
 	if((<HTMLInputElement> e.currentTarget).checked) {
@@ -289,5 +294,6 @@ $("#check_shipping_info").change((e) => {
 		validation.changeHidden(form_sign_in, el, true);
 	}
 });
+
 
 /* end Validation Properties ------------------------------------------------ */
