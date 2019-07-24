@@ -1,5 +1,5 @@
 <!-- PRODUCT DESCRIPTION section -->
-<div class="product_wrap">
+<div class="product_wrap" data-in="section_productdescribe">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -7,11 +7,11 @@
 					<div class="product-desc-image">
 						@@include('../unit-templates/images.html', { "nav_images": ["../images/images/goodp2.png", "../images/images/goodp3.png", "../images/images/goodp4.png", "../images/images/goodp2.png", "../images/images/goodp3.png", "../images/images/goodp4.png"] })
 					</div>
-					<div class="product_describe">
+					<div class="product_describe" id="product_describe_pg">
 						<div class="product_describe-block">
-							<h1>FULL WINTER KIT</h1>
-							<div class="product_subtitle">Half Jacket + Skiny Trousers + Boot leather</div>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry<br>Lorem Ipsum is simply dummy text of the printing<br>and typesetting industry</p>
+							<h1 data-in="product_title">##FULL WINTER KIT##</h1>
+							<div class="product_subtitle" data-in="product_subtitle">##Half Jacket + Skiny Trousers + Boot leather##</div>
+							<p data-in="product_describe">##Lorem Ipsum is simply dummy text of the printing and typesetting industry<br>Lorem Ipsum is simply dummy text of the printing<br>and typesetting industry##</p>
 						</div>
 						<div class="product_prop-block">
 							<div class="product_prop-block_half">
@@ -22,10 +22,10 @@
 							</div>
 						</div>
 						<div class="product_resume-block">
-							<div class="price">Price : <span>120</span>$</div>
+							<div class="price">Price : <span data-in="product_price">##120##</span>$</div>
 							<div class="product_purchase-block">
 								@@include('../unit-templates/product/product-btn.html')
-								<button type="button" class="btn order_btn"><span>Order Now</span></button>
+								<button type="button" class="btn order_btn" data-in="product_tocart"><span>Order Now</span></button>
 							</div>
 						</div>
 					</div>

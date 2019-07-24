@@ -2,7 +2,7 @@ var express = require("express");
 var app = express();
 
 
-app.use(express.static(__dirname + "/dest")); // static domain url
+app.use(express.static(__dirname + "/build")); // static domain url
 
 
 var bodyParser = require("body-parser"); // XMLHttp content parser
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/dest/contact.html");
+    res.sendFile(__dirname + "/build/contact.html");
 });
 
 

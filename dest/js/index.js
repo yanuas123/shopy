@@ -1,4 +1,3 @@
-/* IMPORTMODULES ------------------------------------------------------------ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,14 +11,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-/* jQuery connect ---------------- */
-/* Slick connect ----------------- */
-/// <reference path="@types/slick/index.d.ts"/>
-/* module DOM services ---------------- */
 function getAttrVal(el, attr_name) {
     return el.querySelector("[" + attr_name + "]").getAttribute(attr_name);
 }
-/* module Tooltip perform ------------- */
 function performTooltip(el, text) {
     var hidden_class = "hidden-tooltip";
     var time = 1000;
@@ -70,7 +64,6 @@ function performTooltip(el, text) {
         tooltip.classList.add(hidden_class);
     }, time);
 }
-/* module Copy Text Element to Buffer ------------- */
 function CopyTextToBuffer(trigger_id, text_el_selector, tooltip_msg) {
     if (tooltip_msg === void 0) { tooltip_msg = "The text was copied"; }
     var trigger_el = document.getElementById(trigger_id);
@@ -91,7 +84,6 @@ function CopyTextToBuffer(trigger_id, text_el_selector, tooltip_msg) {
         };
     }
 }
-/* module Load More ---------------- */
 function loadMore(operation) {
     var loader = document.getElementById("loader");
     var body = document.body;
@@ -108,8 +100,6 @@ function loadMore(operation) {
         body.classList.remove(style_blocked_body);
     }
 }
-/* An initial trigger element must to contain 'data-popup-init' attribute with string that contain a target popup block in the attribute 'data-popup-targ'
-*/
 var POPUP_DEF_PROP = {
     body_class: "noscroll",
     container_class: "display-popup",
@@ -121,7 +111,7 @@ var POPUP_DEF_PROP = {
     init_data_attr: "data-popup-init",
     close_data_attr: "data-popup-close"
 };
-var PopupTrigger = /** @class */ (function () {
+var PopupTrigger = (function () {
     function PopupTrigger(prop) {
         if (prop === void 0) { prop = POPUP_DEF_PROP; }
         this.prop = prop;
@@ -231,7 +221,7 @@ var RANGE_DEFAULTS = {
     transform_top: "translateX(50%)",
     transform_bottom: "translateX(-50%)"
 };
-var RangeFilter = /** @class */ (function () {
+var RangeFilter = (function () {
     function RangeFilter(block_id, err_msg, properties, DOM_selectors) {
         this.wrap_el = document.getElementById(block_id);
         this.default_val = RANGE_DEFAULTS;
@@ -546,7 +536,6 @@ var RangeFilter = /** @class */ (function () {
     };
     return RangeFilter;
 }());
-// default module properties
 var VALID_PROP = {
     valid_type_template: {
         "tel": /^[0-9\+\-\(\)]{8,16}$/,
@@ -567,7 +556,7 @@ var VALID_PROP = {
     blocked_template_attr: "data-blocked-template",
     start_validation_attr: "data-start-validation"
 };
-var SetInpProperties = /** @class */ (function () {
+var SetInpProperties = (function () {
     function SetInpProperties(el, form_el, main_el, arg) {
         this.form_el = form_el;
         this.main_el = main_el;
@@ -585,7 +574,7 @@ var SetInpProperties = /** @class */ (function () {
     }
     return SetInpProperties;
 }());
-var InputInstance = /** @class */ (function (_super) {
+var InputInstance = (function (_super) {
     __extends(InputInstance, _super);
     function InputInstance(inp_el, form_el, main_el, item_arg) {
         var _this = _super.call(this, inp_el, form_el, main_el, item_arg) || this;
@@ -797,7 +786,7 @@ var InputInstance = /** @class */ (function (_super) {
     };
     return InputInstance;
 }(SetInpProperties));
-var SelectInstance = /** @class */ (function (_super) {
+var SelectInstance = (function (_super) {
     __extends(SelectInstance, _super);
     function SelectInstance(select_el, form_el, main_el, item_arg) {
         var _this = _super.call(this, select_el, form_el, main_el, item_arg) || this;
@@ -896,7 +885,7 @@ var SelectInstance = /** @class */ (function (_super) {
     };
     return SelectInstance;
 }(SetInpProperties));
-var CheckInstance = /** @class */ (function (_super) {
+var CheckInstance = (function (_super) {
     __extends(CheckInstance, _super);
     function CheckInstance(check_el, form_el, main_el, item_arg) {
         var _this = _super.call(this, check_el, form_el, main_el, item_arg) || this;
@@ -1006,7 +995,7 @@ var CheckInstance = /** @class */ (function (_super) {
     };
     return CheckInstance;
 }(SetInpProperties));
-var RadioInstance = /** @class */ (function (_super) {
+var RadioInstance = (function (_super) {
     __extends(RadioInstance, _super);
     function RadioInstance(radio_el, form_el, main_el, item_arg) {
         var _this = this;
@@ -1164,7 +1153,7 @@ var RadioInstance = /** @class */ (function (_super) {
     };
     return RadioInstance;
 }(SetInpProperties));
-var FormInstance = /** @class */ (function () {
+var FormInstance = (function () {
     function FormInstance(form, main_el, call) {
         var _this = this;
         this.main_el = main_el;
@@ -1333,8 +1322,7 @@ var FormInstance = /** @class */ (function () {
     };
     return FormInstance;
 }());
-/* main validation class */
-var Validation = /** @class */ (function () {
+var Validation = (function () {
     function Validation(prop) {
         if (prop === void 0) { prop = VALID_PROP; }
         this.forms = {};
@@ -1399,22 +1387,13 @@ var Validation = /** @class */ (function () {
     };
     return Validation;
 }());
-/* end Module Validation ---------------------------------------------------- */
-// tslink:inject state-tasker.ts
-// tslink:inject ajax.ts
-/* end IMPORT MODULES ------------------------------------------------------- */
-/* ========================================================================== */
-/* copy contacts to buffer ------------- */
 CopyTextToBuffer("contact_email_info", ".contact_text", "The email address was copied");
 CopyTextToBuffer("contact_tel_info", ".contact_text", "The phone number was copied");
-/* set range filter -------------------- */
 var range_container = document.getElementById("selector_price_range");
 if (range_container)
     new RangeFilter("selector_price_range").launchModule();
-/* launch popup functionality ---------- */
 var Popup = new PopupTrigger();
 Popup.launchModule();
-/* launch Slick sliders ---------------- */
 $(function () {
     $("#home_slider").slick({
         arrows: false,
@@ -1466,9 +1445,7 @@ $(function () {
         });
     });
 });
-/* validation Properties ---------------------------------------------------- */
 var validation = new Validation();
-// subscribe form
 var form_subscription = document.querySelector("form[name='subscription']");
 if (form_subscription)
     validation.setForm({
@@ -1478,7 +1455,6 @@ if (form_subscription)
         console.dir(data);
         call(true);
     });
-// message form
 var form_message = document.querySelector("form[name='message']");
 if (form_message)
     validation.setForm({
@@ -1488,7 +1464,6 @@ if (form_message)
         console.dir(data);
         call(true);
     });
-// confirmation form
 var label_form_confirmation = function () {
     var form_confirmation = document.querySelector("form[name='confirmation']");
     if (form_confirmation)
@@ -1578,7 +1553,6 @@ var label_form_confirmation = function () {
     });
     return true;
 };
-// Forgot password form
 var label_form_forgot_password = function () {
     var form_forgot_password = document.querySelector("form[name='forgot_password']");
     if (form_forgot_password)
@@ -1591,7 +1565,6 @@ var label_form_forgot_password = function () {
         });
     return true;
 };
-// login form
 var form_login = document.querySelector("form[name='log_in']");
 if (form_login)
     validation.setForm({
@@ -1601,7 +1574,6 @@ if (form_login)
         console.dir(data);
         call(true);
     });
-// new_password form
 var label_form_new_password = function () {
     var form_new_password = document.querySelector("form[name='new_password']");
     if (form_new_password)
@@ -1626,13 +1598,11 @@ var label_form_new_password = function () {
         });
     return true;
 };
-// search_form form
 var form_search_form = document.querySelector("form[name='search_form']");
 if (form_search_form)
     validation.setForm({
         element: form_search_form
     });
-// sign_in form
 var form_sign_in = document.querySelector("form[name='sign_in']");
 if (form_sign_in)
     validation.setForm({
@@ -1666,4 +1636,3 @@ $("#check_shipping_info").change(function (e) {
         validation.changeHidden(form_sign_in, el, true);
     }
 });
-/* end Validation Properties ------------------------------------------------ */

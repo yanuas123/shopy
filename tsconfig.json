@@ -1,17 +1,17 @@
 {
     "files": [
-        "src/ts/global.d.ts",
+        "src/ts/@types/global.d.ts",
         "src/ts/@types/slick/index.d.ts",
         "src/ts/index.tslink.ts",
-        "src/ts/range-filter.ts",
-        "src/ts/DOM_services.ts",
-        "src/ts/tooltip.ts",
-        "src/ts/tobuffer-copy.ts",
-        "src/ts/load-more.ts",
-        "src/ts/popup.ts",
-        "src/ts/validation.ts",
-        "src/ts/state-tasker.ts",
-        "src/ts/ajax.ts"
+        "src/ts/plug-modules/range-filter.ts",
+        "src/ts/plug-modules/DOM_services.ts",
+        "src/ts/plug-modules/tooltip.ts",
+        "src/ts/plug-modules/tobuffer-copy.ts",
+        "src/ts/plug-modules/load-more.ts",
+        "src/ts/plug-modules/popup.ts",
+        "src/ts/plug-modules/validation.ts",
+        "src/ts/plug-modules/state-tasker.ts",
+        "src/ts/plug-modules/ajax.ts"
     ],
     "compilerOptions": {
         "noImplicitAny": true,

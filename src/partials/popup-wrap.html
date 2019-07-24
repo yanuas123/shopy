@@ -9,9 +9,7 @@
 			</div>
 			<div class="popups-window">
 				@@include('./popups/cart.html')
-				@@include('./popups/confirm.html', { "post": [ "New Post", "Ukrpost" ],
-				"address": [ "my address 1", "add new address" ],
-				"payment": [ "Visa/MasterCard", "after receiving" ] })
+				@@include('./popups/confirm.html', { "address": [ "my address 1" ] })
 				@@include('./popups/forgotpass.html')
 				@@include('./popups/info.html')
 				@@include('./popups/login.html')

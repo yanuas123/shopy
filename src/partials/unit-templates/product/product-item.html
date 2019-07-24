@@ -1,12 +1,12 @@
 @@for ( var i=0; i<list_qty; i++ ) {
-	<div class="col-@@block_size">
+	<div class="col-@@block_size" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="`+product_list[i].product_url+`" class="product-item_big_image">
-			<img src="`+product_list[i].image_src+`" alt="" />
-		</a>
+			<a href="`+product_list[i].product_url+`" class="product-item_big_image" data-in="product_url">
+				<img src="`+product_list[i].image_src+`" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="`+product_list[i].product_url+`" class="product-item_name">`+product_list[i].product_name+`</a>
-			<div class="product-item_price plain-price"><span>`+product_list[i].price+`</span>$</div>
+			<a href="`+product_list[i].product_url+`" data-in="product_name" class="product-item_name">`+product_list[i].product_name+`</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">`+product_list[i].price+`</span>$</div>
 			<div class="product-item_choose-block">
 				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span>@@include('./sizing.html')</div>
 				<div class="product-item_color-choose_wrap">@@include('./color-choose.html')</div>

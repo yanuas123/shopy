@@ -7,8 +7,8 @@
    <stop stop-color="#000000" stop-opacity="0" offset="1"/>
   </linearGradient>
   <linearGradient id="linearGradient2509" x1="-252.49797" x2="-252.49797" y1="36.394131" y2="98.133392" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#e67f76" offset="0"/>
-   <stop stop-color="#b03b30" offset="1"/>
+   <stop stop-color="#e67f76" class="color-stop-color" offset="0"/>
+   <stop stop-color="#b03b30" class="color-stop-color" offset="1"/>
   </linearGradient>
  </defs>
  <g transform="translate(289.64506,-32.537086)">

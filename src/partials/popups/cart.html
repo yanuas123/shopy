@@ -3,49 +3,49 @@
 	<div class="d-flex flex-column align-items-center pb-4">
 		<div class="container-fluid">
 			@@for ( var i = 0; i < 4; i++ ) {
-			<div class="row my-5">
+			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="`+product_list[i].image_src+`" alt="" />
+					<img src="`+product_list[i].image_src+`" alt="" data-in="cartitem_image" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">`+product_list[i].product_name+`</div>
+							<div class="product-item_name" data-in="cartitem_name">`+product_list[i].product_name+`</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">`+product_list[i].category+`</span>
+							<span class="category-name" data-in="cartitem_category">`+product_list[i].category+`</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>`+product_list[i].description+`</p>
+							<p data-in="cartitem_description">`+product_list[i].description+`</p>
 						</div>
 					</div>
 					<div class="row pt-lg-0 pt-2">
 						<div class="col-md-6">
 							<div class="prop-sizing">
 								<span>Size: </span>
-								<span class="sizing">`+product_list[i].size+`</span>
+								<span class="sizing" data-in="cartitem_size">`+product_list[i].size+`</span>
 							</div>
 						</div>
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter">`+product_list[i].quantity+`</span>
+								<span class="counter" data-in="cartitem_qty">`+product_list[i].quantity+`</span>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 d-flex justify-content-end pt-2">
-							<div class="price-block">Price : <span class="cart_item-price">`+product_list[i].price+`</span>$</div>
+							<div class="price-block">Price : <span class="cart_item-price" data-in="cartitem_price">`+product_list[i].price+`</span>$</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-1 d-flex align-items-md-center justify-content-md-center">
-					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn"></button>
+					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn" data-in="cartitem_delete"></button>
 				</div>
 			</div>
 			}

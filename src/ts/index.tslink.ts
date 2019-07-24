@@ -5,24 +5,24 @@ import * as $ from "jquery";
 /* Slick connect ----------------- */
 /// <reference path="@types/slick/index.d.ts"/>
 
-// @tslink:inject DOM_services.ts
-import {getAttrVal} from "./DOM_services";
-// @tslink:inject tooltip.ts
-import {performTooltip} from "./tooltip";
-// @tslink:inject tobuffer-copy.ts
-import {CopyTextToBuffer} from "./tobuffer-copy";
-// @tslink:inject load-more.ts
-import {loadMore} from "./load-more";
-// @tslink:inject popup.ts
-import {PopupProp, PopupTrigger} from "./popup";
-// @tslink:inject range-filter.ts
-import {RangeProp, RangeValues, RangeErrMsg, rangeDQS, RangeFilter} from "./range-filter";
-// @tslink:inject validation.ts
-import {TemplateTypes, SubmitEl, InpArg, FormArg, formData, validationServerCall, formCallFunc, validationCallFunc, ValidationProp, Validation} from "./validation";
-// tslink:inject state-tasker.ts
-import {st_class_type, st_state_type, st_functions_type, st_el_types, st_dom_El_type, st_dom_inp_type, st_dom_inp2_type, st_dom_types /* types */, st_state_class_obj, st_state_class_type, st_state_functions_obj, st_state_functions_type, st_Func_event, st_Func_st_event /* objects */, st_prop, st_single_element, st_elInstanceProp /* arguments */, StateTasker} from "./state-tasker";
-// tslink:inject ajax.ts
-import {ajax_methods, ajax_content_type, postReqObj, getReqObj, putReqObj, delReqObj, ajax_prop, Request} from "./ajax";
+// @tslink:inject plug-modules/index.tslink.ts
+import {getAttrVal} from "./plug-modules/DOM_services";
+
+import {performTooltip} from "./plug-modules/tooltip";
+
+import {CopyTextToBuffer} from "./plug-modules/tobuffer-copy";
+
+import {loadMore} from "./plug-modules/load-more";
+
+import {PopupProp, PopupTrigger} from "./plug-modules/popup";
+
+import {RangeProp, RangeValues, RangeErrMsg, rangeDQS, RangeFilter} from "./plug-modules/range-filter";
+
+import {TemplateTypes, SubmitEl, InpArg, FormArg, formData, validationServerCall, formCallFunc, validationCallFunc, ValidationProp, Validation} from "./plug-modules/validation";
+
+import {st_class_type, st_state_type, st_functions_type, st_el_types, st_dom_El_type, st_dom_inp_type, st_dom_inp2_type, st_dom_types /* types */, st_state_class_obj, st_state_class_type, st_state_functions_obj, st_state_functions_type, st_Func_event, st_Func_st_event /* objects */, st_prop, st_single_element, st_elInstanceProp /* arguments */, StateTasker} from "./plug-modules/state-tasker";
+
+import {ajax_methods, ajax_content_type, postReqObj, getReqObj, putReqObj, delReqObj, ajax_prop, Request} from "./plug-modules/ajax";
 
 
 /* end IMPORT MODULES ------------------------------------------------------- */

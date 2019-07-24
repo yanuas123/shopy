@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12 pb-3 pt-2">
-					<span class="bold">Total price:</span> <span id="popup_confirm_price">250</span><span>$</span>
+					<span class="bold">Total price:</span> <span id="popup_confirm_price">##250##</span><span>$</span>
 				</div>
 			</div>
 			<div class="row hidden" id="popup_confirm_phone_block">
@@ -21,9 +21,8 @@
 				<div class="col-md-12 py-4">
 					<label class="select-label label">Choose a shipping method:</label> 
 					<select name="shipping_method" class="select inline-select" required>
-						@@for ( var i = 0; i < post.length; i++ ) {
-						<option value="`+post[i]+`">`+post[i]+`</option>
-						}
+						<option value="New Post">New Post</option>
+						<option value="Ukrpost">Ukrpost</option>
 					</select>
 				</div>
 			</div>
@@ -72,8 +71,9 @@
 					<label class="select-label label">Choose shipping address:</label> 
 					<select name="ukrpost_address" class="select inline-select" required>
 						@@for ( var i = 0; i < address.length; i++ ) {
-						<option value="`+address[i]+`">`+address[i]+`</option>
+						##<option value="`+address[i]+`">`+address[i]+`</option>##
 						}
+						<option value="add new address">add new address</option>
 					</select>
 				</div>
 			</div>
@@ -150,18 +150,17 @@
 				<div class="col-md-12 pb-4 pt-5">
 					<label class="select-label label">Payment method:</label> 
 					<select name="payment_method" class="select inline-select" required>
-						@@for ( var i = 0; i < payment.length; i++ ) {
-						<option value="`+payment[i]+`">`+payment[i]+`</option>
-						}
+						<option value="Visa/MasterCard">Visa/MasterCard</option>
+						<option value="after receiving">after receiving</option>
 					</select>
 				</div>
 			</div>
 		</div>
 		<div class="d-flex justify-content-center pt-4 pb-2" id="popup_confirm_paymentbtn">
-			<input class="btn" type="button" value="Payment" />
+			<input class="btn" type="button" value="Payment" id="confirm_payment_btn" />
 		</div>
 		<div class="d-flex justify-content-center pt-4 pb-2 hidden" id="popup_confirm_submit">
-			<input class="btn" type="submit" value="Confirm" />
+			<input class="btn" type="submit" value="Confirm" id="confirm_confirm_btn" />
 		</div>
 	</form>
 </div>

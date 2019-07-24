@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end pb-md-0 pb-3">
 				<label class="select-label label">Category:</label> 
-				<select name="category" class="select inline-select">
+				<select name="category" class="select inline-select" data-in="search_categories">
 					<option value="all_categories">all categories</option>
 					@@for ( var i = 0; i < categories.length; i++ ) {
 					<option value="`+categories[i].title+`">`+categories[i].title+`</option>
@@ -22,7 +22,7 @@
 			</div>
 			<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end">
 				<label class="select-label label">Brand:</label> 
-				<select name="brand" class="select inline-select">
+				<select name="brand" class="select inline-select" data-in="search_brand">
 					<option value="all_brands">all brands</option>
 					@@for ( var i = 0; i < brands.length; i++ ) {
 					<option value="`+brands[i].title+`">`+brands[i].title+`</option>
@@ -48,25 +48,25 @@
 		</div>
 		<div class="container-fluid search-resultlist" id="popup_search_resultlist">
 			@@for ( var i = 0; i < 4; i++ ) {
-			<a href="`+product_list[i].product_url+`" class="row my-5">
+			<a href="`+product_list[i].product_url+`" class="row my-5" data-in="searchitem">
 				<div class="col-md-3 product-item_big_image pb-md-0 pb-3">
-					<img src="`+product_list[i].image_src+`" alt="" />
+					<img src="`+product_list[i].image_src+`" alt="" data-in="searchitem_image" />
 				</div>
 				<div class="col-md-9 search-description">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">`+product_list[i].product_name+`</div>
+							<div class="product-item_name" data-in="searchitem_name">`+product_list[i].product_name+`</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">`+product_list[i].category+`</span>
+							<span class="category-name" data-in="searchitem_category">`+product_list[i].category+`</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>`+product_list[i].description_sr+`</p>
+							<p data-in="searchitem_description">`+product_list[i].description_sr+`</p>
 						</div>
 					</div>
 				</div>

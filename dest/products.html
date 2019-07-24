@@ -44,10 +44,10 @@
 				<div class="col-sm-4">
 					<div class="d-flex justify-content-end">
 						<div class="soc-networks">
-	<a href="#" class="btn-icon icon-color facebook"></a>
-	<a href="#" class="btn-icon icon-color twitter"></a>
-	<a href="#" class="btn-icon icon-color google"></a>
-	<a href="#" class="btn-icon instagram"></a>
+	<a href="" class="btn-icon icon-color facebook" data-in="social_facebook"></a>
+	<a href="" class="btn-icon icon-color twitter" data-in="social_twitter"></a>
+	<a href="" class="btn-icon icon-color google" data-in="social_google"></a>
+	<a href="" class="btn-icon instagram" data-in="social_instagram"></a>
 </div>
 					</div>
 				</div>
@@ -61,14 +61,14 @@
 		<div class="container">
 			<div class="row header_bottom_inside">
 				<div class="col-5 col-sm-6 col-md-2">
-					<img src="../images/images/logo.png" class="logo" alt="" />
+					<img src="images/images/logo.png" class="logo" alt="" />
 				</div>
 				<div class="col-2 col-sm-12 col-md-8 adaptive-menu">
 					<div class="sandwich-btn btn-icon icon-color-custom ico_sandwich"></div>
 					<nav class="menu">
 
 	<!-- MAIN MENU -->
-	<ul>
+	<ul id="main_menu_list">
 		
 			<li><a href="index.html" class='active'>Home</a></li>
 			
@@ -88,7 +88,7 @@
 						<button type="button" class="btn-icon icon-color-custom ico_search" data-popup-init="search"></button>
 						<button type="button" class="btn-icon icon-color-custom ico_user"></button>
 						<div class="cart-button active">
-							<div class="cart-qty">1</div>
+							<div class="cart-qty" id="cart_qty">1</div>
 							<button type="button" class="btn-icon icon-color-custom ico_cart"></button>
 						</div>
 					</div>
@@ -100,9 +100,9 @@
 			</header>
 			<main class="main">
 				<div class="container">
-					<div class="row product-list_double-block product-list_wrap">
+					<div class="row product-list_double-block product-list_wrap" data-in="section_productlist">
 	<!-- PRODUCT SELECTOR FORM -->
-	<form name="product_selector" class="col-lg-3 col-md-4 selector">
+	<form name="product_selector" class="col-lg-3 col-md-4 selector" id="product_selector">
 		<div class="selector_block-item">
 	<div class="selector-item_title">
 		<span>Categories</span>
@@ -110,7 +110,7 @@
 			<div class="svg_plus-minus icon ico_plus"></div>
 		</div>
 	</div>
-	<div class="selector_item_list">
+	<div class="selector_item_list" id="selector_block_categories">
 		
 
 
@@ -136,7 +136,7 @@
 			<div class="svg_plus-minus icon ico_plus"></div>
 		</div>
 	</div>
-	<div class="selector_item_list">
+	<div class="selector_item_list" id="selector_block_price_range_prop">
 		
 
 <div class="price-range-block" id="selector_price_range">
@@ -173,7 +173,7 @@
 			<div class="svg_plus-minus icon ico_plus"></div>
 		</div>
 	</div>
-	<div class="selector_item_list">
+	<div class="selector_item_list" id="selector_block_sizes">
 		
 
 
@@ -200,7 +200,7 @@
 			<div class="svg_plus-minus icon ico_plus"></div>
 		</div>
 	</div>
-	<div class="selector_item_list">
+	<div class="selector_item_list" id="selector_block_brands">
 		
 
 
@@ -225,17 +225,17 @@
 		<div class="container-fluid">
 			<div class="row">
 				
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good1.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good1.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>120</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">120</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -243,26 +243,26 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
 	</div>
 </div>
 
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good2.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good2.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>100</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">100</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -270,26 +270,26 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
 	</div>
 </div>
 
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good3.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good3.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>150</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">150</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -297,26 +297,26 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
 	</div>
 </div>
 
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good1.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good1.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>320</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">320</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -324,26 +324,26 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
 	</div>
 </div>
 
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good1.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good1.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>80</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">80</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -351,26 +351,26 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
 	</div>
 </div>
 
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good3.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good3.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>80</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">80</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -378,26 +378,26 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
 	</div>
 </div>
 
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good2.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good2.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>80</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">80</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -405,26 +405,26 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
 	</div>
 </div>
 
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good1.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good1.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>80</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">80</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -432,26 +432,26 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
 	</div>
 </div>
 
-	<div class="col-lg-4 col-sm-6">
+	<div class="col-lg-4 col-sm-6" data-in="product_item_big">
 		<div class="product-item_big">
-		<a href="product.html" class="product-item_big_image">
-			<img src="../images/images/good3.png" alt="" />
-		</a>
+			<a href="product.html" class="product-item_big_image" data-in="product_url">
+				<img src="images/images/good3.png" alt="" data-in="product_image" />
+			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" class="product-item_name">Reebok Track Jacket</a>
-			<div class="product-item_price plain-price"><span>80</span>$</div>
+			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<div class="product-item_price plain-price"><span data-in="product_price">80</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose">
+				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
+				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -459,9 +459,9 @@
 </div></div>
 				<div class="hr"></div>
 				<div class="product-item_buttons_wrap"><div class="product-item_buttons">
-	<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-	<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div></div>
 			</div>
 		</div>
@@ -482,7 +482,7 @@
 	</div>
 </div>
 					<!-- SUBSCRIBE section -->
-<div class="row">
+<div class="row" data-in="section_subscribe">
 	<div class="col-md-12">
 		<div class="subscribe_wrap subscription">
 			<div class="subscription_title-block">
@@ -512,13 +512,13 @@
 	<div class="row align-items-center">
 		<div class="col-md-4 align-self-stretch copyright-wrap">
 			<div class="d-flex flex-column align-items-md-start justify-content-md-between">
-				<img src="../images/images/logo.png" class="logo" alt="" />
-				<div class="copyright">shopy c 2015 . your copy right here</div>
+				<img src="images/images/logo.png" class="logo" alt="" />
+				<div class="copyright">Shopy c 2015 . your copy right here</div>
 			</div>
 		</div>
 		<div class="col-12 col-md-6">
 			<!-- FOOTER MENU -->
-			<ul class="footer_menu">
+			<ul class="footer_menu" id="footer_menu">
 				
 					<li class="footer_menu_item"><a href="#">about us</a></li>
 					
@@ -570,187 +570,187 @@
 	<div class="d-flex flex-column align-items-center pb-4">
 		<div class="container-fluid">
 			
-			<div class="row my-5">
+			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="../images/images/good1.png" alt="" />
+					<img src="images/images/good1.png" alt="" data-in="cartitem_image" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">Reebok Track Jacket</div>
+							<div class="product-item_name" data-in="cartitem_name">Reebok Track Jacket</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">man</span>
+							<span class="category-name" data-in="cartitem_category">man</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p data-in="cartitem_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 						</div>
 					</div>
 					<div class="row pt-lg-0 pt-2">
 						<div class="col-md-6">
 							<div class="prop-sizing">
 								<span>Size: </span>
-								<span class="sizing">XL</span>
+								<span class="sizing" data-in="cartitem_size">XL</span>
 							</div>
 						</div>
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter">2</span>
+								<span class="counter" data-in="cartitem_qty">2</span>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 d-flex justify-content-end pt-2">
-							<div class="price-block">Price : <span class="cart_item-price">120</span>$</div>
+							<div class="price-block">Price : <span class="cart_item-price" data-in="cartitem_price">120</span>$</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-1 d-flex align-items-md-center justify-content-md-center">
-					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn"></button>
+					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn" data-in="cartitem_delete"></button>
 				</div>
 			</div>
 			
-			<div class="row my-5">
+			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="../images/images/good2.png" alt="" />
+					<img src="images/images/good2.png" alt="" data-in="cartitem_image" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">Reebok Track Jacket</div>
+							<div class="product-item_name" data-in="cartitem_name">Reebok Track Jacket</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">woman</span>
+							<span class="category-name" data-in="cartitem_category">woman</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p data-in="cartitem_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 						</div>
 					</div>
 					<div class="row pt-lg-0 pt-2">
 						<div class="col-md-6">
 							<div class="prop-sizing">
 								<span>Size: </span>
-								<span class="sizing">L</span>
+								<span class="sizing" data-in="cartitem_size">L</span>
 							</div>
 						</div>
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter">1</span>
+								<span class="counter" data-in="cartitem_qty">1</span>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 d-flex justify-content-end pt-2">
-							<div class="price-block">Price : <span class="cart_item-price">100</span>$</div>
+							<div class="price-block">Price : <span class="cart_item-price" data-in="cartitem_price">100</span>$</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-1 d-flex align-items-md-center justify-content-md-center">
-					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn"></button>
+					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn" data-in="cartitem_delete"></button>
 				</div>
 			</div>
 			
-			<div class="row my-5">
+			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="../images/images/good3.png" alt="" />
+					<img src="images/images/good3.png" alt="" data-in="cartitem_image" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">Reebok Track Jacket</div>
+							<div class="product-item_name" data-in="cartitem_name">Reebok Track Jacket</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">children</span>
+							<span class="category-name" data-in="cartitem_category">children</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p data-in="cartitem_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 						</div>
 					</div>
 					<div class="row pt-lg-0 pt-2">
 						<div class="col-md-6">
 							<div class="prop-sizing">
 								<span>Size: </span>
-								<span class="sizing">M</span>
+								<span class="sizing" data-in="cartitem_size">M</span>
 							</div>
 						</div>
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter">1</span>
+								<span class="counter" data-in="cartitem_qty">1</span>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 d-flex justify-content-end pt-2">
-							<div class="price-block">Price : <span class="cart_item-price">150</span>$</div>
+							<div class="price-block">Price : <span class="cart_item-price" data-in="cartitem_price">150</span>$</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-1 d-flex align-items-md-center justify-content-md-center">
-					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn"></button>
+					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn" data-in="cartitem_delete"></button>
 				</div>
 			</div>
 			
-			<div class="row my-5">
+			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="../images/images/good1.png" alt="" />
+					<img src="images/images/good1.png" alt="" data-in="cartitem_image" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">Reebok Track Jacket</div>
+							<div class="product-item_name" data-in="cartitem_name">Reebok Track Jacket</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">man</span>
+							<span class="category-name" data-in="cartitem_category">man</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p data-in="cartitem_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 						</div>
 					</div>
 					<div class="row pt-lg-0 pt-2">
 						<div class="col-md-6">
 							<div class="prop-sizing">
 								<span>Size: </span>
-								<span class="sizing">XL</span>
+								<span class="sizing" data-in="cartitem_size">XL</span>
 							</div>
 						</div>
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter">3</span>
+								<span class="counter" data-in="cartitem_qty">3</span>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 d-flex justify-content-end pt-2">
-							<div class="price-block">Price : <span class="cart_item-price">320</span>$</div>
+							<div class="price-block">Price : <span class="cart_item-price" data-in="cartitem_price">320</span>$</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-1 d-flex align-items-md-center justify-content-md-center">
-					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn"></button>
+					<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn" data-in="cartitem_delete"></button>
 				</div>
 			</div>
 			
@@ -783,11 +783,8 @@
 				<div class="col-md-12 py-4">
 					<label class="select-label label">Choose a shipping method:</label> 
 					<select name="shipping_method" class="select inline-select" required>
-						
 						<option value="New Post">New Post</option>
-						
 						<option value="Ukrpost">Ukrpost</option>
-						
 					</select>
 				</div>
 			</div>
@@ -839,7 +836,6 @@
 						<option value="my address 1">my address 1</option>
 						
 						<option value="add new address">add new address</option>
-						
 					</select>
 				</div>
 			</div>
@@ -920,20 +916,17 @@
 				<div class="col-md-12 pb-4 pt-5">
 					<label class="select-label label">Payment method:</label> 
 					<select name="payment_method" class="select inline-select" required>
-						
 						<option value="Visa/MasterCard">Visa/MasterCard</option>
-						
 						<option value="after receiving">after receiving</option>
-						
 					</select>
 				</div>
 			</div>
 		</div>
 		<div class="d-flex justify-content-center pt-4 pb-2" id="popup_confirm_paymentbtn">
-			<input class="btn" type="button" value="Payment" />
+			<input class="btn" type="button" value="Payment" id="confirm_payment_btn" />
 		</div>
 		<div class="d-flex justify-content-center pt-4 pb-2 hidden" id="popup_confirm_submit">
-			<input class="btn" type="submit" value="Confirm" />
+			<input class="btn" type="submit" value="Confirm" id="confirm_confirm_btn" />
 		</div>
 	</form>
 </div>
@@ -1036,7 +1029,7 @@
 		<div class="row">
 			<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end pb-md-0 pb-3">
 				<label class="select-label label">Category:</label> 
-				<select name="category" class="select inline-select">
+				<select name="category" class="select inline-select" data-in="search_categories">
 					<option value="all_categories">all categories</option>
 					
 					<option value="Man">Man</option>
@@ -1051,7 +1044,7 @@
 			</div>
 			<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end">
 				<label class="select-label label">Brand:</label> 
-				<select name="brand" class="select inline-select">
+				<select name="brand" class="select inline-select" data-in="search_brand">
 					<option value="all_brands">all brands</option>
 					
 					<option value="Reebok">Reebok</option>
@@ -1083,97 +1076,97 @@
 		</div>
 		<div class="container-fluid search-resultlist" id="popup_search_resultlist">
 			
-			<a href="product.html" class="row my-5">
+			<a href="product.html" class="row my-5" data-in="searchitem">
 				<div class="col-md-3 product-item_big_image pb-md-0 pb-3">
-					<img src="../images/images/good1.png" alt="" />
+					<img src="images/images/good1.png" alt="" data-in="searchitem_image" />
 				</div>
 				<div class="col-md-9 search-description">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">Reebok Track Jacket</div>
+							<div class="product-item_name" data-in="searchitem_name">Reebok Track Jacket</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">man</span>
+							<span class="category-name" data-in="searchitem_category">man</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>Lorem Ipsum is simply <span class='text-highlighted'>dummy text</span> of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p data-in="searchitem_description">Lorem Ipsum is simply <span class='text-highlighted'>dummy text</span> of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 						</div>
 					</div>
 				</div>
 			</a>
 			
-			<a href="product.html" class="row my-5">
+			<a href="product.html" class="row my-5" data-in="searchitem">
 				<div class="col-md-3 product-item_big_image pb-md-0 pb-3">
-					<img src="../images/images/good2.png" alt="" />
+					<img src="images/images/good2.png" alt="" data-in="searchitem_image" />
 				</div>
 				<div class="col-md-9 search-description">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">Reebok Track Jacket</div>
+							<div class="product-item_name" data-in="searchitem_name">Reebok Track Jacket</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">woman</span>
+							<span class="category-name" data-in="searchitem_category">woman</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>Lorem Ipsum is simply dummy text of the <span class='text-highlighted'>printing</span> and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p data-in="searchitem_description">Lorem Ipsum is simply dummy text of the <span class='text-highlighted'>printing</span> and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 						</div>
 					</div>
 				</div>
 			</a>
 			
-			<a href="product.html" class="row my-5">
+			<a href="product.html" class="row my-5" data-in="searchitem">
 				<div class="col-md-3 product-item_big_image pb-md-0 pb-3">
-					<img src="../images/images/good3.png" alt="" />
+					<img src="images/images/good3.png" alt="" data-in="searchitem_image" />
 				</div>
 				<div class="col-md-9 search-description">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">Reebok Track Jacket</div>
+							<div class="product-item_name" data-in="searchitem_name">Reebok Track Jacket</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">children</span>
+							<span class="category-name" data-in="searchitem_category">children</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>Lorem Ipsum is simply dummy text of the <span class='text-highlighted'>printing</span> and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p data-in="searchitem_description">Lorem Ipsum is simply dummy text of the <span class='text-highlighted'>printing</span> and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 						</div>
 					</div>
 				</div>
 			</a>
 			
-			<a href="product.html" class="row my-5">
+			<a href="product.html" class="row my-5" data-in="searchitem">
 				<div class="col-md-3 product-item_big_image pb-md-0 pb-3">
-					<img src="../images/images/good1.png" alt="" />
+					<img src="images/images/good1.png" alt="" data-in="searchitem_image" />
 				</div>
 				<div class="col-md-9 search-description">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="product-item_name">Reebok Track Jacket</div>
+							<div class="product-item_name" data-in="searchitem_name">Reebok Track Jacket</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
 							<span class="bold">Category:</span> 
-							<span class="category-name">man</span>
+							<span class="category-name" data-in="searchitem_category">man</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pb-2">
-							<p>Lorem Ipsum is simply dummy text of the printing and <span class='text-highlighted'>typesetting</span> industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p data-in="searchitem_description">Lorem Ipsum is simply dummy text of the printing and <span class='text-highlighted'>typesetting</span> industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 						</div>
 					</div>
 				</div>
@@ -1198,10 +1191,10 @@
 	<div class="h6" id="info_popup_text">Share this product:</div>
 	<div class="d-flex justify-content-center">
 		<div class="soc-networks">
-	<a href="#" class="btn-icon icon-color facebook"></a>
-	<a href="#" class="btn-icon icon-color twitter"></a>
-	<a href="#" class="btn-icon icon-color google"></a>
-	<a href="#" class="btn-icon instagram"></a>
+	<a href="" class="btn-icon icon-color facebook" data-in="social_facebook"></a>
+	<a href="" class="btn-icon icon-color twitter" data-in="social_twitter"></a>
+	<a href="" class="btn-icon icon-color google" data-in="social_google"></a>
+	<a href="" class="btn-icon instagram" data-in="social_instagram"></a>
 </div>
 	</div>
 </div>
@@ -1329,7 +1322,7 @@
 	</form>
 </div>
 				<!-- Custom popup -->
-<div class="popup-window popup-custom" data-popup-targ="custom">
+<div class="popup-window popup-custom" data-popup-targ="custom" id="popup_custom">
 
 </div>
 			</div>
@@ -1339,7 +1332,6 @@
 </div>
 		<script src="plugins/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="plugins/js/slick.min.js"></script>
-<script src="js/slider.js"></script>
 <script src="js/index.js"></script>
 	</body>
 </html>

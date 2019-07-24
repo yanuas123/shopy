@@ -47,7 +47,7 @@ let html_textes_obj = {
 		}],
 	/* products ------------------------------------------------------------- */
 	product_list: [{
-			"image_src": "../images/images/good1.png",
+			"image_src": "images/images/good1.png",
 			"product_name": "Reebok Track Jacket",
 			"category": "man",
 			"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -58,7 +58,7 @@ let html_textes_obj = {
 			"product_url": "product.html"
 		},
 		{
-			"image_src": "../images/images/good2.png",
+			"image_src": "images/images/good2.png",
 			"product_name": "Reebok Track Jacket",
 			"category": "woman",
 			"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -69,7 +69,7 @@ let html_textes_obj = {
 			"product_url": "product.html"
 		},
 		{
-			"image_src": "../images/images/good3.png",
+			"image_src": "images/images/good3.png",
 			"product_name": "Reebok Track Jacket",
 			"category": "children",
 			"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -80,7 +80,7 @@ let html_textes_obj = {
 			"product_url": "product.html"
 		},
 		{
-			"image_src": "../images/images/good1.png",
+			"image_src": "images/images/good1.png",
 			"product_name": "Reebok Track Jacket",
 			"category": "man",
 			"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -91,31 +91,31 @@ let html_textes_obj = {
 			"product_url": "product.html"
 		},
 		{
-			"image_src": "../images/images/good1.png",
+			"image_src": "images/images/good1.png",
 			"product_url": "product.html",
 			"product_name": "Reebok Track Jacket",
 			"price": "80"
 		},
 		{
-			"image_src": "../images/images/good3.png",
+			"image_src": "images/images/good3.png",
 			"product_url": "product.html",
 			"product_name": "Reebok Track Jacket",
 			"price": "80"
 		},
 		{
-			"image_src": "../images/images/good2.png",
+			"image_src": "images/images/good2.png",
 			"product_url": "product.html",
 			"product_name": "Reebok Track Jacket",
 			"price": "80"
 		},
 		{
-			"image_src": "../images/images/good1.png",
+			"image_src": "images/images/good1.png",
 			"product_url": "product.html",
 			"product_name": "Reebok Track Jacket",
 			"price": "80"
 		},
 		{
-			"image_src": "../images/images/good3.png",
+			"image_src": "images/images/good3.png",
 			"product_url": "product.html",
 			"product_name": "Reebok Track Jacket",
 			"price": "80"

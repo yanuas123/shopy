@@ -1,5 +1,5 @@
-/// <reference path="global.d.ts" />
-import {Popup} from "./global.d";
+/// <reference path="../@types/global.d.ts" />
+import {Popup} from "../@types/global.d";
 
 /* module Ajax request ------------ */
 

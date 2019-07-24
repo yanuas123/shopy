@@ -1,6 +1,6 @@
-<div class="row product-list_double-block product-list_wrap">
+<div class="row product-list_double-block product-list_wrap" data-in="section_productlist">
 	<!-- PRODUCT SELECTOR FORM -->
-	<form name="product_selector" class="col-lg-3 col-md-4 selector">
+	<form name="product_selector" class="col-lg-3 col-md-4 selector" id="product_selector">
 		@@include('../unit-templates/selector/uni-block.html', { "title": "Categories", "file_url": "./category-item.html", "vars": "categories" })
 
 		@@include('../unit-templates/selector/uni-block.html', { "title": "Price Filtter", "file_url": "./range-block.html", "vars": "price_range_prop" })
