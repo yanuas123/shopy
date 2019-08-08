@@ -68,7 +68,7 @@ export interface formData { // data that you can get in callback - input element
 	[item: string]: string | number; // string - input name; value - input value
 	data?: any; // any data that you attached to particular form
 }
-export type validationServerCall = boolean | [string]; // array of invalid input name
+export type validationServerCall = boolean | string[]; // array of invalid input name
 export interface formCallFunc { // You must to execute this function in your callback and pass here your respond
 	(server_resp: validationServerCall): void;
 }
@@ -992,7 +992,7 @@ export class Validation {
 	}
 
 	public setData(f_name: string, data: any): void {
-		let form = this.forms[f_name].data = data;
+		this.forms[f_name].data = data;
 	}
 	public getData(form: string | HTMLFormElement): formData {
 		let form_name: string;

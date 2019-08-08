@@ -1,0 +1,103 @@
+<div class="col-md-12" ng-controller="ordersCtrl">
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<div ng-repeat="item in data" class="row border border-secondary">
+				<div class="col-md-12" ng-style="item.closed && {'opacity':'0.2'}">
+
+
+					<div class="row top-space">
+						<div class="col-md-6">
+							<h3>{{item.user_data.first_name||item.user_data.related_user.first_name}}</h3>
+						</div>
+						<div class="col-md-6">
+							<h3>{{item.user_data.last_name||item.user_data.related_user.last_name}}</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">{{item.user_data.email||item.user_data.related_user.email}}</div>
+						<div class="col-md-6">{{item.user_data.phone||item.user_data.related_user.phone}}</div>
+					</div>
+					<div class="row" ng-if="item.user_data.related_user.new_post_inf && !item.user_data.new_post_inf">
+						<div class="col-md-2">New Post: </div>
+						<div class="col-md-3">City: {{item.user_data.related_user.new_post_inf.newpost_city}}</div>
+						<div class="col-md-3">Department: {{item.user_data.related_user.new_post_inf.newpost_department}}</div>
+					</div>
+					<div class="row" ng-if="item.user_data.new_post_inf">
+						<div class="col-md-2">New Post: </div>
+						<div class="col-md-3">City: {{item.user_data.new_post_inf.newpost_city}}</div>
+						<div class="col-md-3">Department: {{item.user_data.new_post_inf.newpost_department}}</div>
+					</div>
+					<div class="row" ng-if="item.user_data.related_user.address && !item.user_data.address">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-3">Address: </div>
+								<div class="col-md-3">Country: {{item.user_data.related_user.address.country_name}}</div>
+								<div class="col-md-3">City: {{item.user_data.related_user.address.city}}</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">Post code: {{item.user_data.related_user.address.post_code}}</div>
+								<div class="col-md-3">Street: {{item.user_data.related_user.address.street}}</div>
+								<div class="col-md-3">House number: {{item.user_data.related_user.address.house_number}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" ng-if="item.user_data.address">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-3">Address: </div>
+								<div class="col-md-3">Country: {{item.user_data.address.country_name}}</div>
+								<div class="col-md-3">City: {{item.user_data.address.city}}</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">Post code: {{item.user_data.address.post_code}}</div>
+								<div class="col-md-3">Street: {{item.user_data.address.street}}</div>
+								<div class="col-md-3">House number: {{item.user_data.address.house_number}}</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Title</th>
+									<th scope="col">Size</th>
+									<th scope="col">Color</th>
+									<th scope="col">Price</th>
+									<th scope="col">Qty</th>
+									<th scope="col">Total price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="prod in item.product_data">
+									<td>{{::prod.name}}</td>
+									<td>{{::prod.size}}</td>
+									<td>
+										<div class="m-1" style="background-color: {{::prod.color}}">{{::prod.color}}</div>
+									</td>
+									<td>{{::prod.price}}</td>
+									<td>{{::prod.qty}}</td>
+									<td>{{::prod.total_price}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<input type="button" value="Close" ng-click="close($index)" class="btn btn-primary">
+						</div>
+						<div class="col-md-3">
+							<input type="button" value="Delete" ng-click="del($index)" class="btn btn-danger">
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+    </div>
+
+
+</div>

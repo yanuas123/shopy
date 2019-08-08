@@ -1,0 +1,165 @@
+<div role="document" class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <form name="product" novalidate>
+            <div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" name="name" placeholder="Title*" autocomplete="off" required ng-model="edit_product.name" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" name="subtitle" placeholder="Subtitle" autocomplete="off" ng-model="edit_product.subtitle" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<select name="category" class="form-control" required ng-model="edit_product.category_name" ng-options="item.name for item in categories">
+							<option value="" disabled selected ng-if="!edit_product.category_name"></option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<select name="brand" class="form-control" required ng-model="edit_product.brand_name" ng-options="item.name for item in brands">
+							<option value="" disabled selected ng-if="!edit_product.brand_name"></option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<textarea name="describe" placeholder="Description" autocomplete="off" ng-model="edit_product.describe" class="form-control"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" name="url" placeholder="url title*" autocomplete="off" required ng-model="edit_product.url" class="form-control">
+					</div>
+				</div>
+				Social networks:
+				<div class="row">
+					<div class="col-md-6">
+						<select name="social_label" class="form-control" ng-model="social_label" ng-change="change_social()">
+							<option value="" selected></option>
+							<option value="{{::item.title}}" ng-repeat="item in edit_product.soc_networks">{{::item.title}}</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<input type="button" value="Save" ng-click="add_social()" class="btn btn-primary">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<input type="text" name="title" placeholder="Title" autocomplete="off" ng-model="edit_social.title" class="form-control">
+					</div>
+					<div class="col-md-6">
+						<input type="text" name="link" placeholder="Link" autocomplete="off" ng-model="edit_social.link" class="form-control">
+					</div>
+					<div class="col-md-3">
+						<input type="text" name="class_name" placeholder="Class Name" autocomplete="off" ng-model="edit_social.class_name" class="form-control">
+					</div>
+				</div>
+				Related products:
+				<div class="row">
+					<div class="col-md-2" ng-repeat="item in edit_product.related_prod">
+						<input type="button" value="Del" ng-click="del_related($index)" class="btn btn-danger">
+						<span>{{::item.name}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<select name="related_p_label" class="form-control" ng-model="related_p_label">
+							<option value="{{item._id}}" ng-repeat="item in products">{{item.name}}</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<input type="button" value="Add related" ng-click="add_related()" class="btn btn-primary">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" name="price" placeholder="Price*" autocomplete="off" required ng-model="edit_product.price" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Color</th>
+								<th scope="col"></th>
+								<th scope="col"></th>
+								<th scope="col">s</th>
+								<th scope="col">m</th>
+								<th scope="col">l</th>
+								<th scope="col">xl</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="color in edit_product.qty">
+								<td>{{color.name}}</td>
+								<td>
+									<div class="m-1 p-2" style="background-color: {{color.hash}}"></div>
+								</td>
+								<td><input type="text" name="sizes_{{color.name}}_any" placeholder="qty" autocomplete="off" ng-model="color.sizes.any" class="form-control" /></td>
+								<td><input type="text" name="sizes_{{color.name}}_s" placeholder="qty" autocomplete="off" ng-model="color.sizes.s" class="form-control" />{{color.sizes.s}}</td>
+								<td><input type="text" name="sizes_{{color.name}}_m" placeholder="qty" autocomplete="off" ng-model="color.sizes.m" class="form-control" />{{color.sizes.m}}</td>
+								<td><input type="text" name="sizes_{{color.name}}_l" placeholder="qty" autocomplete="off" ng-model="color.sizes.l" class="form-control" />{{color.sizes.l}}</td>
+								<td><input type="text" name="sizes_{{color.name}}_xl" placeholder="qty" autocomplete="off" ng-model="color.sizes.xl" class="form-control" />{{color.sizes.xl}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<select name="new_color_label" class="form-control" ng-model="new_color_label">
+							<option value="{{item._id}}" ng-repeat="item in colors">{{item.name}}</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<input type="button" value="Add color" ng-click="add_color()" class="btn btn-primary">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						Main photo: 
+						<input type="button" value="Del" ng-click="del_main_img()" class="btn btn-primary">
+						<span>{{edit_product.main_photo}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2" ng-repeat="item in edit_product.photos">
+						photo: 
+						<input type="button" value="Del" ng-click="del_image(item)" class="btn btn-primary">
+						<span>{{item}}</span>
+					</div>
+				</div>
+
+            </div>
+        </form>
+
+		<!--        form for downloading image of new good to the server-->
+        <form name="file_dw" method="post" enctype="multipart/form-data" action="/upload_file" target="result"> <!-- target for getting image-url without reload -->
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <input type="file" name="upl" id="upl" required class="custom-file-input input-file-height">
+                    <label for="upl" class="form-control">{{file_field}}</label>
+                    <div class="input-group-append">
+                        <button type="submit" ng-disabled="file_dw.upl.$dirty" class="btn btn-info">Send</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <iframe name="result" ng-get-url></iframe> <!-- hidded target for getting url of dowloaded image -->
+
+
+
+        <div class="modal-footer">
+            <span ng-show="product.name.$error.required && product.name.$dirty || product.category.$error.required && product.category.$dirty || product.brand.$error.required && product.brand.$dirty || product.url.$error.required && product.url.$dirty || product.price.$error.required && product.price.$dirty || product.price.$error.required && product.price.$dirty || !edit_product.main_photo">This form contain required fields and end contain empty field!</span>
+            <input type="button" value="Save" data-dismiss="modal" ng-disabled="product.$invalid" ng-click="save()" class="btn btn-primary">
+        </div>
+    </div>
+</div>

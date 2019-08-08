@@ -1,0 +1,28 @@
+<div class="col-md-12" ng-controller="contactsCtrl">
+
+
+    <div class="row">
+        <div class="col-md-12">
+			<h3>{{::data.title}}</h3>
+        </div>
+    </div>
+	<div class="row">
+        <div class="col-md-4">{{data.email}}</div>
+		<div class="col-md-4">{{data.phone}}</div>
+    </div>
+	<div class="row">
+		<div class="col-md-3">{{data.country_name}}</div>
+		<div class="col-md-3">city: {{data.city}}</div>
+		<div class="col-md-3">street: {{data.street}}</div>
+		<div class="col-md-3">house number: {{data.house_number}}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<input type="button" id="contact_popup" value="Edit Contacts" data-toggle="modal" data-target="#modalEditContacts" class="btn btn-primary">
+		</div>
+	</div>
+
+
+	<!--        modal for contact edit-->
+	<div id="modalEditContacts" tabindex="-1" role="dialog" ng-include="'/view/modals/e_contact.html'" class="modal fade"></div>
+</div>

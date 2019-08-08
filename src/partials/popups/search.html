@@ -16,7 +16,7 @@
 				<select name="category" class="select inline-select" data-in="search_categories">
 					<option value="all_categories">all categories</option>
 					@@for ( var i = 0; i < categories.length; i++ ) {
-					<option value="`+categories[i].title+`">`+categories[i].title+`</option>
+					##<option value="`+categories[i].title+`">`+categories[i].title+`</option>##
 					}
 				</select>
 			</div>
@@ -25,7 +25,7 @@
 				<select name="brand" class="select inline-select" data-in="search_brand">
 					<option value="all_brands">all brands</option>
 					@@for ( var i = 0; i < brands.length; i++ ) {
-					<option value="`+brands[i].title+`">`+brands[i].title+`</option>
+					##<option value="`+brands[i].title+`">`+brands[i].title+`</option>##
 					}
 				</select>
 			</div>

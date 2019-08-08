@@ -6,44 +6,44 @@ let html_textes_obj = {
 		{
 			"title": "Man",
 			"name": "category_man",
-			"data_input_prop": "like_radio_category"
+			"data_input_prop": "selector_string-item"
 		},
 		{
 			"title": "Women",
 			"name": "category_women",
-			"data_input_prop": "like_radio_category"
+			"data_input_prop": "selector_string-item"
 		},
 		{
 			"title": "Childrens",
 			"name": "category_children",
-			"data_input_prop": "like_radio_category"
+			"data_input_prop": "selector_string-item"
 		},
 		{
 			"title": "Hot Deals",
 			"name": "category_hot_deals",
-			"data_input_prop": "like_radio_category"
+			"data_input_prop": "selector_string-item"
 		}],
 	/* brands --------------------------------------------------------------- */
 	brands: [
 		{
 			"title": "Reebok",
 			"name": "brand_reebok",
-			"data_input_prop": ""
+			"data_input_prop": "selector_checkbox-item"
 		},
 		{
 			"title": "Addidas",
 			"name": "brand_addidas",
-			"data_input_prop": ""
+			"data_input_prop": "selector_checkbox-item"
 		},
 		{
 			"title": "Nike",
 			"name": "brand_nike",
-			"data_input_prop": ""
+			"data_input_prop": "selector_checkbox-item"
 		},
 		{
 			"title": "Active",
 			"name": "brand_active",
-			"data_input_prop": ""
+			"data_input_prop": "selector_checkbox-item"
 		}],
 	/* products ------------------------------------------------------------- */
 	product_list: [{
@@ -158,22 +158,22 @@ let html_textes_obj = {
 		{
 			"title": "Small",
 			"name": "size_s",
-			"data_input_prop": ""
+			"data_input_prop": "selector_checkbox-item"
 		},
 		{
 			"title": "Midum",
 			"name": "size_m",
-			"data_input_prop": ""
+			"data_input_prop": "selector_checkbox-item"
 		},
 		{
 			"title": "Larg",
 			"name": "size_l",
-			"data_input_prop": ""
+			"data_input_prop": "selector_checkbox-item"
 		},
 		{
 			"title": "X Larg",
 			"name": "size_xl",
-			"data_input_prop": ""
+			"data_input_prop": "selector_checkbox-item"
 		}],
 	/* price range ---------------------------------------------------------- */
 	price_range_prop: [{

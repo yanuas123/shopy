@@ -31,11 +31,11 @@
 			<div class="row">
 				<div class="col-sm-8">
 					<div class="d-flex contacts-wrap">
-						<div class="contact" id="contact_email_info">
+						<div class="contact" data-in="contact_email_info">
 	<div class="icon icon-color-custom ico_mail"></div>
 	<div class="contact_text">info@shopy.com</div>
 </div>
-<div class="contact" id="contact_tel_info">
+<div class="contact" data-in="contact_tel_info">
 	<div class="icon icon-color-custom ico_phone"></div>
 	<div class="contact_text">453 - 5553 - 996</div>
 </div>
@@ -86,8 +86,8 @@
 				<div class="col-5 col-sm-6 col-md-2 d-flex justify-content-end header_bottom_right-wrap">
 					<div class="header_bottom_right">
 						<button type="button" class="btn-icon icon-color-custom ico_search" data-popup-init="search"></button>
-						<button type="button" class="btn-icon icon-color-custom ico_user"></button>
-						<div class="cart-button active">
+						<button type="button" class="btn-icon icon-color-custom ico_user" id="user_auth_mark"></button>
+						<div class="cart-button active" id="cart_icon_wrap">
 							<div class="cart-qty" id="cart_qty">1</div>
 							<button type="button" class="btn-icon icon-color-custom ico_cart"></button>
 						</div>
@@ -110,56 +110,80 @@
 	<div class="desc-gallery_images-wrap">
 		<div class="desc-gallery_images" id="product_gallery">
 			
-			<div class="desc-gallery_image" data-product-gallery-item>
-				<img src="images/images/good1.png" alt="" />
+			<div class="desc-gallery_image" data-product-gallery-item data-in="prod_gallery_item">
+				<div class="wrap-image-slide">
+					<img src="images/images/good1.png" alt="" data-in="prod_gallery_item_img" />
+				</div>
 			</div>
 			
-			<div class="desc-gallery_image" data-product-gallery-item>
-				<img src="images/images/good2.png" alt="" />
+			<div class="desc-gallery_image" data-product-gallery-item data-in="prod_gallery_item">
+				<div class="wrap-image-slide">
+					<img src="images/images/good2.png" alt="" data-in="prod_gallery_item_img" />
+				</div>
 			</div>
 			
-			<div class="desc-gallery_image" data-product-gallery-item>
-				<img src="images/images/good3.png" alt="" />
+			<div class="desc-gallery_image" data-product-gallery-item data-in="prod_gallery_item">
+				<div class="wrap-image-slide">
+					<img src="images/images/good3.png" alt="" data-in="prod_gallery_item_img" />
+				</div>
 			</div>
 			
-			<div class="desc-gallery_image" data-product-gallery-item>
-				<img src="images/images/good1.png" alt="" />
+			<div class="desc-gallery_image" data-product-gallery-item data-in="prod_gallery_item">
+				<div class="wrap-image-slide">
+					<img src="images/images/good1.png" alt="" data-in="prod_gallery_item_img" />
+				</div>
 			</div>
 			
-			<div class="desc-gallery_image" data-product-gallery-item>
-				<img src="images/images/good1.png" alt="" />
+			<div class="desc-gallery_image" data-product-gallery-item data-in="prod_gallery_item">
+				<div class="wrap-image-slide">
+					<img src="images/images/good1.png" alt="" data-in="prod_gallery_item_img" />
+				</div>
 			</div>
 			
-			<div class="desc-gallery_image" data-product-gallery-item>
-				<img src="images/images/good3.png" alt="" />
+			<div class="desc-gallery_image" data-product-gallery-item data-in="prod_gallery_item">
+				<div class="wrap-image-slide">
+					<img src="images/images/good3.png" alt="" data-in="prod_gallery_item_img" />
+				</div>
 			</div>
 			
 		</div>
 	</div>
 	<div class="desc-gallery_images-nav" id="product_gallery_nav">
 		
-		<div class="desc-gallery_image-nav">
-			<img src="../images/images/goodp2.png" alt="" />
+		<div class="desc-gallery_image-nav" data-in="prod_gallery_nav">
+			<div class="wrap-image-nav">
+				<img src="../images/images/goodp2.png" alt="" data-in="prod_gallery_nav_img" />
+			</div>
 		</div>
 		
-		<div class="desc-gallery_image-nav">
-			<img src="../images/images/goodp3.png" alt="" />
+		<div class="desc-gallery_image-nav" data-in="prod_gallery_nav">
+			<div class="wrap-image-nav">
+				<img src="../images/images/goodp3.png" alt="" data-in="prod_gallery_nav_img" />
+			</div>
 		</div>
 		
-		<div class="desc-gallery_image-nav">
-			<img src="../images/images/goodp4.png" alt="" />
+		<div class="desc-gallery_image-nav" data-in="prod_gallery_nav">
+			<div class="wrap-image-nav">
+				<img src="../images/images/goodp4.png" alt="" data-in="prod_gallery_nav_img" />
+			</div>
 		</div>
 		
-		<div class="desc-gallery_image-nav">
-			<img src="../images/images/goodp2.png" alt="" />
+		<div class="desc-gallery_image-nav" data-in="prod_gallery_nav">
+			<div class="wrap-image-nav">
+				<img src="../images/images/goodp2.png" alt="" data-in="prod_gallery_nav_img" />
+			</div>
 		</div>
 		
-		<div class="desc-gallery_image-nav">
-			<img src="../images/images/goodp3.png" alt="" />
+		<div class="desc-gallery_image-nav" data-in="prod_gallery_nav">
+			<div class="wrap-image-nav">
+				<img src="../images/images/goodp3.png" alt="" data-in="prod_gallery_nav_img" />
+			</div>
 		</div>
 		
-		<div class="desc-gallery_image-nav">
-			<img src="../images/images/goodp4.png" alt="" />
+		<div class="desc-gallery_image-nav" data-in="prod_gallery_nav">
+			<div class="wrap-image-nav">
+				<img src="../images/images/goodp4.png" alt="" data-in="prod_gallery_nav_img" />
+			</div>
 		</div>
 		
 	</div>
@@ -167,24 +191,37 @@
 					</div>
 					<div class="product_describe" id="product_describe_pg">
 						<div class="product_describe-block">
-							<h1 data-in="product_title">FULL WINTER KIT</h1>
+							<h1 data-in="product_name">FULL WINTER KIT</h1>
 							<div class="product_subtitle" data-in="product_subtitle">Half Jacket + Skiny Trousers + Boot leather</div>
 							<p data-in="product_describe">Lorem Ipsum is simply dummy text of the printing and typesetting industry<br>Lorem Ipsum is simply dummy text of the printing<br>and typesetting industry</p>
 						</div>
 						<div class="product_prop-block">
-							<div class="product_prop-block_half">
+							<div class="product_prop-block_half" data-in="product_sizing">
 								<div class="prop-sizing">
 	<span>Choos Size</span>
-	<div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div>
+	<div class="sizing">
+	<div class="size-btn_wrap" data-in="product_size_s">
+		<button type="button" class="text-btn_black">s</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_m">
+		<button type="button" class="text-btn_black">m</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_l">
+		<button type="button" class="text-btn_black">l</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_xl">
+		<button type="button" class="text-btn_black">xl</button>
+	</div>
+</div>
 </div>
 							</div>
 							<div class="product_prop-block_half">
 								<div class="prop-counter">
 	<span>Choos Quantity</span>
-	<div class="counter">
-	<button type="button" class="text-btn_black" id="product_plus_qty">+</button>
-	<span class="target_qty" id="product_target_qty">3</span>
-	<button type="button" class="text-btn_black" id="product_minus_qty">-</button>
+	<div class="counter" data-in="counter">
+	<button type="button" class="text-btn_black" data-count-qty="product_plus_qty">+</button>
+	<span class="target_qty" data-count-qty="product_target_qty">3</span>
+	<button type="button" class="text-btn_black" data-count-qty="product_minus_qty">-</button>
 </div>
 </div>
 							</div>
@@ -197,7 +234,7 @@
 	<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
 	<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 </div>
-								<button type="button" class="btn order_btn" data-in="product_tocart"><span>Order Now</span></button>
+								<button type="button" class="btn order_btn" data-in="product_ordercart"><span>Order Now</span></button>
 							</div>
 						</div>
 					</div>
@@ -221,7 +258,7 @@
 		
 	</div>
 	<div class="container-fluid big-items">
-	<div class="row align-items-md-stretch">
+	<div class="row align-items-md-stretch justify-content-center" data-in="prod_items_block">
 		
 	<div class="col-md-3" data-in="product_item_big">
 		<div class="product-item_big">
@@ -229,11 +266,24 @@
 				<img src="images/images/good1.png" alt="" data-in="product_image" />
 			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<a href="product.html" class="product-item_name" data-in="product_url"><span data-in="product_name">Reebok Track Jacket</span></a>
 			<div class="product-item_price plain-price"><span data-in="product_price">120</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
+				<div class="product-item_size_wrap" data-in="product_sizing"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing">
+	<div class="size-btn_wrap" data-in="product_size_s">
+		<button type="button" class="text-btn_black">s</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_m">
+		<button type="button" class="text-btn_black">m</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_l">
+		<button type="button" class="text-btn_black">l</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_xl">
+		<button type="button" class="text-btn_black">xl</button>
+	</div>
+</div></div>
+				<div class="product-item_color-choose_wrap" data-in="product_color"><div class="color-choose" data-in="color_choose">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -256,11 +306,24 @@
 				<img src="images/images/good2.png" alt="" data-in="product_image" />
 			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<a href="product.html" class="product-item_name" data-in="product_url"><span data-in="product_name">Reebok Track Jacket</span></a>
 			<div class="product-item_price plain-price"><span data-in="product_price">100</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
+				<div class="product-item_size_wrap" data-in="product_sizing"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing">
+	<div class="size-btn_wrap" data-in="product_size_s">
+		<button type="button" class="text-btn_black">s</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_m">
+		<button type="button" class="text-btn_black">m</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_l">
+		<button type="button" class="text-btn_black">l</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_xl">
+		<button type="button" class="text-btn_black">xl</button>
+	</div>
+</div></div>
+				<div class="product-item_color-choose_wrap" data-in="product_color"><div class="color-choose" data-in="color_choose">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -283,11 +346,24 @@
 				<img src="images/images/good3.png" alt="" data-in="product_image" />
 			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<a href="product.html" class="product-item_name" data-in="product_url"><span data-in="product_name">Reebok Track Jacket</span></a>
 			<div class="product-item_price plain-price"><span data-in="product_price">150</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
+				<div class="product-item_size_wrap" data-in="product_sizing"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing">
+	<div class="size-btn_wrap" data-in="product_size_s">
+		<button type="button" class="text-btn_black">s</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_m">
+		<button type="button" class="text-btn_black">m</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_l">
+		<button type="button" class="text-btn_black">l</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_xl">
+		<button type="button" class="text-btn_black">xl</button>
+	</div>
+</div></div>
+				<div class="product-item_color-choose_wrap" data-in="product_color"><div class="color-choose" data-in="color_choose">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -310,11 +386,24 @@
 				<img src="images/images/good1.png" alt="" data-in="product_image" />
 			</a>
 		<div class="product-item_big_description">
-			<a href="product.html" data-in="product_name" class="product-item_name">Reebok Track Jacket</a>
+			<a href="product.html" class="product-item_name" data-in="product_url"><span data-in="product_name">Reebok Track Jacket</span></a>
 			<div class="product-item_price plain-price"><span data-in="product_price">320</span>$</div>
 			<div class="product-item_choose-block">
-				<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing" data-in="product_sizing"><button type="button" class="text-btn_black" data-in="product_size_s">s</button> - <button type="button" class="text-btn_black" data-in="product_size_m">m</button> - <button type="button" class="text-btn_black" data-in="product_size_l">l</button> - <button type="button" class="text-btn_black" data-in="product_size_xl">xl</button></div></div>
-				<div class="product-item_color-choose_wrap"><div class="color-choose" data-in="product_color">
+				<div class="product-item_size_wrap" data-in="product_sizing"><span>size</span><span class="product-item_size_wide-space">:</span><div class="sizing">
+	<div class="size-btn_wrap" data-in="product_size_s">
+		<button type="button" class="text-btn_black">s</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_m">
+		<button type="button" class="text-btn_black">m</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_l">
+		<button type="button" class="text-btn_black">l</button>
+	</div>
+	<div class="size-btn_wrap" data-in="product_size_xl">
+		<button type="button" class="text-btn_black">xl</button>
+	</div>
+</div></div>
+				<div class="product-item_color-choose_wrap" data-in="product_color"><div class="color-choose" data-in="color_choose">
 	<button type="button" class="color-circle color-red"></button>
 	<button type="button" class="color-circle color-black"></button>
 	<button type="button" class="color-circle color-blue"></button>
@@ -409,6 +498,16 @@
 		<div class="loader" id="loader">
 			<span class="loader_ico"></span>
 		</div>
+		<div class="local-popup-wrap" id="local_popup_parent">
+
+	<!-- Logout popup -->
+	<div class="local-popup hidden" id="logout_popup">
+		<div class="logout-popup">
+			<button type="button" class="btn" id="logout_btn">LOG OUT</button>
+		</div>
+	</div>
+
+</div>
 		<div class="tooltip hidden-tooltip" id="tooltip"></div>
 		<!-- POPUP's block -->
 <div class="popup-wrap animate-popup" id="popups">
@@ -427,7 +526,7 @@
 			
 			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="images/images/good1.png" alt="" data-in="cartitem_image" />
+					<img src="images/images/good1.png" alt="" data-in="cartitem_image" class="cart-img" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
@@ -456,7 +555,11 @@
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter" data-in="cartitem_qty">2</span>
+								<div class="counter" data-in="counter">
+	<button type="button" class="text-btn_black" data-count-qty="product_plus_qty">+</button>
+	<span class="target_qty" data-count-qty="product_target_qty">3</span>
+	<button type="button" class="text-btn_black" data-count-qty="product_minus_qty">-</button>
+</div>
 							</div>
 						</div>
 					</div>
@@ -473,7 +576,7 @@
 			
 			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="images/images/good2.png" alt="" data-in="cartitem_image" />
+					<img src="images/images/good2.png" alt="" data-in="cartitem_image" class="cart-img" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
@@ -502,7 +605,11 @@
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter" data-in="cartitem_qty">1</span>
+								<div class="counter" data-in="counter">
+	<button type="button" class="text-btn_black" data-count-qty="product_plus_qty">+</button>
+	<span class="target_qty" data-count-qty="product_target_qty">3</span>
+	<button type="button" class="text-btn_black" data-count-qty="product_minus_qty">-</button>
+</div>
 							</div>
 						</div>
 					</div>
@@ -519,7 +626,7 @@
 			
 			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="images/images/good3.png" alt="" data-in="cartitem_image" />
+					<img src="images/images/good3.png" alt="" data-in="cartitem_image" class="cart-img" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
@@ -548,7 +655,11 @@
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter" data-in="cartitem_qty">1</span>
+								<div class="counter" data-in="counter">
+	<button type="button" class="text-btn_black" data-count-qty="product_plus_qty">+</button>
+	<span class="target_qty" data-count-qty="product_target_qty">3</span>
+	<button type="button" class="text-btn_black" data-count-qty="product_minus_qty">-</button>
+</div>
 							</div>
 						</div>
 					</div>
@@ -565,7 +676,7 @@
 			
 			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="images/images/good1.png" alt="" data-in="cartitem_image" />
+					<img src="images/images/good1.png" alt="" data-in="cartitem_image" class="cart-img" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
@@ -594,7 +705,11 @@
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter" data-in="cartitem_qty">3</span>
+								<div class="counter" data-in="counter">
+	<button type="button" class="text-btn_black" data-count-qty="product_plus_qty">+</button>
+	<span class="target_qty" data-count-qty="product_target_qty">3</span>
+	<button type="button" class="text-btn_black" data-count-qty="product_minus_qty">-</button>
+</div>
 							</div>
 						</div>
 					</div>
@@ -611,8 +726,8 @@
 			
 		</div>
 	</div>
-	<div class="d-flex justify-content-center pt-4 pb-2" id="popup_cart_confirm">
-		<button class="btn" type="button" data-popup-init="confirm_registered">Confirm</button>
+	<div class="d-flex justify-content-center pt-4 pb-2">
+		<button class="btn" type="button" id="popup_cart_confirm">Confirm</button>
 	</div>
 </div>
 				<!-- Confirmation registered popup -->
@@ -690,7 +805,7 @@
 						
 						<option value="my address 1">my address 1</option>
 						
-						<option value="add new address">add new address</option>
+						<option value="add_new_address">add new address</option>
 					</select>
 				</div>
 			</div>
@@ -704,7 +819,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="input-parent">
-						<select name="country-name" class="select placeholder" required>
+						<select name="country_name" class="select placeholder" required>
 							<option value="" selected disabled>Country*</option>
 							
 							<option value="Polen">Polen</option>
@@ -752,14 +867,14 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="input-parent">
-						<input class="input" type="text" name="given-name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+						<input class="input" type="text" name="first_name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 						<div class="text-empty">This field is required!</div>
 						<div class="text-invalid">This field contains incorrect symbols!</div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="input-parent">
-						<input class="input" type="text" name="family-name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+						<input class="input" type="text" name="last_name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 						<div class="text-empty">This field is required!</div>
 						<div class="text-invalid">This field contains incorrect symbols!</div>
 					</div>
@@ -811,9 +926,9 @@
 				<!-- Login popup -->
 <div class="popup-window popup-retreat popup-login" data-popup-targ="login">
 	<div class="h5">Log in</div>
-	<form name="log_in" class="d-flex flex-column align-items-center" autocomplete="on" novalidate>
+	<form name="log_in" method="post" action="login" class="d-flex flex-column align-items-center" autocomplete="on" novalidate>
 		<div class="input-parent align-items-center">
-			<input class="input" type="email" name="email" placeholder="Email*" required />
+			<input class="input" type="email" name="username" placeholder="Email*" required />
 			<div class="text-empty">Type your email address!</div>
 			<div class="text-invalid">Email adress is invalid!</div>
 		</div>
@@ -828,7 +943,7 @@
 			<label for="log_in_remember" class="label">Remember me</label>
 		</div>
 		<div class="d-flex justify-content-center pt-4 pb-2">
-			<input class="btn" name="submit" type="submit" value="Log in" />
+			<input class="btn" name="submit" type="submit" value="Log in" id="login_submit" />
 		</div>
 		<div class="pt-4 align-self-start">
 			<button type="button" class="text-btn_black underline" data-popup-init="forgot_password">Forgot password</button>
@@ -1029,12 +1144,12 @@
 			
 		</div>
 		<div id="popup_search_load" class="hidden">
-			<div class="container-fluid">
+			<div class="container-fluid" data-in="load_more_block">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="load-more">
-				<button type="button" class="btn-icon icon-color-custom icon-color-start ico_load" id="load_search_results"></button>
-			</div>
+			<button type="button" class="load-more" id="load_search_results">
+				<span class="btn-icon icon-color-custom icon-color-start ico_load"></span>
+			</button>
 		</div>
 	</div>
 </div>
@@ -1068,7 +1183,7 @@
 				</div>
 				<div class="col-md-6">
 					<div class="input-parent">
-						<input class="input" type="tel" name="tel" placeholder="Phone" disabled />
+						<input class="input" type="tel" name="phone" placeholder="Phone" />
 						<div class="text-invalid">Phone number is invalid!</div>
 					</div>
 				</div>
@@ -1149,14 +1264,14 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="input-parent">
-							<input class="input" type="text" name="given-name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+							<input class="input" type="text" name="first_name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 							<div class="text-empty">This field is required!</div>
 							<div class="text-invalid">This field contains incorrect symbols!</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="input-parent">
-							<input class="input" type="text" name="family-name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+							<input class="input" type="text" name="last_name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 							<div class="text-empty">This field is required!</div>
 							<div class="text-invalid">This field contains incorrect symbols!</div>
 						</div>
@@ -1187,6 +1302,8 @@
 </div>
 		<script src="plugins/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="plugins/js/slick.min.js"></script>
+<script src="js/coockie.js"></script>
 <script src="js/index.js"></script>
+<script src="js/test.js"></script>
 	</body>
 </html>

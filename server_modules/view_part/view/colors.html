@@ -1,0 +1,39 @@
+<div class="col-md-12" ng-controller="colorsCtrl">
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<div ng-repeat="item in data" class="row">
+				<div class="col-md-12">
+
+
+
+					<div class="row top-space">
+						<div class="col-md-3">
+							<h3>{{::item.name}}</h3>
+						</div>
+						<div class="col-md-3">
+							<span>title: {{::item.title}}</span>
+						</div>
+						<div class="col-md-3">
+							<span style="background-color: {{::item.hash}}">{{::item.hash}}</span>
+						</div>
+						<div class="col-md-3">
+							<span>class name: {{::item.class_name}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<input type="button" value="New color" ng-click="create()" class="btn btn-primary">
+				</div>
+			</div>
+		</div>
+    </div>
+
+
+	<!--        modal for Color edit-->
+	<div id="modalEditColor" tabindex="-1" role="dialog" ng-include="'/view/modals/a_colors.html'" class="modal fade"></div>
+</div>

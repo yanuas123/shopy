@@ -1,0 +1,55 @@
+<div class="col-md-12" ng-controller="mainsliderCtrl">
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<div ng-repeat="item in slides" class="row">
+				<div class="col-md-12">
+
+
+					<div class="row top-space">
+						<div class="col-md-6">
+							<h3>{{::item.title}}</h3>
+						</div>
+					</div>
+					<div class="row" ng-if="item.subtitle">
+						<div class="col-md-12">{{::item.subtitle}}</div>
+					</div>
+					<div class="row" ng-if="item.describe">
+						<div class="col-md-12">{{::item.describe}}</div>
+					</div>
+					<div class="row" ng-if="item.price">
+						<div class="col-md-6">Price: {{::item.price}}</div>
+					</div>
+					<div class="row" ng-if="item.type_info">
+						<div class="col-md-6">Connect data from: {{::item.type_info}}</div>
+						<div class="col-md-6">{{::item.related}}</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<img src="{{::item.image}}" alt="" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3">
+							<input type="button" value="Close" ng-click="edit($index)" class="btn btn-primary">
+						</div>
+						<div class="col-md-3">
+							<input type="button" value="Delete" ng-click="del($index)" class="btn btn-danger">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<input type="button" value="New slide" ng-click="create()" class="btn btn-primary">
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<!--        modal for Main Slider edit-->
+	<div id="modalEditMainslider" tabindex="-1" role="dialog" ng-include="'/modals/a_mainslider.html'" class="modal fade"></div>
+</div>

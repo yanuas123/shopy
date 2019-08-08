@@ -123,7 +123,9 @@ export class RangeFilter {
 	private _active_top_point: boolean;
 	private _active_bottom_point: boolean;
 
-	constructor(block_id: string, err_msg?: RangeErrMsg, properties?: RangeProp, DOM_selectors?: rangeDQS) {
+	callback_func?: Function;
+
+	constructor(block_id: string, properties?: RangeProp, callback?: Function, err_msg?: RangeErrMsg, DOM_selectors?: rangeDQS) {
 		this.wrap_el = document.getElementById(block_id);
 		this.default_val = RANGE_DEFAULTS;
 
@@ -135,6 +137,7 @@ export class RangeFilter {
 			precision: rangeDefQuerySelectors.precision
 		};
 		this._prop = properties || prop;
+		if(callback) this.callback_func = callback;
 
 		this.DOM = {
 			range_space: this.wrap_el.querySelector((DOM_selectors && DOM_selectors.range_space) || rangeDefQuerySelectors.range_space),
@@ -294,6 +297,7 @@ export class RangeFilter {
 					valid_msg = this.error_msg.value_bottom;
 				} else {
 					this.setTop(num_val);
+					this.callback_func();
 				}
 			} else if(side == "bottom") {
 				if(num_val < this._prop.limit_bottom) {
@@ -304,6 +308,7 @@ export class RangeFilter {
 					valid_msg = this.error_msg.value_top;
 				} else {
 					this.setBottom(num_val);
+					this.callback_func();
 				}
 			}
 		}
@@ -350,6 +355,7 @@ export class RangeFilter {
 			this.wrap_el.onmousemove = undefined;
 			this.wrap_el.onmouseleave = undefined;
 			this._active_top_point = false;
+			this.callback_func();
 		}
 	}
 	mouseDownBottom(e: MouseEvent): void {
@@ -375,6 +381,7 @@ export class RangeFilter {
 			this.wrap_el.onmousemove = undefined;
 			this.wrap_el.onmouseleave = undefined;
 			this._active_bottom_point = false;
+			this.callback_func();
 		}
 	}
 	public launchModule(): void {

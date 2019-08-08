@@ -5,7 +5,7 @@
 			@@for ( var i = 0; i < 4; i++ ) {
 			<div class="row my-5" data-in="cartitem">
 				<div class="col-md-3">
-					<img src="`+product_list[i].image_src+`" alt="" data-in="cartitem_image" />
+					<img src="`+product_list[i].image_src+`" alt="" data-in="cartitem_image" class="cart-img" />
 				</div>
 				<div class="col-md-8">
 					<div class="row">
@@ -34,7 +34,7 @@
 						<div class="col-md-6 d-flex justify-content-md-end">
 							<div class="prop-counter">
 								<span>Quantity: </span>
-								<span class="counter" data-in="cartitem_qty">`+product_list[i].quantity+`</span>
+								@@include('../unit-templates/product/quantity.html')
 							</div>
 						</div>
 					</div>
@@ -51,7 +51,7 @@
 			}
 		</div>
 	</div>
-	<div class="d-flex justify-content-center pt-4 pb-2" id="popup_cart_confirm">
-		<button class="btn" type="button" data-popup-init="confirm_registered">Confirm</button>
+	<div class="d-flex justify-content-center pt-4 pb-2">
+		<button class="btn" type="button" id="popup_cart_confirm">Confirm</button>
 	</div>
 </div>

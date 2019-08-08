@@ -2,16 +2,20 @@
 	<div class="desc-gallery_images-wrap">
 		<div class="desc-gallery_images" id="product_gallery">
 			@@for ( var i = 0; i < 6; i++ ) {
-			<div class="desc-gallery_image" data-product-gallery-item>
-				<img src="`+product_list[i].image_src+`" alt="" />
+			<div class="desc-gallery_image" data-product-gallery-item data-in="prod_gallery_item">
+				<div class="wrap-image-slide">
+					<img src="`+product_list[i].image_src+`" alt="" data-in="prod_gallery_item_img" />
+				</div>
 			</div>
 			}
 		</div>
 	</div>
 	<div class="desc-gallery_images-nav" id="product_gallery_nav">
 		@@for ( var i = 0; i < nav_images.length; i++ ) {
-		<div class="desc-gallery_image-nav">
-			<img src="`+nav_images[i]+`" alt="" />
+		<div class="desc-gallery_image-nav" data-in="prod_gallery_nav">
+			<div class="wrap-image-nav">
+				<img src="`+nav_images[i]+`" alt="" data-in="prod_gallery_nav_img" />
+			</div>
 		</div>
 		}
 	</div>

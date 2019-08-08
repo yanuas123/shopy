@@ -14,51 +14,62 @@ export type ajax_content_type = "text" | "json";
 export interface postReqObj {
 	action: string;
 	data: any;
+	responsType?: string;
+	contect_type?: string;
+	content_type_val?: string;
 
 	callbacks?: {
-		error?(error_desc: string): void; // status error
-		network_error?(): void; // readyState error
-		success?(data: any): void; // success function
+		error?(error_desc: string, status: number): void; // status error
+		success?(data: any, status: number): void; // success function
 		code_succ?: { // functions that perform if match to success codes
-			[item: number]: (data: any) => void;
+			[item: number]: (data: any, status: number) => void;
 		}
 	}
 }
 export interface getReqObj {
 	action: string;
+	parameters?: {
+		[item: string]: string
+	};
+	responsType?: string;
+	contect_type?: string;
+	content_type_val?: string;
 
 	callbacks?: {
-		error?(error_desc: string): void;
-		network_error?(): void;
-		success?(data: any): void;
+		error?(error_desc: string, status: number): void;
+		success?(data: any, status: number): void;
 		code_succ?: {
-			[item: number]: (data: any) => void;
+			[item: number]: (data: any, status: number) => void;
 		}
 	}
 }
 export interface putReqObj {
 	action: string;
 	data: any;
+	responsType?: string;
+	contect_type?: string;
+	content_type_val?: string;
 
 	callbacks?: {
-		error?(error_desc: string): void;
-		network_error?(): void;
-		success?(data: any): void;
+		error?(error_desc: string, status: number): void;
+		success?(data: any, status: number): void;
 		code_succ?: {
-			[item: number]: (data: any) => void;
+			[item: number]: (data: any, status: number) => void;
 		}
 	}
 }
 export interface delReqObj {
 	action: string;
 	data: any;
+	responsType?: string;
+	contect_type?: string;
+	content_type_val?: string;
 
 	callbacks?: {
-		error?(error_desc: string): void;
-		network_error?(): void;
-		success?(data: any): void;
+		error?(error_desc: string, status: number): void;
+		success?(data: any, status: number): void;
 		code_succ?: {
-			[item: number]: (data: any) => void;
+			[item: number]: (data: any, status: number) => void;
 		}
 	}
 }
@@ -91,8 +102,7 @@ export interface ajax_prop {
 		};
 	};
 	callbacks: {
-		error(error_desc: string): void;
-		network_error(): void;
+		error(error_desc: string, status: number): void;
 	}
 }
 // default properties
@@ -128,24 +138,14 @@ const DEF_PROP: ajax_prop = {
 		}
 	},
 	callbacks: {
-		error: (error_desc: string) => {
+		error: (error_desc: string, status: number) => {
 			let el = document.getElementById("info_popup_text");
-			let div = document.createElement("<div>");
+			let div = document.createElement("div");
 			div.classList.add("text_important");
-			div.innerText = "error_desc";
+			div.innerText = error_desc;
 			el.innerHTML = "";
 			el.appendChild(div);
 			Popup.open("information");
-		},
-		network_error: () => {
-			let el = document.getElementById("info_popup_text");
-			let div = document.createElement("<div>");
-			div.classList.add("text_important");
-			div.innerText = "Network error!";
-			el.innerHTML = "";
-			el.appendChild(div);
-			Popup.open("information");
-			console.error("Network error!");
 		}
 	}
 };
@@ -158,18 +158,23 @@ interface req_fabric_obj {
 	action: string;
 	type?: "text/plain" | "application/json";
 	data?: any;
+	param?: {
+		[item: string]: string
+	};
+	responsType?: string;
+	contect_type?: string;
+	content_type_val?: string;
 
 	callbacks: {
-		error(error_desc: string): void;
-		network_error(): void;
-		success?(data: any): void;
+		error(error_desc: string, status: number): void;
+		success?(data: any, status: number): void;
 		code_succ: {
-			[item: number]: (data: any) => void;
+			[item: number]: (data: any, status: number) => void;
 		}
 	}
 }
 
-class HttpRequest {
+export class HttpRequest {
 	readonly prop: ajax_prop;
 
 	constructor() {
@@ -179,6 +184,17 @@ class HttpRequest {
 	private req_fabric(prop: req_fabric_obj): void {
 		let xhr = new XMLHttpRequest();
 		let req_class = this;
+		if(prop.param) {
+			let param = "";
+			let first = true;
+			for(let key in prop.param) {
+				if(first) param += "?";
+				else param += "&";
+				param += (key + "=" + prop.param[key]);
+				first = false;
+			}
+			prop.action += param;
+		}
 		if(prop.data) {
 			if(typeof prop.data != "string") {
 				prop.data = JSON.stringify(prop.data);
@@ -187,26 +203,26 @@ class HttpRequest {
 		}
 
 		xhr.onreadystatechange = function() {
-			if(xhr.readyState !== 4) {
-				prop.callbacks.network_error();
-				return;
-			}
-			if(!req_class.prop.status_desc.succ[xhr.status]) {
-				console.error(xhr.status + ":" + (xhr.statusText || req_class.prop.status_desc.error[xhr.status]));
-				prop.callbacks.error("Server error: " + (xhr.statusText || req_class.prop.status_desc.error[xhr.status]));
-			}
-			else {
-				let data;
-				if(xhr.responseType == "json") data = JSON.parse(xhr.responseText);
-				else data = xhr.responseText;
+			if(xhr.readyState == 4) {
+				if(!req_class.prop.status_desc.succ[xhr.status]) {
+					console.error(xhr.status + ":" + (xhr.statusText || req_class.prop.status_desc.error[xhr.status]));
+					prop.callbacks.error("Server error: " + (xhr.statusText || req_class.prop.status_desc.error[xhr.status]), xhr.status);
+				}
+				else {
+					let data;
+					if(prop.responsType && prop.responsType == "json" && xhr.responseText) {
+						if(JSON.parse(xhr.responseText)) data = JSON.parse(xhr.responseText);
+					}
+					else data = xhr.responseText;
 
-				if(prop.callbacks.code_succ[xhr.status]) prop.callbacks.code_succ[xhr.status](data);
-				if(prop.callbacks.success) prop.callbacks.success(data);
+					if(prop.callbacks.code_succ && prop.callbacks.code_succ[xhr.status]) prop.callbacks.code_succ[xhr.status](data, xhr.status);
+					if(prop.callbacks.success) prop.callbacks.success(data, xhr.status);
+				}
 			}
 		};
 
 		xhr.open(prop.method, prop.action, true);
-		xhr.setRequestHeader(this.prop.content_type.name, prop.type);
+		xhr.setRequestHeader(prop.contect_type || this.prop.content_type.name, prop.content_type_val || prop.type);
 		if(prop.data) xhr.send(prop.data);
 		else xhr.send();
 	}
@@ -217,18 +233,26 @@ class HttpRequest {
 		if(prop.callbacks) {
 			callbacks = {
 				error: prop.callbacks.error || undefined,
-				network_error: prop.callbacks.network_error || undefined,
 				success: prop.callbacks.success || undefined,
 				code_succ: prop.callbacks.code_succ || undefined
+			};
+		}
+		if(!callbacks) {
+			callbacks = {
+				error: this.prop.callbacks.error
 			};
 		}
 		let new_prop: req_fabric_obj = {
 			method: "GET",
 			action: prop.action,
+			param: prop.parameters || undefined,
+			responsType: prop.responsType,
+			contect_type: prop.contect_type || undefined,
+			content_type_val: prop.content_type_val || undefined,
+
 
 			callbacks: {
 				error: callbacks.error || this.prop.callbacks.error,
-				network_error: callbacks.network_error || this.prop.callbacks.network_error,
 				success: callbacks.success,
 				code_succ: callbacks.code_succ
 			}
@@ -240,19 +264,25 @@ class HttpRequest {
 		if(prop.callbacks) {
 			callbacks = {
 				error: prop.callbacks.error || undefined,
-				network_error: prop.callbacks.network_error || undefined,
 				success: prop.callbacks.success || undefined,
 				code_succ: prop.callbacks.code_succ || undefined
+			};
+		}
+		if(!callbacks) {
+			callbacks = {
+				error: this.prop.callbacks.error
 			};
 		}
 		let new_prop: req_fabric_obj = {
 			method: "POST",
 			action: prop.action,
 			data: prop.data,
+			responsType: prop.responsType,
+			contect_type: prop.contect_type || undefined,
+			content_type_val: prop.content_type_val || undefined,
 
 			callbacks: {
 				error: callbacks.error || this.prop.callbacks.error,
-				network_error: callbacks.network_error || this.prop.callbacks.network_error,
 				success: callbacks.success,
 				code_succ: callbacks.code_succ
 			}
@@ -264,19 +294,25 @@ class HttpRequest {
 		if(prop.callbacks) {
 			callbacks = {
 				error: prop.callbacks.error || undefined,
-				network_error: prop.callbacks.network_error || undefined,
 				success: prop.callbacks.success || undefined,
 				code_succ: prop.callbacks.code_succ || undefined
+			};
+		}
+		if(!callbacks) {
+			callbacks = {
+				error: this.prop.callbacks.error
 			};
 		}
 		let new_prop: req_fabric_obj = {
 			method: "PUT",
 			action: prop.action,
 			data: prop.data,
+			responsType: prop.responsType,
+			contect_type: prop.contect_type || undefined,
+			content_type_val: prop.content_type_val || undefined,
 
 			callbacks: {
 				error: callbacks.error || this.prop.callbacks.error,
-				network_error: callbacks.network_error || this.prop.callbacks.network_error,
 				success: callbacks.success,
 				code_succ: callbacks.code_succ
 			}
@@ -288,19 +324,25 @@ class HttpRequest {
 		if(prop.callbacks) {
 			callbacks = {
 				error: prop.callbacks.error || undefined,
-				network_error: prop.callbacks.network_error || undefined,
 				success: prop.callbacks.success || undefined,
 				code_succ: prop.callbacks.code_succ || undefined
+			};
+		}
+		if(!callbacks) {
+			callbacks = {
+				error: this.prop.callbacks.error
 			};
 		}
 		let new_prop: req_fabric_obj = {
 			method: "DELETE",
 			action: prop.action,
 			data: prop.data,
+			responsType: prop.responsType,
+			contect_type: prop.contect_type || undefined,
+			content_type_val: prop.content_type_val || undefined,
 
 			callbacks: {
 				error: callbacks.error || this.prop.callbacks.error,
-				network_error: callbacks.network_error || this.prop.callbacks.network_error,
 				success: callbacks.success,
 				code_succ: callbacks.code_succ
 			}
@@ -308,4 +350,4 @@ class HttpRequest {
 		this.req_fabric(new_prop);
 	}
 }
-export let Request = new HttpRequest();
+export let Request_ = new HttpRequest();

@@ -18,6 +18,7 @@ const routes = {
 			types_dest: "temp/ts/@types/"
 		},
 		js: {
+			temporary: "temp/js/",
 			src_js: "src/js/*.js",
 			dest: "dest/js/",
 			build: "build/js/"
@@ -236,6 +237,12 @@ function concat_ts() {
 		.pipe(tslink(routes.js.ts.temp_file_name))
 		.pipe(dest(routes.js.ts.temporary));
 }
+function compileTS() {
+	return tsProject.src()
+		.pipe(tsProject())
+		.js.pipe(dest(routes.js.js.temporary));
+}
+let constructJS = series(put_types, concat_ts, compileTS);
 
 
 
@@ -246,12 +253,6 @@ function put_images() {
 		.pipe(dest(routes.images.dest));
 }
 
-function compileTS() {
-	return tsProject.src()
-		.pipe(tsProject())
-		.js.pipe(dest(routes.js.js.dest));
-}
-let constructJS = series(put_types, concat_ts, compileTS);
 function put_js() {
 	return src(routes.js.js.src_js)
 		.pipe(dest(routes.js.js.dest));
@@ -306,7 +307,7 @@ function build1_compileTS() {
 }
 let build1_constructJS = series(put_types, concat_ts, build1_compileTS);
 function build1_put_js() {
-	return src(routes.js.js.src_js)
+	return src([routes.js.js.src_js, "!src/js/test.js"])
 		.pipe(dest(routes.js.js.build));
 }
 
@@ -361,7 +362,7 @@ function build2_put_kraken() {
 let build2_put_images = parallel(build2_put_svg, build2_put_kraken);
 
 function build2_put_js() {
-	return src(routes.js.js.dest + routes.js.ts.dest_file_name)
+	return src([routes.js.js.temporary + routes.js.ts.dest_file_name, "!src/js/test.js", routes.js.js.src_js])
 		.pipe(removeConsole(prm.remove_console))
 		.pipe(uglify(prm.uglify))
 		.pipe(dest(routes.js.js.build));
@@ -404,7 +405,6 @@ exports.build_end = series(cleanAll, build_end_);
 
 // working build with dirty files and without html loops and test urls. Use custom server for watch
 exports.build = function() {
-	// run custom server
 	nodemon(prm.nodemon.prop)
 		.on("crash", prm.nodemon.crash)
 		.on("restart", prm.nodemon.restart);
@@ -416,12 +416,11 @@ exports.build = function() {
 	watch(routes.sass.watch, prm.watch.param, series(build1_compile_sass));
 	watch(routes.html.watch, prm.watch.param, series(build1_constructHTML));
 };
-// layout work with dirty files
+// mode to edit templates with dirty files
 exports.default = function() {
 	browser.init(prm.browser);
 	parallel(put_plugins, put_fonts)();
 	watch(routes.images.watch, prm.watch.param, series(put_images, reload));
-	watch(routes.js.ts.watch, prm.watch.param, series(constructJS, reload));
 	watch(routes.js.js.src_js, prm.watch.param, series(put_js, reload));
 	watch(routes.style.watch, prm.watch.param, series(put_css, reload));
 	watch(routes.sass.watch, prm.watch.param, series(compile_sass, reload));

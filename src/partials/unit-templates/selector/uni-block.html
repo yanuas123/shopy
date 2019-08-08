@@ -1,11 +1,11 @@
-<div class="selector_block-item">
+<div class="selector_block-item" data-in="@@type_block">
 	<div class="selector-item_title">
-		<span>@@title</span>
+		<span data-in='selector_category_title'>##@@title##</span>
 		<div class="svg_plus-minus_wrap">
 			<div class="svg_plus-minus icon ico_plus"></div>
 		</div>
 	</div>
-	<div class="selector_item_list" id="selector_block_@@vars">
+	<div class="selector_item_list">
 		@@include('@@file_url', { "vars": "@@vars" })
 	</div>
 </div>

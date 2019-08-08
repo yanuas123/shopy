@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<div class="main-wrap">
+	<div class="main-wrap" id="home_page">
 		<header class="header container-fluid">
 			<!-- HEADER top part -->
 			<div class="header_top row align-items-center">
@@ -31,11 +31,11 @@
 						<div class="row">
 							<div class="col-sm-8">
 								<div class="d-flex contacts-wrap">
-									<div class="contact" id="contact_email_info">
+									<div class="contact" data-in="contact_email_info">
 										<div class="icon icon-color-custom ico_mail"></div>
 										<div class="contact_text"></div>
 									</div>
-									<div class="contact" id="contact_tel_info">
+									<div class="contact" data-in="contact_tel_info">
 										<div class="icon icon-color-custom ico_phone"></div>
 										<div class="contact_text"></div>
 									</div>
@@ -44,10 +44,10 @@
 							<div class="col-sm-4">
 								<div class="d-flex justify-content-end">
 									<div class="soc-networks">
-										<a href="" class="btn-icon icon-color facebook"></a>
-										<a href="" class="btn-icon icon-color twitter"></a>
-										<a href="" class="btn-icon icon-color google"></a>
-										<a href="" class="btn-icon instagram"></a>
+										<a href="" class="btn-icon icon-color facebook" data-in="social_facebook"></a>
+										<a href="" class="btn-icon icon-color twitter" data-in="social_twitter"></a>
+										<a href="" class="btn-icon icon-color google" data-in="social_google"></a>
+										<a href="" class="btn-icon instagram" data-in="social_instagram"></a>
 									</div>
 								</div>
 							</div>
@@ -69,17 +69,17 @@
 
 									<!-- MAIN MENU -->
 									<ul id="main_menu_list">
-										<!-- LOOP -->
+
 										<li><a href=""></a></li>
-										<!-- end LOOP -->
+
 									</ul>
 								</nav>
 							</div>
 							<div class="col-5 col-sm-6 col-md-2 d-flex justify-content-end header_bottom_right-wrap">
 								<div class="header_bottom_right">
 									<button type="button" class="btn-icon icon-color-custom ico_search" data-popup-init="search"></button>
-									<button type="button" class="btn-icon icon-color-custom ico_user"></button>
-									<div class="cart-button ">
+									<button type="button" class="btn-icon icon-color-custom ico_user" id="user_auth_mark"></button>
+									<div class="cart-button " id="cart_icon_wrap">
 										<div class="cart-qty" id="cart_qty"></div>
 										<button type="button" class="btn-icon icon-color-custom ico_cart"></button>
 									</div>
@@ -92,7 +92,7 @@
 		</header>
 		<main class="main">
 			<!-- SLIDER section -->
-			<div class="slider slider_wrap">
+			<div class="slider slider_wrap" data-in="section_slider">
 				<div class="slider-inside" id="home_slider">
 					<div class="slide slide1">
 						<div class="bg-image"></div>
@@ -110,7 +110,38 @@
 							</div>
 						</div>
 					</div>
-
+					<div class="slide slide1">
+						<div class="bg-image"></div>
+						<div class="container">
+							<div class="row align-items-center">
+								<div class="col-md-10 offset-md-1 slider_description1">
+									<div class="description1_title">FULL WINTER KIT</div>
+									<div class="description1_subtitle">Half Jacket + Skiny Trousers + Boot leather</div>
+									<div class="description1_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry</div>
+									<div class="slider-description_purchase">
+										<div class="price-block">Price : <span>120$</span></div>
+										<button type="button" class="order-block"><span class="icon icon-color-custom ico_cart"></span> Order Now</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="slide slide1">
+						<div class="bg-image"></div>
+						<div class="container">
+							<div class="row align-items-center">
+								<div class="col-md-10 offset-md-1 slider_description1">
+									<div class="description1_title">FULL WINTER KIT</div>
+									<div class="description1_subtitle">Half Jacket + Skiny Trousers + Boot leather</div>
+									<div class="description1_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry</div>
+									<div class="slider-description_purchase">
+										<div class="price-block">Price : <span>120$</span></div>
+										<button type="button" class="order-block"><span class="icon icon-color-custom ico_cart"></span> Order Now</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="slider_indicator">
 					<div class="container">
@@ -121,7 +152,7 @@
 			</div>
 			<div class="container">
 				<!-- NEW ARRIVALS section -->
-				<section class="row flex-column new-arrivals_wrap">
+				<section class="row flex-column new-arrivals_wrap" data-in="section_newarrivals">
 					<div class="title-section_wrap">
 						<div class="title-block">
 							<h2>
@@ -134,22 +165,35 @@
 
 						</div>
 						<div class="container-fluid big-items">
-							<div class="row align-items-md-stretch">
-								<!-- LOOP -->
-								<div class="col-md-3">
+							<div class="row align-items-md-stretch justify-content-center" data-in="prod_items_block">
+
+								<div class="col-md-3" data-in="product_item_big">
 									<div class="product-item_big">
-										<a href="" class="product-item_big_image">
-											<img src="" alt="" />
+										<a href="" class="product-item_big_image" data-in="product_url">
+											<img src="" alt="" data-in="product_image" />
 										</a>
 										<div class="product-item_big_description">
-											<a href="" class="product-item_name"></a>
-											<div class="product-item_price plain-price"><span></span>$</div>
+											<a href="" class="product-item_name" data-in="product_url"><span data-in="product_name"></span></a>
+											<div class="product-item_price plain-price"><span data-in="product_price"></span>$</div>
 											<div class="product-item_choose-block">
-												<div class="product-item_size_wrap"><span>size</span><span class="product-item_size_wide-space">:</span>
-													<div class="sizing"><button type="button" class="text-btn_black">s</button> - <button type="button" class="text-btn_black">m</button> - <button type="button" class="text-btn_black">l</button> - <button type="button" class="text-btn_black">xl</button></div>
+												<div class="product-item_size_wrap" data-in="product_sizing"><span>size</span><span class="product-item_size_wide-space">:</span>
+													<div class="sizing">
+														<div class="size-btn_wrap" data-in="product_size_s">
+															<button type="button" class="text-btn_black">s</button>
+														</div>
+														<div class="size-btn_wrap" data-in="product_size_m">
+															<button type="button" class="text-btn_black">m</button>
+														</div>
+														<div class="size-btn_wrap" data-in="product_size_l">
+															<button type="button" class="text-btn_black">l</button>
+														</div>
+														<div class="size-btn_wrap" data-in="product_size_xl">
+															<button type="button" class="text-btn_black">xl</button>
+														</div>
+													</div>
 												</div>
-												<div class="product-item_color-choose_wrap">
-													<div class="color-choose">
+												<div class="product-item_color-choose_wrap" data-in="product_color">
+													<div class="color-choose" data-in="color_choose">
 														<button type="button" class="color-circle "></button>
 
 													</div>
@@ -157,25 +201,25 @@
 												<div class="hr"></div>
 												<div class="product-item_buttons_wrap">
 													<div class="product-item_buttons">
-														<button type="button" class="btn-icon icon-color-custom ico_global"></button>
-														<button type="button" class="btn-icon icon-color-custom ico_add-cart"></button>
-														<button type="button" class="btn-icon icon-color-custom ico_like"></button>
+														<button type="button" class="btn-icon icon-color-custom ico_global" data-in="product_network"></button>
+														<button type="button" class="btn-icon icon-color-custom ico_add-cart" data-in="product_tocart"></button>
+														<button type="button" class="btn-icon icon-color-custom ico_like" data-in="product_like"></button>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<!-- end LOOP -->
+
 							</div>
 						</div>
 
-						<div class="container-fluid">
+						<div class="container-fluid" data-in="load_more_block">
 							<div class="row">
 								<div class="col-md-12">
-									<div class="load-more">
-										<button type="button" class="btn-icon icon-color-custom icon-color-start ico_load" id="load_new_arrivals"></button>
-									</div>
+									<button type="button" class="load-more" id="load_new_arrivals">
+										<span class="btn-icon icon-color-custom icon-color-start ico_load"></span>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -183,7 +227,7 @@
 					</div>
 				</section>
 				<!-- ADVERTISING section -->
-				<div class="row advertising_wrap">
+				<div class="row advertising_wrap" data-in="section_advertising">
 					<div class="col-12 col-lg-7 advertising mb-lg-0 mb-2">
 						<div class="advertising_inside promo_full-winter">
 							<div class="pfw_sale-image">
@@ -207,7 +251,7 @@
 					</div>
 				</div>
 				<!-- BEST SALES section -->
-				<section class="row flex-column best-sales_wrap">
+				<section class="row flex-column best-sales_wrap" data-in="section_bestsales">
 					<div class="title-section_wrap">
 						<div class="title-block">
 							<h2>
@@ -220,27 +264,27 @@
 
 						</div>
 						<div class="container-fluid little-items">
-							<div class="row align-items-md-stretch">
-								<!-- LOOP -->
-								<div class="col-md-4">
+							<div class="row align-items-md-stretch" data-in="prod_items_block">
+
+								<div class="col-md-4" data-in="product_item_little">
 									<div class="product-item_little justify-content-md-start justify-content-center">
-										<a href="" class="product-item_little_image">
-											<img src="" alt="" />
+										<a href="" class="product-item_little_image" data-in="product_url">
+											<img src="" alt="" data-in="product_image" />
 										</a>
 										<div class="vr"></div>
 										<div class="product-item_little_description">
-											<a href="" class="product-item_name"></a>
+											<a href="" class="product-item_name" data-in="product_name"></a>
 											<div class="rating_price_block">
-												<div class="rating-stars ">
+												<div class="rating-stars " data-in="rating_stars">
 													<div class="icon ico_star"></div>
 													<div class="icon ico_star"></div>
 													<div class="icon ico_star "></div>
 													<div class="icon ico_star"></div>
 												</div>
-												<div class="product-item_price plain-price"><span></span>$</div>
+												<div class="product-item_price plain-price"><span data-in="product_price"></span>$</div>
 											</div>
 											<div class="add-cart_btn_with_title">
-												<button type="button" class="text-btn_chromatic">
+												<button type="button" class="text-btn_chromatic" data-in="product_tocart">
 													<span class="icon icon-color-custom ico_add-cart"></span>
 													<span>add to cart</span>
 												</button>
@@ -248,14 +292,14 @@
 										</div>
 									</div>
 								</div>
-								<!-- end LOOP -->
+
 							</div>
 						</div>
 
 					</div>
 				</section>
 				<!-- SUBSCRIBE section -->
-				<div class="row">
+				<div class="row" data-in="section_subscribe">
 					<div class="col-md-12">
 						<div class="subscribe_wrap subscription">
 							<div class="subscription_title-block">
@@ -292,9 +336,9 @@
 					<div class="col-12 col-md-6">
 						<!-- FOOTER MENU -->
 						<ul class="footer_menu" id="footer_menu">
-							<!-- LOOP -->
+
 							<li class="footer_menu_item"><a href=""></a></li>
-							<!-- end LOOP -->
+
 						</ul>
 					</div>
 					<div class="col-md-2 payment-wrap">
@@ -313,6 +357,16 @@
 	<div class="loader" id="loader">
 		<span class="loader_ico"></span>
 	</div>
+	<div class="local-popup-wrap" id="local_popup_parent">
+
+		<!-- Logout popup -->
+		<div class="local-popup hidden" id="logout_popup">
+			<div class="logout-popup">
+				<button type="button" class="btn" id="logout_btn">LOG OUT</button>
+			</div>
+		</div>
+
+	</div>
 	<div class="tooltip hidden-tooltip" id="tooltip"></div>
 	<!-- POPUP's block -->
 	<div class="popup-wrap animate-popup" id="popups">
@@ -328,57 +382,61 @@
 						<div class="popup-window popup-retreat popup-cart" data-popup-targ="cart">
 							<div class="d-flex flex-column align-items-center pb-4">
 								<div class="container-fluid">
-									<!-- LOOP -->
-									<div class="row my-5">
+
+									<div class="row my-5" data-in="cartitem">
 										<div class="col-md-3">
-											<img src="" alt="" />
+											<img src="" alt="" data-in="cartitem_image" class="cart-img" />
 										</div>
 										<div class="col-md-8">
 											<div class="row">
 												<div class="col-md-12">
-													<div class="product-item_name"></div>
+													<div class="product-item_name" data-in="cartitem_name"></div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-md-12 pb-2">
 													<span class="bold">Category:</span>
-													<span class="category-name"></span>
+													<span class="category-name" data-in="cartitem_category"></span>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-md-12 pb-2">
-													<p></p>
+													<p data-in="cartitem_description"></p>
 												</div>
 											</div>
 											<div class="row pt-lg-0 pt-2">
 												<div class="col-md-6">
 													<div class="prop-sizing">
 														<span>Size: </span>
-														<span class="sizing"></span>
+														<span class="sizing" data-in="cartitem_size"></span>
 													</div>
 												</div>
 												<div class="col-md-6 d-flex justify-content-md-end">
 													<div class="prop-counter">
 														<span>Quantity: </span>
-														<span class="counter"></span>
+														<div class="counter" data-in="counter">
+															<button type="button" class="text-btn_black" data-count-qty="product_plus_qty">+</button>
+															<span class="target_qty" data-count-qty="product_target_qty"></span>
+															<button type="button" class="text-btn_black" data-count-qty="product_minus_qty">-</button>
+														</div>
 													</div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-md-12 d-flex justify-content-end pt-2">
-													<div class="price-block">Price : <span class="cart_item-price"></span>$</div>
+													<div class="price-block">Price : <span class="cart_item-price" data-in="cartitem_price"></span>$</div>
 												</div>
 											</div>
 										</div>
 										<div class="col-md-1 d-flex align-items-md-center justify-content-md-center">
-											<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn"></button>
+											<button type="button" class="btn-icon icon-color-custom ico_close close-btn del-btn" data-in="cartitem_delete"></button>
 										</div>
 									</div>
-									<!-- end LOOP -->
+
 								</div>
 							</div>
-							<div class="d-flex justify-content-center pt-4 pb-2" id="popup_cart_confirm">
-								<button class="btn" type="button" data-popup-init="confirm_registered">Confirm</button>
+							<div class="d-flex justify-content-center pt-4 pb-2">
+								<button class="btn" type="button" id="popup_cart_confirm">Confirm</button>
 							</div>
 						</div>
 						<!-- Confirmation registered popup -->
@@ -453,10 +511,9 @@
 										<div class="col-md-12 pb-4 pt-5">
 											<label class="select-label label">Choose shipping address:</label>
 											<select name="ukrpost_address" class="select inline-select" required>
-												<!-- LOOP -->
 
-												<!-- end LOOP -->
-												<option value="add new address">add new address</option>
+
+												<option value="add_new_address">add new address</option>
 											</select>
 										</div>
 									</div>
@@ -470,11 +527,10 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="input-parent">
-												<select name="country-name" class="select placeholder" required>
+												<select name="country_name" class="select placeholder" required>
 													<option value="" selected disabled>Country*</option>
-													<!-- LOOP -->
-													<option value=""></option>
-													<!-- end LOOP -->
+
+
 												</select>
 												<div class="text-empty">Select country!</div>
 											</div>
@@ -514,14 +570,14 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="input-parent">
-												<input class="input" type="text" name="given-name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+												<input class="input" type="text" name="first_name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 												<div class="text-empty">This field is required!</div>
 												<div class="text-invalid">This field contains incorrect symbols!</div>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="input-parent">
-												<input class="input" type="text" name="family-name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+												<input class="input" type="text" name="last_name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 												<div class="text-empty">This field is required!</div>
 												<div class="text-invalid">This field contains incorrect symbols!</div>
 											</div>
@@ -573,9 +629,9 @@
 						<!-- Login popup -->
 						<div class="popup-window popup-retreat popup-login" data-popup-targ="login">
 							<div class="h5">Log in</div>
-							<form name="log_in" class="d-flex flex-column align-items-center" autocomplete="on" novalidate>
+							<form name="log_in" method="post" action="login" class="d-flex flex-column align-items-center" autocomplete="on" novalidate>
 								<div class="input-parent align-items-center">
-									<input class="input" type="email" name="email" placeholder="Email*" required />
+									<input class="input" type="email" name="username" placeholder="Email*" required />
 									<div class="text-empty">Type your email address!</div>
 									<div class="text-invalid">Email adress is invalid!</div>
 								</div>
@@ -590,7 +646,7 @@
 									<label for="log_in_remember" class="label">Remember me</label>
 								</div>
 								<div class="d-flex justify-content-center pt-4 pb-2">
-									<input class="btn" name="submit" type="submit" value="Log in" />
+									<input class="btn" name="submit" type="submit" value="Log in" id="login_submit" />
 								</div>
 								<div class="pt-4 align-self-start">
 									<button type="button" class="text-btn_black underline" data-popup-init="forgot_password">Forgot password</button>
@@ -646,20 +702,18 @@
 								<div class="row">
 									<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end pb-md-0 pb-3">
 										<label class="select-label label">Category:</label>
-										<select name="category" class="select inline-select">
+										<select name="category" class="select inline-select" data-in="search_categories">
 											<option value="all_categories">all categories</option>
-											<!-- LOOP -->
-											<option value=""></option>
-											<!-- end LOOP -->
+
+
 										</select>
 									</div>
 									<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end">
 										<label class="select-label label">Brand:</label>
-										<select name="brand" class="select inline-select">
+										<select name="brand" class="select inline-select" data-in="search_brand">
 											<option value="all_brands">all brands</option>
-											<!-- LOOP -->
-											<option value=""></option>
-											<!-- end LOOP -->
+
+
 										</select>
 									</div>
 								</div>
@@ -680,39 +734,39 @@
 									</div>
 								</div>
 								<div class="container-fluid search-resultlist" id="popup_search_resultlist">
-									<!-- LOOP -->
-									<a href="" class="row my-5">
+
+									<a href="" class="row my-5" data-in="searchitem">
 										<div class="col-md-3 product-item_big_image pb-md-0 pb-3">
-											<img src="" alt="" />
+											<img src="" alt="" data-in="searchitem_image" />
 										</div>
 										<div class="col-md-9 search-description">
 											<div class="row">
 												<div class="col-md-12">
-													<div class="product-item_name"></div>
+													<div class="product-item_name" data-in="searchitem_name"></div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-md-12 pb-2">
 													<span class="bold">Category:</span>
-													<span class="category-name"></span>
+													<span class="category-name" data-in="searchitem_category"></span>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-md-12 pb-2">
-													<p></p>
+													<p data-in="searchitem_description"></p>
 												</div>
 											</div>
 										</div>
 									</a>
-									<!-- end LOOP -->
+
 								</div>
 								<div id="popup_search_load" class="hidden">
-									<div class="container-fluid">
+									<div class="container-fluid" data-in="load_more_block">
 										<div class="row">
 											<div class="col-md-12">
-												<div class="load-more">
-													<button type="button" class="btn-icon icon-color-custom icon-color-start ico_load" id="load_search_results"></button>
-												</div>
+												<button type="button" class="load-more" id="load_search_results">
+													<span class="btn-icon icon-color-custom icon-color-start ico_load"></span>
+												</button>
 											</div>
 										</div>
 									</div>
@@ -724,10 +778,10 @@
 							<div class="h6" id="info_popup_text">Share this product:</div>
 							<div class="d-flex justify-content-center">
 								<div class="soc-networks">
-									<a href="" class="btn-icon icon-color facebook"></a>
-									<a href="" class="btn-icon icon-color twitter"></a>
-									<a href="" class="btn-icon icon-color google"></a>
-									<a href="" class="btn-icon instagram"></a>
+									<a href="" class="btn-icon icon-color facebook" data-in="social_facebook"></a>
+									<a href="" class="btn-icon icon-color twitter" data-in="social_twitter"></a>
+									<a href="" class="btn-icon icon-color google" data-in="social_google"></a>
+									<a href="" class="btn-icon instagram" data-in="social_instagram"></a>
 								</div>
 							</div>
 						</div>
@@ -746,7 +800,7 @@
 										</div>
 										<div class="col-md-6">
 											<div class="input-parent">
-												<input class="input" type="tel" name="tel" placeholder="Phone" disabled />
+												<input class="input" type="tel" name="phone" placeholder="Phone" />
 												<div class="text-invalid">Phone number is invalid!</div>
 											</div>
 										</div>
@@ -780,9 +834,8 @@
 												<div class="input-parent">
 													<select name="country" class="select placeholder" required>
 														<option value="" selected disabled>Country*</option>
-														<!-- LOOP -->
-														<option value=""></option>
-														<!-- end LOOP -->
+
+
 													</select>
 													<div class="text-empty">Select country!</div>
 												</div>
@@ -823,14 +876,14 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="input-parent">
-													<input class="input" type="text" name="given-name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+													<input class="input" type="text" name="first_name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 													<div class="text-empty">This field is required!</div>
 													<div class="text-invalid">This field contains incorrect symbols!</div>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="input-parent">
-													<input class="input" type="text" name="family-name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+													<input class="input" type="text" name="last_name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 													<div class="text-empty">This field is required!</div>
 													<div class="text-invalid">This field contains incorrect symbols!</div>
 												</div>
@@ -861,7 +914,9 @@
 	</div>
 	<script src="plugins/js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="plugins/js/slick.min.js"></script>
+	<script src="js/coockie.js"></script>
 	<script src="js/index.js"></script>
+
 </body>
 
 </html>

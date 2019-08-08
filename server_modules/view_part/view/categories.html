@@ -1,0 +1,53 @@
+<div class="col-md-12" ng-controller="categoriesCtrl">
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<p>Categories:</p>
+			<div ng-repeat="item in categories.items" class="row">
+				<div class="col-md-12">
+
+
+
+					<div class="row top-space">
+						<div class="col-md-4">name: {{::item.name}}</div>
+						<div class="col-md-4">title: {{::item.title}}</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<input type="button" value="New category" ng-click="create_category()" class="btn btn-primary">
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<p>Brands:</p>
+			<div ng-repeat="item in brands.items" class="row">
+				<div class="col-md-12">
+
+
+
+					<div class="row top-space">
+						<div class="col-md-4">name: {{::item.name}}</div>
+						<div class="col-md-4">title: {{::item.title}}</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<input type="button" value="New brand" ng-click="create_brand()" class="btn btn-primary">
+				</div>
+			</div>
+		</div>
+    </div>
+
+
+	<!--        modal for Category edit-->
+	<div id="modalEditCategory" tabindex="-1" role="dialog" ng-include="'/view/modals/a_categories.html'" class="modal fade"></div>
+</div>

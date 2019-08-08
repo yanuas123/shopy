@@ -1,0 +1,106 @@
+<div class="col-md-12" ng-controller="productsCtrl">
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<div ng-repeat="item in products" class="row">
+				<div class="col-md-12">
+
+
+					<div class="row top-space">
+						<div class="col-md-3">
+							<img ng-src="{{::item.main_photo}}" alt="" />
+						</div>
+						<div class="col-md-9">
+							<div class="row">
+								<div class="col-md-12">
+									<h3>{{::item.name}}</h3>
+								</div>
+							</div>
+							<div class="row" ng-if="item.subtitle">
+								<div class="col-md-12">{{::item.subtitle}}</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">category: {{::item.category_title||item.category_name}}</div>
+								<div class="col-md-6">brand: {{::item.brand_title||item.brand_name}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" ng-if="item.describe">
+						<div class="col-md-12">{{::item.describe}}</div>
+					</div>
+					<div class="row" ng-if="item.photos.length">
+						<div class="col-md-3" ng-repeat="ph in item.photos">
+							<img ng-src="{{::ph}}" alt="" />
+						</div>
+					</div>
+
+					<div class="row" ng-if="item.related_prod.length">
+						Related product:
+						<div class="col-md-4" ng-repeat="rl in item.related_prod">{{::rl.name}}</div>
+					</div>
+
+					<div class="row" ng-if="item.soc_networks.length">
+						Social Networks:
+						<div class="col-md-4" ng-repeat="sc in item.soc_networks">
+							<p>{{::sc.title}}</p>
+							<p>{{::sc.link}}</p>
+						</div>
+					</div>
+					<div class="row pt-1">
+						<div class="col-md-6">Price: {{::item.price}}</div>
+						<div class="col-md-6">Url: {{::item.url}}</div>
+					</div>
+					<div class="row">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Color</th>
+									<th scope="col"></th>
+									<th scope="col">class</th>
+									<th scope="col"></th>
+									<th scope="col">s</th>
+									<th scope="col">m</th>
+									<th scope="col">l</th>
+									<th scope="col">xl</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="sz in item.qty">
+									<td>{{::sz.name}}</td>
+									<td>
+										<div class="m-1" style="background-color: {{::sz.hash}}"></div>
+									</td>
+									<td>{{::sz.class_name}}</td>
+									<td>{{::sz.sizes.any}}</td>
+									<td>{{::sz.sizes.s}}</td>
+									<td>{{::sz.sizes.m}}</td>
+									<td>{{::sz.sizes.l}}</td>
+									<td>{{::sz.sizes.xl}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<input type="button" value="Edit" ng-click="edit($index)" class="btn btn-primary">
+						</div>
+						<div class="col-md-3">
+							<input type="button" value="Delete" ng-click="del($index)" class="btn btn-danger">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<input type="button" value="New Product" ng-click="create()" class="btn btn-primary">
+				</div>
+			</div>
+		</div>
+    </div>
+
+
+	<!--        modal for Products edit-->
+	<div id="modalEditProducts" tabindex="-1" role="dialog" ng-include="'/view/modals/a_products.html'" class="modal fade"></div>
+</div>

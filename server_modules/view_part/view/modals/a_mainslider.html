@@ -1,0 +1,91 @@
+<div role="document" class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <form name="mainslider" novalidate>
+            <div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" name="title" placeholder="Title" autocomplete="off" ng-model="edit_obj.title" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" name="subtitle" placeholder="Subtitle" autocomplete="off" ng-model="edit_obj.subtitle" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" name="describe" placeholder="Description" autocomplete="off" ng-model="edit_obj.describe" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" name="price" placeholder="Price" autocomplete="off" ng-model="edit_obj.price" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						Connect data from:
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="type_info" id="products_radio" value="products" ng-model="edit_obj.type_info">
+							<label class="form-check-label" for="products_radio">Products</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="type_info" id="promoproducts_radio" value="promoproducts" ng-model="edit_obj.type_info">
+							<label class="form-check-label" for="promoproducts_radio">Promo Products</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="type_info" id="norelated_radio" value="" ng-model="edit_obj.type_info">
+							<label class="form-check-label" for="norelated_radio">No</label>
+						</div>
+					</div>
+					<div class="col-md-6" ng-if="edit_obj.type_info == 'products'">
+						<select name="products" class="form-control" ng-value="related1">
+							<option value="{{::item._id}}" ng-repeat="item in products">{{::item.name}}</option>
+						</select>
+					</div>
+					<div class="col-md-6" ng-if="edit_obj.type_info == 'promoproducts'">
+						<select name="promoproducts" class="form-control" ng-value="related2">
+							<option value="{{::item._id}}" ng-repeat="item in promoproducts">{{::item.name}}</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						Image:
+						<span>{{edit_obj.image}}</span>
+					</div>
+				</div>
+
+
+            </div>
+        </form>
+
+		<!--        form for downloading image of new good to the server-->
+        <form name="file_dw2" method="post" enctype="multipart/form-data" action="/upload_file2" target="result2"> <!-- target for getting image-url without reload -->
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <input type="file" name="upl" id="upl2" required class="custom-file-input input-file-height">
+                    <label for="upl2" class="form-control">{{file_field}}</label>
+                    <div class="input-group-append">
+                        <button type="submit" ng-disabled="file_dw2.upl.$dirty" class="btn btn-info">Send</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <iframe name="result2" ng-get-urls></iframe> <!-- hidded target for getting url of dowloaded image -->
+
+
+
+
+        <div class="modal-footer">
+            <input type="button" value="Save" data-dismiss="modal" ng-click="save()" class="btn btn-primary">
+        </div>
+    </div>
+</div>

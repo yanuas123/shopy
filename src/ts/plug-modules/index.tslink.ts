@@ -5,5 +5,6 @@
 // @tslink:inject popup.ts
 // @tslink:inject range-filter.ts
 // @tslink:inject validation.ts
-// tslink:inject state-tasker.ts
-// tslink:inject ajax.ts
+// @tslink:inject ajax.ts
+// @tslink:inject local-popup.ts
+// @tslink:inject select-countries.ts

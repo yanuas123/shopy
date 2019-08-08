@@ -73,7 +73,7 @@
 						@@for ( var i = 0; i < address.length; i++ ) {
 						##<option value="`+address[i]+`">`+address[i]+`</option>##
 						}
-						<option value="add new address">add new address</option>
+						<option value="add_new_address">add new address</option>
 					</select>
 				</div>
 			</div>
@@ -87,10 +87,10 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="input-parent">
-						<select name="country-name" class="select placeholder" required>
+						<select name="country_name" class="select placeholder" required>
 							<option value="" selected disabled>Country*</option>
 							@@for ( var i = 0; i < country.length; i++ ) {
-							<option value="`+country[i]+`">`+country[i]+`</option>
+							##<option value="`+country[i]+`">`+country[i]+`</option>##
 							}
 						</select>
 						<div class="text-empty">Select country!</div>
@@ -131,14 +131,14 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="input-parent">
-						<input class="input" type="text" name="given-name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+						<input class="input" type="text" name="first_name" placeholder="First name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 						<div class="text-empty">This field is required!</div>
 						<div class="text-invalid">This field contains incorrect symbols!</div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="input-parent">
-						<input class="input" type="text" name="family-name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
+						<input class="input" type="text" name="last_name" placeholder="Last name*" required data-valid-template="/^[^@\~\!\#\$\%\^\?\*\(\)\_\=]+$/" />
 						<div class="text-empty">This field is required!</div>
 						<div class="text-invalid">This field contains incorrect symbols!</div>
 					</div>
