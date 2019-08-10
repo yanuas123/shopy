@@ -4,7 +4,7 @@ This is a trial site of clothing webshop where dynamic functionality is written 
 
 > [Static Demo](https://yanuas123.github.io/shopy/)
 
-> Server Demo
+> [Server Demo](https://shopy1.herokuapp.com/)
 
 ## Site Pages
 
