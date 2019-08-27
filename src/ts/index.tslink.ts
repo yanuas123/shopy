@@ -68,6 +68,7 @@ Request_._get({
 });
 
 let LocalPopup = new LocPopup("local_popup_parent");
+LocalPopup.setPopup("logout_popup");
 let Confirm = new setConfirmation();
 let Cart = new Cart_();
 let ctgr_selector_el = document.getElementById("product_selector");
@@ -284,7 +285,27 @@ if(form_forgot_password) validation.setForm({
 // login form
 const form_login: HTMLFormElement = document.querySelector("form[name='log_in']");
 if(form_login) validation.setForm({
-	element: form_login
+	element: form_login,
+	submit_el: "submit"
+}, (form: HTMLFormElement, data: formData, call: formCallFunc) => {
+	let valid = validation.validateForm(form_login);
+	if(valid) {
+		let callback = (data: any) => {
+			location.reload();
+			call(true);
+		};
+		let prop = {
+			action: "/login",
+			data: data,
+			callbacks: {
+				success: callback,
+				error: (data: any) => {
+					call(["password"]);
+				}
+			}
+		};
+		Request_._post(prop);
+	}
 });
 $("#login_submit").click((e) => {
 	let valid = validation.validateForm(form_login);
@@ -405,6 +426,7 @@ $("#check_shipping_info").change((e) => {
 
 /* Start execution ---------------------------------------------------------- */
 
+
 function setPage(): string {
 	let page_name = null;
 	if(document.getElementById("home_page")) page_name = "home";
@@ -499,7 +521,10 @@ function startCommonData() {
 						target = instagram;
 						exist_in = true;
 					}
-					$(target).attr("href", data[i].link);
+					$(target).attr("href", data[i].link).on("click", (e) => {
+						e.preventDefault();
+						window.open(data[i].link, "", "toolbar=0,status=0,scrollbars=1,width=626,height=436");
+					});
 					if(data[i].class_name) $(target).addClass(data[i].class_name);
 				}
 				if(!exist_fb) $(facebook).addClass("hidden");
@@ -535,7 +560,6 @@ function authGetUser(): void {
 
 			});
 		} else {
-			console.log("no logged");
 			$("[data-in='product_like']").addClass("disabled");
 			user_icon.addEventListener("click", (e) => {
 				Popup.open("login");
@@ -547,7 +571,6 @@ function authGetUser(): void {
 		callbacks: {
 			success: callback,
 			error: () => {
-				console.log("no logged");
 				$("[data-in='product_like']").addClass("disabled");
 				user_icon.addEventListener("click", (e) => {
 					Popup.open("login");

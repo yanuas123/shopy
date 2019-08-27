@@ -167,7 +167,9 @@ router.get("/products", function(req, res) {
 		}
 		if(req.query.brands) {
 			let brand_arr;
-			if(!req.query.brands instanceof Array) brand_arr = req.query.brands;
+			if(req.query.brands instanceof Array) {
+				brand_arr = req.query.brands;
+			}
 			else brand_arr = [req.query.brands];
 
 			search_obj.brand_name = {

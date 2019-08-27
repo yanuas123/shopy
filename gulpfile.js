@@ -204,6 +204,7 @@ const tslink = require('gulp-ts-link');
 const nodemon = require("gulp-nodemon");
 const html_beautify = require('gulp-html-beautify');
 const replace_str = require('gulp-inject-string');
+const sourcemap = require("gulp-sourcemaps");
 
 
 
@@ -260,7 +261,9 @@ function put_js() {
 
 function compile_sass() {
 	return src(routes.sass.src)
+		.pipe(sourcemap.init())
 		.pipe(sasS(prm.sass).on('error', sasS.logError))
+		.pipe(sourcemap.write())
 		.pipe(dest(routes.sass.dest));
 }
 
@@ -313,7 +316,9 @@ function build1_put_js() {
 
 function build1_compile_sass() {
 	return src(routes.sass.src)
+		.pipe(sourcemap.init())
 		.pipe(sasS(prm.sass).on('error', sasS.logError))
+		.pipe(sourcemap.write())
 		.pipe(dest(routes.style.build));
 }
 
@@ -369,13 +374,18 @@ function build2_put_js() {
 }
 let build2_compileJS = series(constructJS, build2_put_js);
 
+function build2_compile_sass() {
+	return src(routes.sass.src)
+		.pipe(sasS(prm.sass).on('error', sasS.logError))
+		.pipe(dest(routes.sass.dest));
+}
 function build2_put_css() {
 	return src(routes.style.build_src)
 		.pipe(gcmq(prm.css_concat_media))
 		.pipe(autoprefixerGulp(prm.autoprefixer))
 		.pipe(dest(routes.style.build));
 }
-let build2_construct_css = series(compile_sass, put_css, build2_put_css);
+let build2_construct_css = series(build2_compile_sass, put_css, build2_put_css);
 
 function build2_html_del_loops() {
 	let prop;

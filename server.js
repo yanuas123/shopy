@@ -59,6 +59,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
 				password: password
 			};
 			User.find(sr, function(err, data) { // find user account
+				console.log(data);
 				if(err) {
 					console.log(err);
 					return "Database error!";
@@ -97,6 +98,7 @@ passport.deserializeUser(function(user, done) { // deserializing
 			return done(null, return_obj);
 		} else
 			User.find(sr, function(err, data) {
+				console.log(data);
 				if(err) {
 					console.log(err);
 					return "Database error!";
@@ -170,7 +172,7 @@ app.post("/adminvalid", function(req, res) {
 
 app.get("/logout", function(req, res) {
 	req.logout();
-	res.redirect("/");
+	res.status(200).send();
 });
 
 
