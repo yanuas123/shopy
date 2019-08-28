@@ -1,0 +1,28 @@
+<% for ( var i = 0; i < 3; i++ ) { %>
+<div class="col-md-4" data-in="product_item_little">
+	<div class="product-item_little justify-content-md-start justify-content-center">
+		<a href="<%= locals.product_list[i].product_url; %>" class="product-item_little_image" data-in="product_url">
+			<img src="<%= locals.product_list[i].image_src; %>" alt="" data-in="product_image" />
+		</a>
+		<div class="vr"></div>
+		<div class="product-item_little_description">
+			<a href="<%= locals.product_list[i].product_url; %>" class="product-item_name" data-in="product_name"><%= locals.product_list[i].product_name; %></a>
+			<div class="rating_price_block">
+				<div class="rating-stars ##active##" data-in="rating_stars">
+					<div class="icon ico_star"></div>
+					<div class="icon ico_star"></div>
+					<div class="icon ico_star ##active##"></div>
+					<div class="icon ico_star"></div>
+				</div>
+				<div class="product-item_price plain-price"><span data-in="product_price"><%= locals.product_list[i].price; %></span>$</div>
+			</div>
+			<div class="add-cart_btn_with_title">
+				<button type="button" class="text-btn_chromatic" data-in="product_tocart">
+					<span class="icon icon-color-custom ico_add-cart"></span>
+					<span>add to cart</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<% } %>

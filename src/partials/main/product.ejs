@@ -1,0 +1,36 @@
+<!-- PRODUCT DESCRIPTION section -->
+<div class="product_wrap" data-in="section_productdescribe">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="product-block">
+					<div class="product-desc-image">
+						<%- include('../unit-templates/images'); %>
+					</div>
+					<div class="product_describe" id="product_describe_pg">
+						<div class="product_describe-block">
+							<h1 data-in="product_name">##FULL WINTER KIT##</h1>
+							<div class="product_subtitle" data-in="product_subtitle">##Half Jacket + Skiny Trousers + Boot leather##</div>
+							<p data-in="product_describe">##Lorem Ipsum is simply dummy text of the printing and typesetting industry<br>Lorem Ipsum is simply dummy text of the printing<br>and typesetting industry##</p>
+						</div>
+						<div class="product_prop-block">
+							<div class="product_prop-block_half" data-in="product_sizing">
+								<%- include('../unit-templates/product/prop-size'); %>
+							</div>
+							<div class="product_prop-block_half">
+								<%- include('../unit-templates/product/prop-quantity'); %>
+							</div>
+						</div>
+						<div class="product_resume-block">
+							<div class="price">Price : <span data-in="product_price">##120##</span>$</div>
+							<div class="product_purchase-block">
+								<%- include('../unit-templates/product/product-btn'); %>
+								<button type="button" class="btn order_btn" data-in="product_ordercart"><span>Order Now</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

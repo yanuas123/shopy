@@ -1,0 +1,19 @@
+<% for ( var i=0; i<locals.list_qty; i++ ) { %>
+	<div class="<%= 'col-'+locals.block_size; %>" data-in="product_item_big">
+		<div class="product-item_big">
+			<a href="<%= locals.product_list[i].product_url; %>" class="product-item_big_image" data-in="product_url">
+				<img src="<%= locals.product_list[i].image_src; %>" alt="" data-in="product_image" />
+			</a>
+		<div class="product-item_big_description">
+			<a href="<%= locals.product_list[i].product_url; %>" class="product-item_name" data-in="product_url"><span data-in="product_name"><%= locals.product_list[i].product_name; %></span></a>
+			<div class="product-item_price plain-price"><span data-in="product_price"><%= locals.product_list[i].price; %></span>$</div>
+			<div class="product-item_choose-block">
+				<div class="product-item_size_wrap" data-in="product_sizing"><span>size</span><span class="product-item_size_wide-space">:</span><%- include('sizing'); %></div>
+				<div class="product-item_color-choose_wrap" data-in="product_color"><%- include('color-choose'); %></div>
+				<div class="hr"></div>
+				<div class="product-item_buttons_wrap"><%- include('product-btn'); %></div>
+			</div>
+		</div>
+	</div>
+</div>
+	<% } %>

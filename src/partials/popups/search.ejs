@@ -1,0 +1,80 @@
+<!-- Search popup -->
+<div class="popup-window popup-retreat popup-search" data-popup-targ="search">
+	<form name="search_form" class="container-fluid pb-4" novalidate>
+		<div class="row">
+			<div class="col-md-12 search-field-row pt-4 pb-5 d-flex align-items-start justify-content-center">
+				<div class="input-parent">
+					<input class="input" type="text" name="search" placeholder="Search" required />
+					<div class="text-empty">Enter a search phrase!</div>
+				</div>
+				<button class="btn" type="submit" name="submit" id="popup_search_submit"><span class="icon ico_search"></span></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end pb-md-0 pb-3">
+				<label class="select-label label">Category:</label> 
+				<select name="category" class="select inline-select" data-in="search_categories">
+					<option value="all_categories">all categories</option>
+					<% for ( var i = 0; i < locals.categories.length; i++ ) { %>
+					##<option value="<%= locals.categories[i].title; %>"><%= locals.categories[i].title; %></option>##
+					<% } %>
+				</select>
+			</div>
+			<div class="col-md-6 d-md-block d-flex flex-sm-row flex-column align-items-center justify-content-end">
+				<label class="select-label label">Brand:</label> 
+				<select name="brand" class="select inline-select" data-in="search_brand">
+					<option value="all_brands">all brands</option>
+					<% for ( var i = 0; i < locals.brands.length; i++ ) { %>
+					##<option value="<%= locals.brands[i].title; %>"><%= locals.brands[i].title; %></option>##
+					<% } %>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 d-flex flex-sm-row flex-column align-items-center pt-3 pb-sm-5">
+				<span class="bold pr-2">Search in:</span>
+				<input class="checkbox" type="checkbox" name="check_description" id="popup_search_check_description" />
+				<label for="popup_search_check_description" class="label">product description</label>
+			</div>
+		</div>
+	</form>
+	<div class="d-flex flex-column pb-4" id="popup_search_results">
+		<div class="container-fluid hidden" id="popup_search_notfound">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="bold">No results were found for your request</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid search-resultlist" id="popup_search_resultlist">
+			<% for ( var i = 0; i < 4; i++ ) { %>
+			<a href="<%= locals.product_list[i].product_url; %>" class="row my-5" data-in="searchitem">
+				<div class="col-md-3 product-item_big_image pb-md-0 pb-3">
+					<img src="<%= locals.product_list[i].image_src; %>" alt="" data-in="searchitem_image" />
+				</div>
+				<div class="col-md-9 search-description">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="product-item_name" data-in="searchitem_name"><%= locals.product_list[i].product_name; %></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 pb-2">
+							<span class="bold">Category:</span> 
+							<span class="category-name" data-in="searchitem_category"><%= locals.product_list[i].category; %></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 pb-2">
+							<p data-in="searchitem_description"><%= locals.product_list[i].description_sr; %></p>
+						</div>
+					</div>
+				</div>
+			</a>
+			<% } %>
+		</div>
+		<div id="popup_search_load" class="hidden">
+			<%- include('../unit-templates/load-more', { section_id: "load_search_results" }); %>
+		</div>
+	</div>
+</div>

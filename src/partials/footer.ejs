@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row align-items-center">
+		<div class="col-md-4 align-self-stretch copyright-wrap">
+			<div class="d-flex flex-column align-items-md-start justify-content-md-between">
+				<img src="images/images/logo.png" class="logo" alt="" />
+				<div class="copyright">Shopy c 2015 . your copy right here</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-6">
+			<!-- FOOTER MENU -->
+			<ul class="footer_menu" id="footer_menu">
+				<% for (var i=0; i<locals.footer_menu.length; i++) { %>
+					<li class="footer_menu_item"><a href="<%= locals.footer_menu[i].url; %>"><%= locals.footer_menu[i].title; %></a></li>
+					<% } %>
+			</ul>
+		</div>
+		<div class="col-md-2 payment-wrap">
+			<%- include('unit-templates/payment-methods'); %>
+		</div>
+	</div>
+</div>

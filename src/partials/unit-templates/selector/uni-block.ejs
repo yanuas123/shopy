@@ -1,0 +1,11 @@
+<div class="selector_block-item" data-in="<%= locals.type_block; %>">
+	<div class="selector-item_title">
+		<span data-in='selector_category_title'>## <%= locals.title; %> ##</span>
+		<div class="svg_plus-minus_wrap">
+			<div class="svg_plus-minus icon ico_plus"></div>
+		</div>
+	</div>
+	<div class="selector_item_list">
+		<%- include(locals.file_url, { vars: locals.vars }); %>
+	</div>
+</div>

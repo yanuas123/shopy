@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include(locals.root_path+'partials/head.ejs'); %>
+	<body>
+		<div class="main-wrap" id="home_page">
+			<header class="header container-fluid">
+				<%- include(locals.root_path+'partials/header'); %>
+			</header>
+			<main class="main">
+				<%- include(locals.root_path+'partials/main/slider'); %>
+				<div class="container">
+					<%- include(locals.root_path+'partials/main/new-arrivals'); %>
+					<%- include(locals.root_path+'partials/main/advertising'); %>
+					<%- include(locals.root_path+'partials/main/best-sales'); %>
+					<%- include(locals.root_path+'partials/main/subscribe'); %>
+				</div>
+			</main>
+			<footer class="footer">
+				<%- include(locals.root_path+'partials/footer'); %>
+			</footer>
+			<% if (false) { %>
+			<div class="mock mock1"></div>
+			<% } %>
+		</div>
+		<!-- loader block -->
+		<div class="loader" id="loader">
+			<span class="loader_ico"></span>
+		</div>
+		<%- include(locals.root_path+'partials/popups/local-popup'); %>
+		<%- include(locals.root_path+'partials/popups/tooltip'); %>
+		<%- include(locals.root_path+'partials/popup-wrap'); %>
+		<%- include(locals.root_path+'partials/script'); %>
+	</body>
+</html>

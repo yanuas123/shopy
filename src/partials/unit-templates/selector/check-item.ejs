@@ -1,0 +1,5 @@
+<% var items = locals[locals.vars];
+for ( var i = 0; i < items.length; i++ ) { %>
+<input class="checkbox" type="checkbox" name="<%= items[i].name; %>" id="<%= items[i].name; %>" value="<%= items[i].name; %>" data-input-prop="<%= items[i].data_input_prop; %>" />
+<label class="label <%= items[i].data_input_prop; %>" for="<%= items[i].name; %>"><%= items[i].title; %></label>
+<% } %>

@@ -1,0 +1,21 @@
+<div class="row product-list_double-block product-list_wrap" data-in="section_productlist">
+	<!-- PRODUCT SELECTOR FORM -->
+	<form name="product_selector" class="col-lg-3 col-md-4 selector" id="product_selector">
+		<%- include('../unit-templates/selector/uni-block', { title: "Categories", file_url: "check-item", "vars": "categories", type_block: "list_type" }); -%>
+
+		<%- include('../unit-templates/selector/uni-block', { title: "Price Filtter", file_url: "range-block", vars: "price_range_prop", type_block: "range_filter" }); -%>
+
+		## <%- include('../unit-templates/selector/uni-block', { title: "Sizes", file_url: "check-item", vars: "sizes", type_block: "list_type" }); -%>
+
+		<%- include('../unit-templates/selector/uni-block', { title: "Brands", file_url: "check-item", vars: "brands", type_block: "list_type" }); -%> ##
+	</form>
+	<!-- PRODUCT LIST -->
+	<div class="col-lg-9 col-md-8 product-list">
+		<div class="container-fluid">
+			<div class="row" data-in="prod_items_block">
+				<%- include('../unit-templates/product/product-item', { block_size: "lg-4 col-sm-6", list_qty: 9 }); %>
+			</div>
+		</div>
+		<%- include('../unit-templates/load-more', { section_id: "load_products_page" }); %>
+	</div>
+</div>

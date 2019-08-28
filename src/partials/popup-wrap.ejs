@@ -1,0 +1,27 @@
+<!-- POPUP's block -->
+<div class="popup-wrap animate-popup" id="popups">
+	<div class="back-wall" data-popup-close></div>
+	<div class="popups-block_wrap">
+		<div class="popups-frame_wrap">
+			<div class="popups-frame">
+				<div class="close-button-row">
+				<button class="btn-icon icon-color-custom ico_close close-btn" type="button" data-popup-close></button>
+			</div>
+			<div class="popups-window">
+				<%- include('popups/cart'); %>
+				<%- include('popups/confirm', { address: [ "my address 1" ] }); %>
+				<%- include('popups/forgotpass'); %>
+				<%- include('popups/info'); %>
+				<%- include('popups/login'); %>
+				<%- include('popups/newpass'); %>
+				<%- include('popups/payment'); %>
+				<%- include('popups/question'); %>
+				<%- include('popups/search'); %>
+				<%- include('popups/share-product'); %>
+				<%- include('popups/signin'); %>
+				<%- include('popups/custom'); %>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

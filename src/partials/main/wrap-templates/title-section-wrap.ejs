@@ -1,0 +1,17 @@
+<div class="title-section_wrap">
+	<div class="title-block">
+		<h2>
+			<%# chromatic part title or simple title %>
+			<% if(locals.section_title_chromatic) { %>
+			<span class="text_important"><%= locals.section_title_chromatic; %></span>
+			<% } %>
+			<%= locals.section_title; %></h2>
+		<% if(locals.section_description) { %>
+		<p><%= locals.section_description; %></p>
+		<% } %>
+	</div>
+	<%- include(locals.file_url); %>
+	<% if(locals.loader) { %>
+	<%- include('../../unit-templates/load-more', { section_id: locals.section_id }); %>
+	<% } %>
+</div>

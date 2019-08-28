@@ -1,0 +1,14 @@
+<nav class="menu">
+
+	<!-- MAIN MENU -->
+	<ul id="main_menu_list">
+		<% var menu = [{title: "Home", url: "index.html", class: " class='active'"},
+		{title: "Products", url: "products.html"},
+		{title: "Hot Deals", url: "#"},
+		{title: "About", url: "#"},
+		{title: "Contact", url: "contact.html"}];
+		for (var i=0; i<menu.length; i++) { %>
+			<li><a href="<%= menu[i].url; %>"<%= menu[i].class; %>><%= menu[i].title; %></a></li>
+			<% } %>
+	</ul>
+</nav>

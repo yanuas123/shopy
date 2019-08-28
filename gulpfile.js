@@ -37,12 +37,12 @@ const routes = {
 		watch: "src/sass/**/*.css"
 	},
 	html: {
-		src: ["src/**/*.html"],
-		src_temp: "temp/html/*.html",
+		src: ["src/**/*.ejs"],
+		src_temp: "temp/html/*.ejs",
 		build_temp: "temp/html/",
 		dest: "dest/",
 		build: "build/",
-		watch: ["src/*.html", "src/partials/**/*.html"]
+		watch: ["src/*.ejs", "src/partials/**/*.ejs"]
 	},
 	plugins: {
 		src: "src/plugins/**/*",
@@ -60,6 +60,7 @@ const routes = {
 };
 
 const html_include_prop = require("./html-include-prop.js");
+const html_data = require("./html-data");
 const pass = require("./auth.js");
 const prm = {
 	browser: {
@@ -100,6 +101,12 @@ const prm = {
 		build: {
 			context: html_include_prop
 		}
+	},
+	ejs: {
+		cache: false,
+		filename: "index.html",
+		_with: false,
+		async: false
 	},
 	nodemon: {
 		prop: {
@@ -182,6 +189,7 @@ const prm = {
 const del = require('del');
 const cache = require("gulp-cached");
 const browser = require("browser-sync").create();
+const through = require("through2");
 const ts = require("gulp-typescript");
 let tsProject = ts.createProject("tsconf.json");
 const {
@@ -200,6 +208,7 @@ const uglify = require("gulp-uglify");
 const imageoptim = require("gulp-kraken");
 const rigger = require("gulp-rigger");
 const include = require("gulp-file-include");
+const ejs = require("ejs");
 const tslink = require('gulp-ts-link');
 const nodemon = require("gulp-nodemon");
 const html_beautify = require('gulp-html-beautify');
@@ -276,13 +285,26 @@ function put_css() {
 function html_del_loops() {
 	let prop = prm.html_del_dirty.layout;
 	return src(routes.html.src)
-		.pipe(replace_str.replace(prop.plain.s, prop.plain.r))
+		.pipe(through.obj(function(file, _, cb) {
+			if(file.isBuffer()) {
+				let code = file.contents.toString().replace(new RegExp(prop.plain.s, "g"), prop.plain.r);
+				file.contents = Buffer.from(code);
+			}
+			cb(null, file);
+		}))
 		.pipe(dest(routes.html.build_temp));
 }
 function compile_html() {
 	prm.include.test.context.state = "test";
 	return src(routes.html.src_temp)
-		.pipe(include(prm.include.test))
+		.pipe(through.obj(function(file, _, cb) {
+			if(file.isBuffer()) {
+				let code = ejs.render(file.contents.toString(), html_data, prm.ejs);
+				file.contents = Buffer.from(code);
+				file.basename = file.basename.replace(".ejs", ".html");
+			}
+			cb(null, file);
+		}))
 		.pipe(dest(routes.html.dest));
 }
 let constructHTML = series(html_del_loops, compile_html);
@@ -331,9 +353,15 @@ function build1_put_css() {
 function build1_html_del_loops() {
 	let prop = prm.html_del_dirty.node;
 	return src(routes.html.src)
-		.pipe(replace_str.replace(prop.plain.s, prop.plain.r))
-		.pipe(replace_str.replace(prop.loop.s, prop.loop.r))
-		.pipe(replace_str.replace(prop.insert1.s, prop.insert1.r))
+		.pipe(through.obj(function(file, _, cb) {
+			if(file.isBuffer()) {
+				let code = file.contents.toString().replace(new RegExp(prop.plain.s, "g"), prop.plain.r);
+				code = code.replace(new RegExp(prop.loop.s, "g"), prop.loop.r);
+				code = code.replace(new RegExp(prop.insert1.s, "g"), prop.insert1.r);
+				file.contents = Buffer.from(code);
+			}
+			cb(null, file);
+		}))
 		.pipe(dest(routes.html.build_temp));
 }
 function build1_html() {
@@ -392,10 +420,16 @@ function build2_html_del_loops() {
 	if(prm.html_del_dirty.mode == "node") prop = prm.html_del_dirty.node;
 	else if(prm.html_del_dirty.mode == "php") prop = prm.html_del_dirty.php;
 	return src(routes.html.src)
-		.pipe(replace_str.replace(prop.plain.s, prop.plain.r))
-		.pipe(replace_str.replace(prop.attr.s, prop.attr.r))
-		.pipe(replace_str.replace(prop.loop.s, prop.loop.r))
-		.pipe(replace_str.replace(prop.insert1.s, prop.insert1.r))
+		.pipe(through.obj(function(file, _, cb) {
+			if(file.isBuffer()) {
+				let code = file.contents.toString().replace(new RegExp(prop.plain.s, "g"), prop.plain.r);
+				code = code.replace(new RegExp(prop.attr.s, "g"), prop.attr.r);
+				code = code.replace(new RegExp(prop.loop.s, "g"), prop.loop.r);
+				code = code.replace(new RegExp(prop.insert1.s, "g"), prop.insert1.r);
+				file.contents = Buffer.from(code);
+			}
+			cb(null, file);
+		}))
 		.pipe(dest(routes.html.build_temp));
 }
 function build2_html() {
